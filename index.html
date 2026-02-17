@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andres Rosendo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000;
+            color: #fff;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* --- Estética Minimalista --- */
+        .text-gradient {
+            background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.4) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ui-border {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* --- Lógica de Tabs e Interacción --- */
+        .tab-item {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+            opacity: 0.3;
+        }
+
+        .tab-item.active {
+            opacity: 1;
+        }
+
+        .tab-description {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+
+        .tab-item.active .tab-description {
+            max-height: 200px;
+            opacity: 1;
+            margin-top: 1rem;
+        }
+
+        /* Contenedor Visual Fijo (Derecha) */
+        .sticky-visual {
+            position: sticky;
+            top: 20%;
+            height: 550px;
+            background: #080808;
+            border: 1px solid #161616;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.8);
+        }
+
+        .visual-content {
+            display: none;
+            width: 100%;
+            height: 100%;
+            animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .visual-content.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .bento-card {
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            border-radius: 28px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* --- CARRUSEL --- */
+        .carousel-viewport {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+            gap: 40px;
+        }
+
+        .project-card {
+            flex: 0 0 940px;
+            height: 520px;
+            background: #000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 28px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
+            opacity: 0.4;
+            transform: scale(0.95);
+            transition: all 0.8s ease;
+        }
+
+        .project-card.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .visual-area {
+            background: #0a0a0a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .nav-label {
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #444;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-label.active {
+            color: #fff;
+        }
+
+        .control-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+
+        .control-btn:hover {
+            border-color: #fff;
+            color: #fff;
+        }
+
+        /* Animación de barras para Estrategia */
+        .chart-bar {
+            animation: barGrow 2s ease-in-out infinite alternate;
+            transform-origin: bottom;
+        }
+
+        @keyframes barGrow {
+            0% {
+                transform: scaleY(0.3);
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: scaleY(1);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .project-card {
+                flex: 0 0 85vw;
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+
+            .visual-area {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <nav class="fixed top-6 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div
+                class="ui-border bg-black/60 backdrop-blur-xl rounded-full px-6 py-3 flex justify-between items-center text-sm">
+                <div class="font-medium tracking-tight text-lg">Hola soy, Andrés Rosendo!</div>
+                <div class="flex items-center space-x-6">
+                    <a href="#servicios" class="text-zinc-400 hover:text-white transition">Servicios</a>
+                    <a href="#proyectos" class="text-zinc-400 hover:text-white transition">Proyectos</a>
+                    <a href="mailto:tu@email.com"
+                        class="bg-white text-black px-5 py-2 rounded-full font-bold text-sm transition hover:bg-zinc-200">Contacto</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-48 pb-20 px-6 text-center max-w-5xl mx-auto">
+        <span
+            class="inline-flex items-center px-4 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/50 text-zinc-400 text-[10px] md:text-xs font-medium mb-8">
+            <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+            Disponible para trabajar
+        </span>
+        <h1 class="text-5xl md:text-8xl font-extrabold tracking-tighter text-gradient leading-[1.05] mb-8">
+            Diseñador Gráfico <br> Especialista en UX/UI
+        </h1>
+        <p class="text-zinc-500 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+            Especialista en la creación de ecosistemas digitales donde el <span class="text-zinc-400">Branding</span> y
+            el <span class="text-zinc-400">Diseño UX/UI</span> convergen para potenciar productos escalables. Mi enfoque
+            combina la construcción de identidades visuales memorables con una arquitectura de información estratégica.
+        </p>
+    </header>
+
+    <section id="servicios" class="max-w-7xl mx-auto px-6 py-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <div class="lg:col-span-4 py-20">
+                <div class="tab-trigger tab-item active p-8" data-tab="branding">
+                    <h3 class="text-2xl font-bold tracking-tight">Branding</h3>
+                    <div class="tab-description">
+                        <p class="text-zinc-400 text-sm leading-relaxed mb-4">Construyo identidades visuales sólidas y
+                            memorables que transmiten la esencia de tu negocio.</p>
+                    </div>
+                </div>
+                <div class="tab-trigger tab-item p-8" data-tab="uxui">
+                    <h3 class="text-2xl font-bold tracking-tight">Diseño UX/UI</h3>
+                    <div class="tab-description">
+                        <p class="text-zinc-400 text-sm leading-relaxed">Creación de interfaces de alta fidelidad
+                            centradas en el usuario y experiencias digitales intuitivas.</p>
+                    </div>
+                </div>
+                <div class="tab-trigger tab-item p-8" data-tab="strategy">
+                    <h3 class="text-2xl font-bold tracking-tight">Estrategia Digital</h3>
+                    <div class="tab-description">
+                        <p class="text-zinc-400 text-sm leading-relaxed">Diseño de hojas de ruta que transforman
+                            objetivos de negocio en productos digitales medibles y escalables mediante investigación de
+                            mercado y optimización de conversión.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:col-span-8 sticky-visual hidden lg:flex">
+                <div id="branding" class="visual-content active"><i data-lucide="layers" size="120"
+                        class="text-white/20"></i></div>
+                <div id="uxui" class="visual-content"><i data-lucide="layout" size="100" class="text-blue-500/20"></i>
+                </div>
+                <div id="strategy" class="visual-content"><i data-lucide="target" size="120"
+                        class="text-emerald-500/20"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <main id="proyectos" class="max-w-7xl mx-auto px-6 py-20">
+        <h2 class="text-2xl md:text-3xl font-bold mb-12 tracking-tight">Proyectos Seleccionados</h2>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            <div class="bento-card md:col-span-8 p-12 h-[500px] flex flex-col justify-end group cursor-pointer">
+                <span class="text-blue-500 font-bold text-xs uppercase tracking-widest">Branding</span>
+                <h3 class="text-4xl font-bold mt-2">HM Burguers</h3>
+            </div>
+            <div class="bento-card md:col-span-4 p-8 flex flex-col justify-end group cursor-pointer">
+                <span class="text-purple-500 font-bold text-xs uppercase tracking-widest">UX/UI</span>
+                <h3 class="text-2xl font-bold mt-2">Klyn App</h3>
+            </div>
+        </div>
+    </main>
+
+    <section class="py-32 flex flex-col items-center overflow-hidden">
+        <div class="w-full flex justify-center">
+            <div class="carousel-viewport" id="viewport">
+                <div class="project-card active" id="card-0">
+                    <div class="p-8 lg:p-14 flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 bg-orange-500 rounded-xl mb-10 flex items-center justify-center"><i
+                                    data-lucide="flame" class="text-white"></i></div>
+                            <p class="text-[24px] lg:text-[28px] font-medium leading-tight tracking-tight">“Rediseñamos
+                                la identidad de HM Burguers para transmitir una esencia urbana y audaz.”</p>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs">
+                                    HM</div>
+                                <div>
+                                    <p class="text-[13px] font-semibold">Andrés Rosendo</p>
+                                    <p class="text-[12px] text-zinc-500">Case Study: Branding</p>
+                                </div>
+                            </div>
+                            <span class="text-[13px] text-zinc-400 flex items-center gap-1 cursor-pointer">Ver proyecto
+                                <i data-lucide="arrow-up-right" size="14"></i></span>
+                        </div>
+                    </div>
+                    <div class="visual-area"><i data-lucide="flame" size="100" class="text-orange-500/10"></i></div>
+                </div>
+
+                <div class="project-card" id="card-1">
+                    <div class="p-8 lg:p-14 flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 bg-purple-600 rounded-xl mb-10 flex items-center justify-center"><i
+                                    data-lucide="layout" class="text-white"></i></div>
+                            <p class="text-[24px] lg:text-[28px] font-medium leading-tight tracking-tight">“Klyn App:
+                                Una interfaz minimalista diseñada para optimizar servicios domésticos.”</p>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs">
+                                    KL</div>
+                                <div>
+                                    <p class="text-[13px] font-semibold">Andrés Rosendo</p>
+                                    <p class="text-[12px] text-zinc-500">UX/UI Design</p>
+                                </div>
+                            </div>
+                            <span class="text-[13px] text-zinc-400 flex items-center gap-1 cursor-pointer">Ver proyecto
+                                <i data-lucide="arrow-up-right" size="14"></i></span>
+                        </div>
+                    </div>
+                    <div class="visual-area"><i data-lucide="smartphone" size="100" class="text-purple-500/10"></i>
+                    </div>
+                </div>
+
+                <div class="project-card" id="card-2">
+                    <div class="p-8 lg:p-14 flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 bg-emerald-600 rounded-xl mb-10 flex items-center justify-center"><i
+                                    data-lucide="target" class="text-white"></i></div>
+                            <p class="text-[24px] lg:text-[28px] font-medium leading-tight tracking-tight">“Andrés
+                                transformó nuestro modelo de negocio en una experiencia digital de alto impacto.”</p>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs">
+                                    JD</div>
+                                <div>
+                                    <p class="text-[13px] font-semibold">Juan Delgado</p>
+                                    <p class="text-[12px] text-zinc-500">CEO, Digital Corp</p>
+                                </div>
+                            </div>
+                            <span class="text-[13px] text-zinc-400 flex items-center gap-1 cursor-pointer">Saber más <i
+                                    data-lucide="arrow-up-right" size="14"></i></span>
+                        </div>
+                    </div>
+                    <div class="visual-area overflow-hidden">
+                        <div class="relative w-64 h-64 flex items-end justify-center gap-2">
+                            <div class="chart-bar w-8 bg-emerald-500/20 rounded-t-lg"
+                                style="height: 60%; animation-delay: 0.1s;"></div>
+                            <div class="chart-bar w-8 bg-emerald-500/40 rounded-t-lg"
+                                style="height: 80%; animation-delay: 0.3s;"></div>
+                            <div class="chart-bar w-8 bg-emerald-500/60 rounded-t-lg"
+                                style="height: 100%; animation-delay: 0.5s;"></div>
+                            <div class="chart-bar w-8 bg-emerald-500/30 rounded-t-lg"
+                                style="height: 70%; animation-delay: 0.2s;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full max-w-[940px] flex items-center justify-between mt-12 px-6">
+            <div class="flex gap-8 overflow-x-auto no-scrollbar">
+                <span class="nav-label active" onclick="goToSlide(0)">HM Burguers</span>
+                <span class="nav-label" onclick="goToSlide(1)">Klyn App</span>
+                <span class="nav-label" onclick="goToSlide(2)">Estrategia</span>
+            </div>
+            <div class="flex gap-3">
+                <button class="control-btn" onclick="prevSlide()"><i data-lucide="chevron-left" size="18"></i></button>
+                <button class="control-btn" onclick="nextSlide()"><i data-lucide="chevron-right" size="18"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="pt-24 pb-12 border-t border-zinc-900 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12 mb-20">
+                <div class="col-span-2 lg:col-span-2">
+                    <div class="font-semibold tracking-tighter text-lg mb-6 text-white">Andrés Rosendo</div>
+                    <div class="flex flex-col gap-6">
+                        <div class="flex flex-wrap gap-5">
+                            <a href="#" class="text-zinc-500 hover:text-white transition-all duration-300"><i
+                                    data-lucide="message-circle" size="20"></i></a>
+                            <a href="#" class="text-zinc-500 hover:text-white transition-all duration-300"><i
+                                    data-lucide="instagram" size="20"></i></a>
+                            <a href="#" class="text-zinc-500 hover:text-white transition-all duration-300"><i
+                                    data-lucide="twitter" size="20"></i></a>
+                            <a href="#" class="text-zinc-500 hover:text-white transition-all duration-300"><i
+                                    data-lucide="at-sign" size="20"></i></a>
+                            <a href="#" class="text-zinc-500 hover:text-white transition-all duration-300"><i
+                                    data-lucide="music-2" size="20"></i></a>
+                            <a href="#" class="text-zinc-500 hover:text-white transition-all duration-300"><i
+                                    data-lucide="linkedin" size="20"></i></a>
+                        </div>
+                        <div class="inline-flex items-center text-[11px] text-zinc-500 tracking-wider uppercase">
+                            <span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+                            En línea 24/7
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    <h4 class="text-white font-medium text-sm">Navegación</h4>
+                    <a href="#" class="text-zinc-500 hover:text-white text-sm transition">Inicio</a>
+                    <a href="#servicios" class="text-zinc-500 hover:text-white text-sm transition">Servicios</a>
+                    <a href="#proyectos" class="text-zinc-500 hover:text-white text-sm transition">Proyectos</a>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    <h4 class="text-white font-medium text-sm">Servicios</h4>
+                    <a href="#" class="text-zinc-500 hover:text-white text-sm transition">Branding</a>
+                    <a href="#" class="text-zinc-500 hover:text-white text-sm transition">Diseño UX/UI</a>
+                    <a href="#" class="text-zinc-500 hover:text-white text-sm transition">Estrategia</a>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    <h4 class="text-white font-medium text-sm">Contacto</h4>
+                    <a href="mailto:tu@email.com" class="text-zinc-500 hover:text-white text-sm transition">Email</a>
+                    <a href="#" class="text-zinc-400 hover:text-white text-sm transition font-medium flex items-center">
+                        WhatsApp <span
+                            class="text-[9px] bg-white text-black px-1.5 py-0.5 rounded ml-2 font-bold uppercase">New</span>
+                    </a>
+                    <a href="#" class="text-zinc-500 hover:text-white text-sm transition">LinkedIn</a>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    <h4 class="text-white font-medium text-sm">Legal</h4>
+                    <a href="#" class="text-zinc-500 hover:text-white text-sm transition">Privacidad</a>
+                    <a href="#" class="text-zinc-500 hover:text-white text-sm transition">Cookies</a>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-zinc-600 text-[12px]">© Andrés Rosendo 2026.</div>
+                <div class="text-zinc-600 text-[12px]">Venezuela, Cabudare.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Lógica de Tabs e Intersección
+        const options = { root: null, threshold: 0.7 };
+        const callback = (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const tabId = entry.target.getAttribute('data-tab');
+                    if (tabId) {
+                        document.querySelectorAll('.tab-trigger').forEach(t => t.classList.remove('active'));
+                        entry.target.classList.add('active');
+                        document.querySelectorAll('.visual-content').forEach(v => v.classList.remove('active'));
+                        const targetVisual = document.getElementById(tabId);
+                        if (targetVisual) targetVisual.classList.add('active');
+                    }
+                }
+            });
+        };
+        const observer = new IntersectionObserver(callback, options);
+        document.querySelectorAll('.tab-trigger').forEach(trigger => observer.observe(trigger));
+
+        // Lógica del Carrusel
+        let currentIdx = 0;
+        const totalSlides = 3;
+
+        function updateUI() {
+            const cardWidth = 940;
+            const gap = 40;
+            const step = window.innerWidth > 1024 ? (cardWidth + gap) : (window.innerWidth * 0.85 + gap);
+            const offset = currentIdx * step;
+
+            document.getElementById('viewport').style.transform = `translateX(-${offset}px)`;
+            document.querySelectorAll('.nav-label').forEach((l, i) => l.classList.toggle('active', i === currentIdx));
+            document.querySelectorAll('.project-card').forEach((c, i) => c.classList.toggle('active', i === currentIdx));
+        }
+
+        function nextSlide() { currentIdx = (currentIdx + 1) % totalSlides; updateUI(); }
+        function prevSlide() { currentIdx = (currentIdx - 1 + totalSlides) % totalSlides; updateUI(); }
+        function goToSlide(idx) { currentIdx = idx; updateUI(); }
+
+        window.addEventListener('resize', updateUI);
+        setInterval(nextSlide, 6000);
+    </script>
+</body>
+
+</html>
