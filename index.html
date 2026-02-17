@@ -57,9 +57,7 @@
             border: 1px solid #161616;
             border-radius: 32px;
             overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.8);
         }
 
         .visual-content {
@@ -67,11 +65,9 @@
             width: 100%;
             height: 100%;
             animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            align-items: center;
-            justify-content: center;
         }
 
-        .visual-content.active { display: flex; }
+        .visual-content.active { display: flex; align-items: center; justify-content: center; }
 
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(30px) scale(0.95); }
@@ -82,7 +78,7 @@
             background: #0a0a0a;
             border: 1px solid #1a1a1a;
             border-radius: 28px;
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         /* CARRUSEL */
@@ -97,11 +93,18 @@
         .chart-bar { animation: barGrow 2s ease-in-out infinite alternate; transform-origin: bottom; }
         @keyframes barGrow { 0% { transform: scaleY(0.3); } 100% { transform: scaleY(1); } }
 
-        /* --- MOBILE ADJUSTMENTS --- */
+        /* --- AJUSTES MÓVILES (ESTILO FRAMER) --- */
         @media (max-width: 1024px) {
-            #mobile-menu { display: none; transform: translateY(-20px); transition: all 0.3s ease; }
-            #mobile-menu.active { display: flex; transform: translateY(0); }
-            
+            #mobile-menu { display: none; }
+            #mobile-menu.active { display: flex; }
+
+            /* Ajuste de Título a 2 líneas */
+            h1.text-gradient {
+                font-size: 2.6rem !important;
+                line-height: 1.1 !important;
+                letter-spacing: -0.04em !important;
+            }
+
             .tab-item { opacity: 1 !important; padding: 1.5rem !important; margin-bottom: 1rem; background: #080808; border-radius: 20px; border: 1px solid #161616; }
             .tab-description { max-height: none !important; opacity: 1 !important; }
             .sticky-visual { display: none !important; }
@@ -123,13 +126,13 @@
 
     <nav class="fixed top-6 left-0 right-0 z-[100]">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="ui-border bg-black/60 backdrop-blur-xl rounded-full px-6 py-3 flex justify-between items-center">
+            <div class="ui-border bg-black/60 backdrop-blur-xl rounded-full px-6 py-3 flex justify-between items-center text-sm">
                 <div class="font-medium tracking-tight text-lg">Rosendo Design</div>
                 
                 <div class="hidden md:flex items-center space-x-6">
-                    <a href="#servicios" class="text-zinc-400 hover:text-white transition text-sm">Servicios</a>
-                    <a href="#proyectos" class="text-zinc-400 hover:text-white transition text-sm">Proyectos</a>
-                    <a href="mailto:tu@email.com" class="bg-white text-black px-5 py-2 rounded-full font-bold text-sm hover:bg-zinc-200 transition">Contacto</a>
+                    <a href="#servicios" class="text-zinc-400 hover:text-white transition">Servicios</a>
+                    <a href="#proyectos" class="text-zinc-400 hover:text-white transition">Proyectos</a>
+                    <a href="mailto:tu@email.com" class="bg-white text-black px-5 py-2 rounded-full font-bold text-sm transition hover:bg-zinc-200">Contacto</a>
                 </div>
 
                 <button class="md:hidden text-white" onclick="toggleMenu()">
@@ -151,11 +154,12 @@
             Disponible para trabajar
         </span>
         <h1 class="text-5xl md:text-8xl font-extrabold tracking-tighter text-gradient leading-[1.05] mb-8">
-            Diseñador Gráfico <br> & Especialista UX/UI
+            Diseñador Gráfico & Especialista UX/UI
         </h1>
         <p class="text-zinc-500 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
             Especialista en la creación de ecosistemas digitales donde el <span class="text-zinc-400">Branding</span> y
-            el <span class="text-zinc-400">Diseño UX/UI</span> convergen para potenciar productos escalables.
+            el <span class="text-zinc-400">Diseño UX/UI</span> convergen para potenciar productos escalables. Mi enfoque
+            combina la construcción de identidades visuales memorables con una arquitectura de información estratégica.
         </p>
     </header>
 
@@ -179,7 +183,7 @@
                 <div class="tab-trigger tab-item" data-tab="strategy">
                     <h3 class="text-2xl font-bold tracking-tight">Estrategia Digital</h3>
                     <div class="tab-description">
-                        <p class="text-zinc-400 text-sm leading-relaxed mb-4">Diseño de hojas de ruta que transforman objetivos de negocio en productos digitales medibles y escalables.</p>
+                        <p class="text-zinc-400 text-sm leading-relaxed mb-4">Diseño de hojas de ruta que transforman objetivos de negocio en productos digitales medibles y escalables mediante investigación de mercado y optimización de conversión.</p>
                         <div class="mobile-visual-inline lg:hidden"><i data-lucide="target" size="40" class="text-emerald-500/20"></i></div>
                     </div>
                 </div>
@@ -195,7 +199,7 @@
     <main id="proyectos" class="max-w-7xl mx-auto px-6 py-20">
         <h2 class="text-2xl md:text-3xl font-bold mb-12 tracking-tight">Proyectos Seleccionados</h2>
         <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-            <div class="bento-card md:col-span-8 p-12 h-[450px] md:h-[500px] flex flex-col justify-end group cursor-pointer">
+            <div class="bento-card md:col-span-8 p-12 h-[500px] flex flex-col justify-end group cursor-pointer">
                 <span class="text-blue-500 font-bold text-xs uppercase tracking-widest">Branding</span>
                 <h3 class="text-4xl font-bold mt-2">HM Burguers</h3>
             </div>
@@ -255,8 +259,8 @@
                             <span class="text-[13px] text-zinc-400 flex items-center gap-1 cursor-pointer">Saber más <i data-lucide="arrow-up-right" size="14"></i></span>
                         </div>
                     </div>
-                    <div class="visual-area">
-                        <div class="flex items-end gap-2 h-32">
+                    <div class="visual-area overflow-hidden">
+                        <div class="relative w-64 h-64 flex items-end justify-center gap-2">
                             <div class="chart-bar w-8 bg-emerald-500/20 rounded-t-lg h-[60%]"></div>
                             <div class="chart-bar w-8 bg-emerald-500/40 rounded-t-lg h-[80%]"></div>
                             <div class="chart-bar w-8 bg-emerald-500/60 rounded-t-lg h-[100%]"></div>
@@ -265,6 +269,7 @@
                 </div>
             </div>
         </div>
+
         <div class="w-full max-w-[940px] flex items-center justify-between mt-12 px-6">
             <div class="flex gap-8 overflow-x-auto no-scrollbar">
                 <span class="nav-label active text-xs font-bold uppercase tracking-widest cursor-pointer text-white" onclick="goToSlide(0)">HM Burguers</span>
@@ -285,12 +290,12 @@
                     <div class="font-semibold tracking-tighter text-lg mb-6 text-white">Andrés Rosendo</div>
                     <div class="flex flex-col gap-6">
                         <div class="flex flex-wrap gap-5">
-                            <a href="#" class="text-zinc-500 hover:text-white transition-all duration-300"><i data-lucide="message-circle" size="20"></i></a>
-                            <a href="#" class="text-zinc-500 hover:text-white transition-all duration-300"><i data-lucide="instagram" size="20"></i></a>
-                            <a href="#" class="text-zinc-500 hover:text-white transition-all duration-300"><i data-lucide="twitter" size="20"></i></a>
-                            <a href="#" class="text-zinc-500 hover:text-white transition-all duration-300"><i data-lucide="at-sign" size="20"></i></a>
-                            <a href="#" class="text-zinc-500 hover:text-white transition-all duration-300"><i data-lucide="music-2" size="20"></i></a>
-                            <a href="#" class="text-zinc-500 hover:text-white transition-all duration-300"><i data-lucide="linkedin" size="20"></i></a>
+                            <a href="#" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="message-circle" size="20"></i></a>
+                            <a href="#" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="instagram" size="20"></i></a>
+                            <a href="#" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="twitter" size="20"></i></a>
+                            <a href="#" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="at-sign" size="20"></i></a>
+                            <a href="#" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="music-2" size="20"></i></a>
+                            <a href="#" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="linkedin" size="20"></i></a>
                         </div>
                         <div class="inline-flex items-center text-[11px] text-zinc-500 tracking-wider uppercase">
                             <span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-2 animate-pulse"></span>
