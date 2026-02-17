@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andres Rosendo</title>
+    <title>Rosendo Design | UX/UI Specialist</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -57,7 +57,6 @@
             border: 1px solid #161616;
             border-radius: 32px;
             overflow: hidden;
-            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.8);
         }
 
         .visual-content {
@@ -93,12 +92,11 @@
         .chart-bar { animation: barGrow 2s ease-in-out infinite alternate; transform-origin: bottom; }
         @keyframes barGrow { 0% { transform: scaleY(0.3); } 100% { transform: scaleY(1); } }
 
-        /* --- AJUSTES MÓVILES (ESTILO FRAMER) --- */
+        /* --- AJUSTES MÓVILES --- */
         @media (max-width: 1024px) {
             #mobile-menu { display: none; }
             #mobile-menu.active { display: flex; }
 
-            /* Ajuste de Título a 2 líneas */
             h1.text-gradient {
                 font-size: 2.6rem !important;
                 line-height: 1.1 !important;
@@ -111,6 +109,11 @@
             
             .project-card { flex: 0 0 85vw; grid-template-columns: 1fr; height: auto; }
             .visual-area { height: 250px; }
+
+            /* Carrusel móvil ajustes */
+            .nav-label { font-size: 10px !important; letter-spacing: 0.1em !important; }
+            .control-btn { padding: 8px !important; }
+            .carousel-controls { gap: 1rem !important; }
             
             .mobile-visual-inline {
                 display: flex; height: 180px; background: #000; border-radius: 12px; margin-top: 1rem;
@@ -119,6 +122,8 @@
         }
         
         .no-scrollbar::-webkit-scrollbar { display: none; }
+        .control-btn { border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 99px; transition: all 0.3s; }
+        .control-btn:hover { background: white; color: black; }
     </style>
 </head>
 
@@ -126,12 +131,12 @@
 
     <nav class="fixed top-6 left-0 right-0 z-[100]">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="ui-border bg-black/60 backdrop-blur-xl rounded-full px-6 py-3 flex justify-between items-center text-sm">
-                <div class="font-medium tracking-tight text-lg">Hola soy, Andres Rosendo!</div>
+            <div class="ui-border bg-black/60 backdrop-blur-xl rounded-full px-6 py-3 flex justify-between items-center">
+                <div class="font-medium tracking-tight text-lg">Rosendo Design</div>
                 
                 <div class="hidden md:flex items-center space-x-6">
-                    <a href="#servicios" class="text-zinc-400 hover:text-white transition">Servicios</a>
-                    <a href="#proyectos" class="text-zinc-400 hover:text-white transition">Proyectos</a>
+                    <a href="#servicios" class="text-zinc-400 hover:text-white transition text-sm">Servicios</a>
+                    <a href="#proyectos" class="text-zinc-400 hover:text-white transition text-sm">Proyectos</a>
                     <a href="mailto:tu@email.com" class="bg-white text-black px-5 py-2 rounded-full font-bold text-sm transition hover:bg-zinc-200">Contacto</a>
                 </div>
 
@@ -141,10 +146,10 @@
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden absolute top-20 left-6 right-6 bg-black border border-zinc-800 backdrop-blur-2xl rounded-3xl p-8 flex-col space-y-6 text-center shadow-2xl md:hidden">
-            <a href="#servicios" class="text-xl font-medium" onclick="toggleMenu()">Servicios</a>
-            <a href="#proyectos" class="text-xl font-medium" onclick="toggleMenu()">Proyectos</a>
-            <a href="mailto:tu@email.com" class="bg-white text-black py-4 rounded-2xl font-bold text-lg">Contacto</a>
+        <div id="mobile-menu" class="hidden absolute top-20 left-6 right-6 bg-black/95 border border-zinc-800 backdrop-blur-2xl rounded-[2rem] p-6 flex-col space-y-4 text-center shadow-2xl md:hidden">
+            <a href="#servicios" class="text-lg font-medium py-2" onclick="toggleMenu()">Servicios</a>
+            <a href="#proyectos" class="text-lg font-medium py-2" onclick="toggleMenu()">Proyectos</a>
+            <a href="mailto:tu@email.com" class="bg-white text-black py-3 rounded-full font-bold text-md">Contacto</a>
         </div>
     </nav>
 
@@ -154,12 +159,11 @@
             Disponible para trabajar
         </span>
         <h1 class="text-5xl md:text-8xl font-extrabold tracking-tighter text-gradient leading-[1.05] mb-8">
-            Diseñador Gráfico Especialista UX/UI
+            Diseñador Gráfico & Especialista UX/UI
         </h1>
         <p class="text-zinc-500 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
             Especialista en la creación de ecosistemas digitales donde el <span class="text-zinc-400">Branding</span> y
-            el <span class="text-zinc-400">Diseño UX/UI</span> convergen para potenciar productos escalables. Mi enfoque
-            combina la construcción de identidades visuales memorables con una arquitectura de información estratégica.
+            el <span class="text-zinc-400">Diseño UX/UI</span> convergen para potenciar productos escalables.
         </p>
     </header>
 
@@ -169,21 +173,21 @@
                 <div class="tab-trigger tab-item active" data-tab="branding">
                     <h3 class="text-2xl font-bold tracking-tight">Branding</h3>
                     <div class="tab-description">
-                        <p class="text-zinc-400 text-sm leading-relaxed mb-4">Construyo identidades visuales sólidas y memorables que transmiten la esencia de tu negocio.</p>
+                        <p class="text-zinc-400 text-sm leading-relaxed mb-4">Construyo identidades visuales sólidas y memorables.</p>
                         <div class="mobile-visual-inline lg:hidden"><i data-lucide="layers" size="40" class="text-white/20"></i></div>
                     </div>
                 </div>
                 <div class="tab-trigger tab-item" data-tab="uxui">
                     <h3 class="text-2xl font-bold tracking-tight">Diseño UX/UI</h3>
                     <div class="tab-description">
-                        <p class="text-zinc-400 text-sm leading-relaxed mb-4">Creación de interfaces de alta fidelidad centradas en el usuario y experiencias digitales intuitivas.</p>
+                        <p class="text-zinc-400 text-sm leading-relaxed mb-4">Creación de interfaces de alta fidelidad centradas en el usuario.</p>
                         <div class="mobile-visual-inline lg:hidden"><i data-lucide="layout" size="40" class="text-blue-500/20"></i></div>
                     </div>
                 </div>
                 <div class="tab-trigger tab-item" data-tab="strategy">
                     <h3 class="text-2xl font-bold tracking-tight">Estrategia Digital</h3>
                     <div class="tab-description">
-                        <p class="text-zinc-400 text-sm leading-relaxed mb-4">Diseño de hojas de ruta que transforman objetivos de negocio en productos digitales medibles y escalables mediante investigación de mercado y optimización de conversión.</p>
+                        <p class="text-zinc-400 text-sm leading-relaxed mb-4">Diseño de productos digitales medibles y escalables.</p>
                         <div class="mobile-visual-inline lg:hidden"><i data-lucide="target" size="40" class="text-emerald-500/20"></i></div>
                     </div>
                 </div>
@@ -203,82 +207,82 @@
                 <span class="text-blue-500 font-bold text-xs uppercase tracking-widest">Branding</span>
                 <h3 class="text-4xl font-bold mt-2">HM Burguers</h3>
             </div>
-            <div class="bento-card md:col-span-4 p-8 flex flex-col justify-end group cursor-pointer">
+            <div class="bento-card md:col-span-4 p-8 flex flex-col justify-end group cursor-pointer h-[350px] md:h-auto">
                 <span class="text-purple-500 font-bold text-xs uppercase tracking-widest">UX/UI</span>
                 <h3 class="text-2xl font-bold mt-2">Klyn App</h3>
             </div>
         </div>
     </main>
 
-    <section class="py-32 flex flex-col items-center overflow-hidden">
+    <section class="py-20 lg:py-32 flex flex-col items-center overflow-hidden">
         <div class="w-full flex justify-center">
             <div class="carousel-viewport" id="viewport">
                 <div class="project-card active" id="card-0">
                     <div class="p-8 lg:p-14 flex flex-col justify-between">
                         <div>
                             <div class="w-10 h-10 bg-orange-500 rounded-xl mb-10 flex items-center justify-center"><i data-lucide="flame" class="text-white"></i></div>
-                            <p class="text-[24px] lg:text-[28px] font-medium leading-tight tracking-tight">“Rediseñamos la identidad de HM Burguers para transmitir una esencia urbana y audaz.”</p>
+                            <p class="text-[22px] lg:text-[28px] font-medium tracking-tight">“Rediseñamos la identidad de HM Burguers para transmitir una esencia urbana.”</p>
                         </div>
                         <div class="flex justify-between items-end">
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs">HM</div>
-                                <div><p class="text-[13px] font-semibold">Andrés Rosendo</p><p class="text-[12px] text-zinc-500">Case Study: Branding</p></div>
+                                <div><p class="text-[12px] font-semibold">Andrés Rosendo</p><p class="text-[11px] text-zinc-500">Case Study</p></div>
                             </div>
-                            <span class="text-[13px] text-zinc-400 flex items-center gap-1 cursor-pointer">Ver proyecto <i data-lucide="arrow-up-right" size="14"></i></span>
+                            <span class="text-[12px] text-zinc-400 flex items-center gap-1">Ver <i data-lucide="arrow-up-right" size="14"></i></span>
                         </div>
                     </div>
-                    <div class="visual-area"><i data-lucide="flame" size="100" class="text-orange-500/10"></i></div>
+                    <div class="visual-area"><i data-lucide="flame" size="80" class="text-orange-500/10"></i></div>
                 </div>
                 <div class="project-card" id="card-1">
                     <div class="p-8 lg:p-14 flex flex-col justify-between">
                         <div>
                             <div class="w-10 h-10 bg-purple-600 rounded-xl mb-10 flex items-center justify-center"><i data-lucide="layout" class="text-white"></i></div>
-                            <p class="text-[24px] lg:text-[28px] font-medium leading-tight tracking-tight">“Klyn App: Una interfaz minimalista diseñada para optimizar servicios domésticos.”</p>
+                            <p class="text-[22px] lg:text-[28px] font-medium tracking-tight">“Klyn App: Una interfaz minimalista para servicios domésticos.”</p>
                         </div>
                         <div class="flex justify-between items-end">
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs">KL</div>
-                                <div><p class="text-[13px] font-semibold">Andrés Rosendo</p><p class="text-[12px] text-zinc-500">UX/UI Design</p></div>
+                                <div><p class="text-[12px] font-semibold">Andrés Rosendo</p><p class="text-[11px] text-zinc-500">UX/UI Design</p></div>
                             </div>
-                            <span class="text-[13px] text-zinc-400 flex items-center gap-1 cursor-pointer">Ver proyecto <i data-lucide="arrow-up-right" size="14"></i></span>
+                            <span class="text-[12px] text-zinc-400 flex items-center gap-1">Ver <i data-lucide="arrow-up-right" size="14"></i></span>
                         </div>
                     </div>
-                    <div class="visual-area"><i data-lucide="smartphone" size="100" class="text-purple-500/10"></i></div>
+                    <div class="visual-area"><i data-lucide="smartphone" size="80" class="text-purple-500/10"></i></div>
                 </div>
                 <div class="project-card" id="card-2">
                     <div class="p-8 lg:p-14 flex flex-col justify-between">
                         <div>
                             <div class="w-10 h-10 bg-emerald-600 rounded-xl mb-10 flex items-center justify-center"><i data-lucide="target" class="text-white"></i></div>
-                            <p class="text-[24px] lg:text-[28px] font-medium leading-tight tracking-tight">“Andrés transformó nuestro modelo de negocio en una experiencia digital de alto impacto.”</p>
+                            <p class="text-[22px] lg:text-[28px] font-medium tracking-tight">“Impacto digital escalable y estratégico.”</p>
                         </div>
                         <div class="flex justify-between items-end">
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs">JD</div>
-                                <div><p class="text-[13px] font-semibold">Juan Delgado</p><p class="text-[12px] text-zinc-500">CEO, Digital Corp</p></div>
+                                <div><p class="text-[12px] font-semibold">Juan Delgado</p><p class="text-[11px] text-zinc-500">Digital Corp</p></div>
                             </div>
-                            <span class="text-[13px] text-zinc-400 flex items-center gap-1 cursor-pointer">Saber más <i data-lucide="arrow-up-right" size="14"></i></span>
+                            <span class="text-[12px] text-zinc-400 flex items-center gap-1">Ver <i data-lucide="arrow-up-right" size="14"></i></span>
                         </div>
                     </div>
-                    <div class="visual-area overflow-hidden">
-                        <div class="relative w-64 h-64 flex items-end justify-center gap-2">
-                            <div class="chart-bar w-8 bg-emerald-500/20 rounded-t-lg h-[60%]"></div>
-                            <div class="chart-bar w-8 bg-emerald-500/40 rounded-t-lg h-[80%]"></div>
-                            <div class="chart-bar w-8 bg-emerald-500/60 rounded-t-lg h-[100%]"></div>
+                    <div class="visual-area">
+                        <div class="flex items-end gap-1.5 h-24">
+                            <div class="chart-bar w-6 bg-emerald-500/20 rounded-t-sm h-[60%]"></div>
+                            <div class="chart-bar w-6 bg-emerald-500/40 rounded-t-sm h-[80%]"></div>
+                            <div class="chart-bar w-6 bg-emerald-500/60 rounded-t-sm h-[100%]"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="w-full max-w-[940px] flex items-center justify-between mt-12 px-6">
-            <div class="flex gap-8 overflow-x-auto no-scrollbar">
-                <span class="nav-label active text-xs font-bold uppercase tracking-widest cursor-pointer text-white" onclick="goToSlide(0)">HM Burguers</span>
-                <span class="nav-label text-zinc-600 text-xs font-bold uppercase tracking-widest cursor-pointer" onclick="goToSlide(1)">Klyn App</span>
-                <span class="nav-label text-zinc-600 text-xs font-bold uppercase tracking-widest cursor-pointer" onclick="goToSlide(2)">Estrategia</span>
+        <div class="w-full max-w-[940px] flex items-center justify-between mt-8 lg:mt-12 px-6">
+            <div class="flex gap-4 lg:gap-8 overflow-x-auto no-scrollbar">
+                <span class="nav-label active text-[10px] lg:text-xs font-bold uppercase tracking-widest cursor-pointer text-white" onclick="goToSlide(0)">HM Burguers</span>
+                <span class="nav-label text-zinc-600 text-[10px] lg:text-xs font-bold uppercase tracking-widest cursor-pointer" onclick="goToSlide(1)">Klyn App</span>
+                <span class="nav-label text-zinc-600 text-[10px] lg:text-xs font-bold uppercase tracking-widest cursor-pointer" onclick="goToSlide(2)">Estrategia</span>
             </div>
-            <div class="flex gap-3">
-                <button class="control-btn" onclick="prevSlide()"><i data-lucide="chevron-left" size="18"></i></button>
-                <button class="control-btn" onclick="nextSlide()"><i data-lucide="chevron-right" size="18"></i></button>
+            <div class="flex gap-2 lg:gap-3 carousel-controls">
+                <button class="control-btn p-2" onclick="prevSlide()"><i data-lucide="chevron-left" size="16"></i></button>
+                <button class="control-btn p-2" onclick="nextSlide()"><i data-lucide="chevron-right" size="16"></i></button>
             </div>
         </div>
     </section>
@@ -303,21 +307,18 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="flex flex-col gap-4">
                     <h4 class="text-white font-medium text-sm">Navegación</h4>
                     <a href="#" class="text-zinc-500 hover:text-white text-sm transition">Inicio</a>
                     <a href="#servicios" class="text-zinc-500 hover:text-white text-sm transition">Servicios</a>
                     <a href="#proyectos" class="text-zinc-500 hover:text-white text-sm transition">Proyectos</a>
                 </div>
-
                 <div class="flex flex-col gap-4">
                     <h4 class="text-white font-medium text-sm">Servicios</h4>
                     <a href="#" class="text-zinc-500 hover:text-white text-sm transition">Branding</a>
                     <a href="#" class="text-zinc-500 hover:text-white text-sm transition">Diseño UX/UI</a>
                     <a href="#" class="text-zinc-500 hover:text-white text-sm transition">Estrategia</a>
                 </div>
-
                 <div class="flex flex-col gap-4">
                     <h4 class="text-white font-medium text-sm">Contacto</h4>
                     <a href="mailto:tu@email.com" class="text-zinc-500 hover:text-white text-sm transition">Email</a>
@@ -326,14 +327,12 @@
                     </a>
                     <a href="#" class="text-zinc-500 hover:text-white text-sm transition">LinkedIn</a>
                 </div>
-
                 <div class="flex flex-col gap-4">
                     <h4 class="text-white font-medium text-sm">Legal</h4>
                     <a href="#" class="text-zinc-500 hover:text-white text-sm transition">Privacidad</a>
                     <a href="#" class="text-zinc-500 hover:text-white text-sm transition">Cookies</a>
                 </div>
             </div>
-
             <div class="pt-8 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-6">
                 <div class="text-zinc-600 text-[12px]">© Andrés Rosendo 2026.</div>
                 <div class="text-zinc-600 text-[12px]">Venezuela, Cabudare.</div>
