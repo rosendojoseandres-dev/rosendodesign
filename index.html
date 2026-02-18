@@ -30,7 +30,7 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* --- Lógica de Tabs (Desktop Restaurado) --- */
+        /* --- Lógica de Tabs --- */
         .tab-item {
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
@@ -91,6 +91,15 @@
             }
         }
 
+        /* --- Animación Estilo Framer --- */
+        #logo-container {
+            will-change: transform, opacity, filter;
+        }
+
+        .glow-effect {
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+        }
+
         .bento-card {
             background: #0a0a0a;
             border: 1px solid #1a1a1a;
@@ -98,7 +107,7 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* --- Carrusel Desktop Restaurado --- */
+        /* --- Carrusel Desktop --- */
         .carousel-viewport {
             display: flex;
             transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
@@ -132,44 +141,25 @@
             position: relative;
         }
 
-        .chart-bar {
-            animation: barGrow 2s ease-in-out infinite alternate;
-            transform-origin: bottom;
-        }
-
-        @keyframes barGrow {
-            0% {
-                transform: scaleY(0.3);
-            }
-
-            100% {
-                transform: scaleY(1);
-            }
-        }
-
-        /* --- AJUSTES MÓVILES --- */
         @media (max-width: 1024px) {
-            #mobile-menu {
-                display: none;
-            }
-
             #mobile-menu.active {
                 display: flex;
             }
 
             h1.text-gradient {
                 font-size: 2.6rem !important;
-                line-height: 1.1 !important;
-                letter-spacing: -0.04em !important;
+            }
+
+            .sticky-visual {
+                display: none !important;
             }
 
             .tab-item {
                 opacity: 1 !important;
-                padding: 1.5rem !important;
-                margin-bottom: 1rem;
                 background: #080808;
                 border-radius: 20px;
                 border: 1px solid #161616;
+                margin-bottom: 1rem;
             }
 
             .tab-description {
@@ -177,27 +167,10 @@
                 opacity: 1 !important;
             }
 
-            .sticky-visual {
-                display: none !important;
-            }
-
             .project-card {
                 flex: 0 0 85vw;
                 grid-template-columns: 1fr;
                 height: auto;
-            }
-
-            .visual-area {
-                height: 250px;
-            }
-
-            .nav-label {
-                font-size: 10px !important;
-                letter-spacing: 0.1em !important;
-            }
-
-            .control-btn {
-                padding: 8px !important;
             }
 
             .mobile-visual-inline {
@@ -235,32 +208,25 @@
         <div class="max-w-7xl mx-auto px-6">
             <div
                 class="ui-border bg-black/60 backdrop-blur-xl rounded-full px-6 py-3 flex justify-between items-center">
-
                 <a href="#" class="flex items-center gap-3 group">
-                    <img src="assets/LOGO BLANCO.svg" alt="Logo"
-                        class="h-6 md:h-7 w-auto object-contain transition-opacity group-hover:opacity-80">
+                    <img src="assets/LOGO BLANCO.svg" alt="Logo" class="h-6 md:h-7 w-auto object-contain">
                     <div class="flex items-center gap-3">
                         <span class="w-[1px] h-4 bg-white/20 hidden md:block"></span>
-                        <span
-                            class="font-medium tracking-tight text-sm md:text-base text-white transition-colors group-hover:text-zinc-300">
-                            Hola soy, Andrés Rosendo!
-                        </span>
+                        <span class="font-medium tracking-tight text-sm md:text-base text-white">Hola soy, Andrés
+                            Rosendo!</span>
                     </div>
                 </a>
-
                 <div class="hidden md:flex items-center space-x-6">
                     <a href="#servicios" class="text-zinc-400 hover:text-white transition text-sm">Servicios</a>
                     <a href="#proyectos" class="text-zinc-400 hover:text-white transition text-sm">Proyectos</a>
                     <a href="https://wa.me/584245692491" target="_blank"
                         class="bg-white text-black px-5 py-2 rounded-full font-bold text-sm transition hover:bg-zinc-200">Contacto</a>
                 </div>
-
                 <button class="md:hidden text-white" onclick="toggleMenu()">
                     <i data-lucide="menu" id="menu-icon"></i>
                 </button>
             </div>
         </div>
-
         <div id="mobile-menu"
             class="hidden absolute top-20 left-6 right-6 bg-black/95 border border-zinc-800 backdrop-blur-2xl rounded-[2rem] p-6 flex-col space-y-4 text-center shadow-2xl md:hidden">
             <a href="#servicios" class="text-lg font-medium py-2" onclick="toggleMenu()">Servicios</a>
@@ -270,12 +236,14 @@
         </div>
     </nav>
 
-   <header class="pt-48 pb-20 px-6 text-center max-w-5xl mx-auto">
-        <span class="inline-flex items-center px-4 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/50 text-zinc-400 text-[10px] md:text-xs font-medium mb-8">
+    <header class="pt-48 pb-20 px-6 text-center max-w-5xl mx-auto">
+        <span
+            class="inline-flex items-center px-4 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/50 text-zinc-400 text-[10px] md:text-xs font-medium mb-8 mx-auto">
             <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
             Disponible para trabajar
         </span>
-        <h1 class="text-5xl md:text-8xl font-extrabold tracking-tighter text-gradient leading-[1.05] mb-8 text-center mx-auto">
+        <h1
+            class="text-5xl md:text-8xl font-extrabold tracking-tighter text-gradient leading-[1.05] mb-8 text-center mx-auto">
             Diseñador Gráfico Especialista UX/UI
         </h1>
         <p class="text-zinc-500 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-center">
@@ -284,6 +252,25 @@
             combina la construcción de identidades visuales memorables con una arquitectura de información estratégica.
         </p>
     </header>
+
+    <section class="relative h-[250vh] bg-black" id="logo-reveal-section">
+        <div class="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden px-6">
+            <div id="logo-glow" class="glow-effect absolute w-[600px] h-[600px] rounded-full opacity-0 scale-50"></div>
+
+            <div id="logo-container" class="relative z-10 opacity-0 scale-[0.4] blur-xl mb-8">
+                <img src="assets/LOGO BLANCO.svg" alt="Andrés Rosendo Logo" class="w-32 md:w-56 h-auto">
+            </div>
+
+            <div id="about-text" class="relative z-10 max-w-2xl text-center opacity-0 translate-y-10">
+                <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-4">Más que píxeles, soluciones.</h2>
+                <p class="text-zinc-400 text-lg md:text-xl leading-relaxed">
+                    Soy un apasionado por resolver problemas a través del diseño. Creo fielmente que la estética sin
+                    estrategia es solo decoración, por eso me enfoco en crear experiencias que realmente conecten con
+                    las personas.
+                </p>
+            </div>
+        </div>
+    </section>
 
     <section id="servicios" class="max-w-7xl mx-auto px-6 py-20">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -341,109 +328,6 @@
         </div>
     </main>
 
-    <section class="py-32 flex flex-col items-center overflow-hidden">
-        <div class="w-full flex justify-center">
-            <div class="carousel-viewport" id="viewport">
-                <div class="project-card active" id="card-0">
-                    <div class="p-14 flex flex-col justify-between">
-                        <div>
-                            <div class="w-10 h-10 bg-orange-500 rounded-xl mb-10 flex items-center justify-center"><i
-                                    data-lucide="flame" class="text-white"></i></div>
-                            <p class="text-[28px] font-medium tracking-tight">“Rediseñamos la identidad de HM Burguers
-                                para transmitir una esencia urbana y audaz.”</p>
-                        </div>
-                        <div class="flex justify-between items-end">
-                            <div class="flex items-center gap-3">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs">
-                                    HM</div>
-                                <div>
-                                    <p class="text-[13px] font-semibold">Andrés Rosendo</p>
-                                    <p class="text-[12px] text-zinc-500">Case Study</p>
-                                </div>
-                            </div>
-                            <span class="text-[13px] text-zinc-400 flex items-center gap-1 cursor-pointer">Ver proyecto
-                                <i data-lucide="arrow-up-right" size="14"></i></span>
-                        </div>
-                    </div>
-                    <div class="visual-area"><i data-lucide="flame" size="100" class="text-orange-500/10"></i></div>
-                </div>
-                <div class="project-card" id="card-1">
-                    <div class="p-14 flex flex-col justify-between">
-                        <div>
-                            <div class="w-10 h-10 bg-purple-600 rounded-xl mb-10 flex items-center justify-center"><i
-                                    data-lucide="layout" class="text-white"></i></div>
-                            <p class="text-[28px] font-medium tracking-tight">“Klyn App: Una interfaz minimalista
-                                diseñada para optimizar servicios domésticos.”</p>
-                        </div>
-                        <div class="flex justify-between items-end">
-                            <div class="flex items-center gap-3">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs">
-                                    KL</div>
-                                <div>
-                                    <p class="text-[13px] font-semibold">Andrés Rosendo</p>
-                                    <p class="text-[12px] text-zinc-500">UX/UI Design</p>
-                                </div>
-                            </div>
-                            <span class="text-[13px] text-zinc-400 flex items-center gap-1 cursor-pointer">Ver proyecto
-                                <i data-lucide="arrow-up-right" size="14"></i></span>
-                        </div>
-                    </div>
-                    <div class="visual-area"><i data-lucide="smartphone" size="100" class="text-purple-500/10"></i>
-                    </div>
-                </div>
-                <div class="project-card" id="card-2">
-                    <div class="p-14 flex flex-col justify-between">
-                        <div>
-                            <div class="w-10 h-10 bg-emerald-600 rounded-xl mb-10 flex items-center justify-center"><i
-                                    data-lucide="target" class="text-white"></i></div>
-                            <p class="text-[28px] font-medium tracking-tight">“Impacto digital escalable y estratégico
-                                para marcas en crecimiento.”</p>
-                        </div>
-                        <div class="flex justify-between items-end">
-                            <div class="flex items-center gap-3">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs">
-                                    JD</div>
-                                <div>
-                                    <p class="text-[13px] font-semibold">Juan Delgado</p>
-                                    <p class="text-[12px] text-zinc-500">Digital Corp</p>
-                                </div>
-                            </div>
-                            <span class="text-[13px] text-zinc-400 flex items-center gap-1 cursor-pointer">Ver proyecto
-                                <i data-lucide="arrow-up-right" size="14"></i></span>
-                        </div>
-                    </div>
-                    <div class="visual-area">
-                        <div class="flex items-end gap-2 h-32">
-                            <div class="chart-bar w-8 bg-emerald-500/20 rounded-t-lg h-[60%]"></div>
-                            <div class="chart-bar w-8 bg-emerald-500/40 rounded-t-lg h-[80%]"></div>
-                            <div class="chart-bar w-8 bg-emerald-500/60 rounded-t-lg h-[100%]"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="w-full max-w-[940px] flex items-center justify-between mt-12 px-6">
-            <div class="flex gap-8 overflow-x-auto no-scrollbar">
-                <span class="nav-label active text-xs font-bold uppercase tracking-widest cursor-pointer text-white"
-                    onclick="goToSlide(0)">HM Burguers</span>
-                <span class="nav-label text-zinc-600 text-xs font-bold uppercase tracking-widest cursor-pointer"
-                    onclick="goToSlide(1)">Klyn App</span>
-                <span class="nav-label text-zinc-600 text-xs font-bold uppercase tracking-widest cursor-pointer"
-                    onclick="goToSlide(2)">Estrategia</span>
-            </div>
-            <div class="flex gap-3">
-                <button class="control-btn p-3" onclick="prevSlide()"><i data-lucide="chevron-left"
-                        size="18"></i></button>
-                <button class="control-btn p-3" onclick="nextSlide()"><i data-lucide="chevron-right"
-                        size="18"></i></button>
-            </div>
-        </div>
-    </section>
-
     <footer class="pt-24 pb-12 border-t border-zinc-900 bg-black">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12 mb-20">
@@ -486,10 +370,9 @@
                     <h4 class="text-white font-medium text-sm">Contacto</h4>
                     <a href="mailto:tu@email.com" class="text-zinc-500 hover:text-white text-sm transition">Email</a>
                     <a href="https://wa.me/584245692491" target="_blank"
-                        class="text-zinc-400 hover:text-white text-sm transition font-medium flex items-center">
-                        WhatsApp <span
-                            class="text-[9px] bg-white text-black px-1.5 py-0.5 rounded ml-2 font-bold uppercase">New</span>
-                    </a>
+                        class="text-zinc-400 hover:text-white text-sm transition font-medium flex items-center">WhatsApp
+                        <span
+                            class="text-[9px] bg-white text-black px-1.5 py-0.5 rounded ml-2 font-bold uppercase">New</span></a>
                 </div>
                 <div class="flex flex-col gap-4">
                     <h4 class="text-white font-medium text-sm">Legal</h4>
@@ -516,6 +399,38 @@
             lucide.createIcons();
         }
 
+        // Lógica Framer Animation (Logo + Texto Persona)
+        window.addEventListener('scroll', () => {
+            const section = document.getElementById('logo-reveal-section');
+            const container = document.getElementById('logo-container');
+            const glow = document.getElementById('logo-glow');
+            const aboutText = document.getElementById('about-text');
+
+            if (!section || !container) return;
+
+            const rect = section.getBoundingClientRect();
+            const sectionHeight = section.offsetHeight;
+            const viewHeight = window.innerHeight;
+
+            let progress = -rect.top / (sectionHeight - viewHeight);
+            progress = Math.max(0, Math.min(1, progress));
+
+            // Animación Logo
+            container.style.transform = `scale(${0.4 + (progress * 0.75)})`;
+            container.style.opacity = progress * 1.5;
+            container.style.filter = `blur(${20 - (progress * 20)}px)`;
+
+            // Animación Brillo
+            glow.style.opacity = progress;
+            glow.style.transform = `scale(${0.5 + progress})`;
+
+            // Animación Texto Persona (Aparece un poco después del logo)
+            let textProgress = Math.max(0, (progress - 0.3) / 0.7);
+            aboutText.style.opacity = textProgress;
+            aboutText.style.transform = `translateY(${20 - (textProgress * 20)}px)`;
+        });
+
+        // Tabs Logic
         const options = { root: null, threshold: 0.7 };
         const callback = (entries) => {
             if (window.innerWidth > 1024) {
@@ -532,23 +447,6 @@
         };
         const observer = new IntersectionObserver(callback, options);
         document.querySelectorAll('.tab-trigger').forEach(trigger => observer.observe(trigger));
-
-        let currentIdx = 0;
-        function updateUI() {
-            const cardWidth = window.innerWidth > 1024 ? 940 : window.innerWidth * 0.85;
-            const gap = 40;
-            const offset = currentIdx * (cardWidth + gap);
-            document.getElementById('viewport').style.transform = `translateX(-${offset}px)`;
-            document.querySelectorAll('.nav-label').forEach((l, i) => {
-                l.classList.toggle('text-white', i === currentIdx);
-                l.classList.toggle('text-zinc-600', i !== currentIdx);
-            });
-            document.querySelectorAll('.project-card').forEach((c, i) => c.classList.toggle('active', i === currentIdx));
-        }
-        function nextSlide() { currentIdx = (currentIdx + 1) % 3; updateUI(); }
-        function prevSlide() { currentIdx = (currentIdx - 1 + 3) % 3; updateUI(); }
-        function goToSlide(idx) { currentIdx = idx; updateUI(); }
-        window.addEventListener('resize', updateUI);
     </script>
 </body>
 
