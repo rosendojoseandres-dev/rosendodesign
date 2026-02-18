@@ -39,9 +39,7 @@
             padding-bottom: 2rem;
         }
 
-        .tab-item.active {
-            opacity: 1;
-        }
+        .tab-item.active { opacity: 1; }
 
         .tab-description {
             max-height: 0;
@@ -80,15 +78,8 @@
         }
 
         @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px) scale(0.95);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         /* --- Animación Estilo Framer --- */
@@ -107,97 +98,13 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* --- Carrusel Desktop --- */
-        .carousel-viewport {
-            display: flex;
-            transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
-            gap: 40px;
-        }
-
-        .project-card {
-            flex: 0 0 940px;
-            height: 520px;
-            background: #000;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 28px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            overflow: hidden;
-            opacity: 0.4;
-            transform: scale(0.95);
-            transition: all 0.8s ease;
-        }
-
-        .project-card.active {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .visual-area {
-            background: #0a0a0a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
         @media (max-width: 1024px) {
-            #mobile-menu.active {
-                display: flex;
-            }
-
-            h1.text-gradient {
-                font-size: 2.6rem !important;
-            }
-
-            .sticky-visual {
-                display: none !important;
-            }
-
-            .tab-item {
-                opacity: 1 !important;
-                background: #080808;
-                border-radius: 20px;
-                border: 1px solid #161616;
-                margin-bottom: 1rem;
-            }
-
-            .tab-description {
-                max-height: none !important;
-                opacity: 1 !important;
-            }
-
-            .project-card {
-                flex: 0 0 85vw;
-                grid-template-columns: 1fr;
-                height: auto;
-            }
-
-            .mobile-visual-inline {
-                display: flex;
-                height: 180px;
-                background: #000;
-                border-radius: 12px;
-                margin-top: 1rem;
-                align-items: center;
-                justify-content: center;
-                border: 1px solid #1a1a1a;
-            }
-        }
-
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .control-btn {
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 99px;
-            transition: all 0.3s;
-        }
-
-        .control-btn:hover {
-            background: white;
-            color: black;
+            #mobile-menu.active { display: flex; }
+            h1.text-gradient { font-size: 2.6rem !important; }
+            .sticky-visual { display: none !important; }
+            .tab-item { opacity: 1 !important; background: #080808; border-radius: 20px; border: 1px solid #161616; margin-bottom: 1rem; }
+            .tab-description { max-height: none !important; opacity: 1 !important; }
+            .mobile-visual-inline { display: flex; height: 180px; background: #000; border-radius: 12px; margin-top: 1rem; align-items: center; justify-content: center; border: 1px solid #1a1a1a; }
         }
     </style>
 </head>
@@ -206,44 +113,39 @@
 
     <nav class="fixed top-6 left-0 right-0 z-[100]">
         <div class="max-w-7xl mx-auto px-6">
-            <div
-                class="ui-border bg-black/60 backdrop-blur-xl rounded-full px-6 py-3 flex justify-between items-center">
+            <div class="ui-border bg-black/60 backdrop-blur-xl rounded-full px-6 py-3 flex justify-between items-center">
                 <a href="#" class="flex items-center gap-3 group">
                     <img src="assets/LOGO BLANCO.svg" alt="Logo" class="h-6 md:h-7 w-auto object-contain">
                     <div class="flex items-center gap-3">
                         <span class="w-[1px] h-4 bg-white/20 hidden md:block"></span>
-                        <span class="font-medium tracking-tight text-sm md:text-base text-white">Hola soy, Andrés
-                            Rosendo!</span>
+                        <span class="font-medium tracking-tight text-sm md:text-base text-white">Hola soy, Andrés Rosendo!</span>
                     </div>
                 </a>
                 <div class="hidden md:flex items-center space-x-6">
                     <a href="#servicios" class="text-zinc-400 hover:text-white transition text-sm">Servicios</a>
                     <a href="#proyectos" class="text-zinc-400 hover:text-white transition text-sm">Proyectos</a>
-                    <a href="https://wa.me/584245692491" target="_blank"
-                        class="bg-white text-black px-5 py-2 rounded-full font-bold text-sm transition hover:bg-zinc-200">Contacto</a>
+                    <a href="https://wa.me/584245692491" target="_blank" class="bg-white text-black px-5 py-2 rounded-full font-bold text-sm transition hover:bg-zinc-200">Contacto</a>
                 </div>
                 <button class="md:hidden text-white" onclick="toggleMenu()">
                     <i data-lucide="menu" id="menu-icon"></i>
                 </button>
             </div>
         </div>
-        <div id="mobile-menu"
-            class="hidden absolute top-20 left-6 right-6 bg-black/95 border border-zinc-800 backdrop-blur-2xl rounded-[2rem] p-6 flex-col space-y-4 text-center shadow-2xl md:hidden">
+        <div id="mobile-menu" class="hidden absolute top-20 left-6 right-6 bg-black/95 border border-zinc-800 backdrop-blur-2xl rounded-[2rem] p-6 flex-col space-y-4 text-center shadow-2xl md:hidden">
             <a href="#servicios" class="text-lg font-medium py-2" onclick="toggleMenu()">Servicios</a>
             <a href="#proyectos" class="text-lg font-medium py-2" onclick="toggleMenu()">Proyectos</a>
-            <a href="https://wa.me/584245692491" target="_blank"
-                class="bg-white text-black py-3 rounded-full font-bold text-md">Contacto</a>
+            <a href="https://wa.me/584245692491" target="_blank" class="bg-white text-black py-3 rounded-full font-bold text-md">Contacto</a>
         </div>
     </nav>
 
-    <header class="pt-48 pb-20 px-6 text-center max-w-5xl mx-auto">
-        <span
-            class="inline-flex items-center px-4 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/50 text-zinc-400 text-[10px] md:text-xs font-medium mb-8 mx-auto">
-            <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
-            Disponible para trabajar
-        </span>
-        <h1
-            class="text-5xl md:text-8xl font-extrabold tracking-tighter text-gradient leading-[1.05] mb-8 text-center mx-auto">
+    <header class="pt-48 pb-10 px-6 text-center max-w-5xl mx-auto">
+        <div class="flex justify-center">
+            <span class="inline-flex items-center px-4 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/50 text-zinc-400 text-[10px] md:text-xs font-medium mb-8">
+                <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+                Disponible para trabajar
+            </span>
+        </div>
+        <h1 class="text-5xl md:text-8xl font-extrabold tracking-tighter text-gradient leading-[1.05] mb-8 text-center mx-auto">
             Diseñador Gráfico Especialista UX/UI
         </h1>
         <p class="text-zinc-500 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-center">
@@ -253,20 +155,18 @@
         </p>
     </header>
 
-    <section class="relative h-[250vh] bg-black" id="logo-reveal-section">
+    <section class="relative h-[180vh] bg-black -mt-10" id="logo-reveal-section">
         <div class="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden px-6">
             <div id="logo-glow" class="glow-effect absolute w-[600px] h-[600px] rounded-full opacity-0 scale-50"></div>
-
+            
             <div id="logo-container" class="relative z-10 opacity-0 scale-[0.4] blur-xl mb-8">
                 <img src="assets/LOGO BLANCO.svg" alt="Andrés Rosendo Logo" class="w-32 md:w-56 h-auto">
             </div>
 
             <div id="about-text" class="relative z-10 max-w-2xl text-center opacity-0 translate-y-10">
-                <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-4">Más que píxeles, soluciones.</h2>
+                <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-gradient">Más que píxeles, soluciones.</h2>
                 <p class="text-zinc-400 text-lg md:text-xl leading-relaxed">
-                    Soy un apasionado por resolver problemas a través del diseño. Creo fielmente que la estética sin
-                    estrategia es solo decoración, por eso me enfoco en crear experiencias que realmente conecten con
-                    las personas.
+                    Soy un apasionado por resolver problemas a través del diseño. Creo fielmente que la estética sin estrategia es solo decoración, por eso me enfoco en crear experiencias que realmente conecten con las personas.
                 </p>
             </div>
         </div>
@@ -278,38 +178,29 @@
                 <div class="tab-trigger tab-item active" data-tab="branding">
                     <h3 class="text-2xl md:text-3xl font-bold tracking-tight">Branding</h3>
                     <div class="tab-description">
-                        <p class="text-zinc-400 text-base md:text-lg leading-relaxed mb-4">Construyo identidades
-                            visuales sólidas y memorables que transmiten la esencia de tu negocio.</p>
-                        <div class="mobile-visual-inline lg:hidden"><i data-lucide="layers" size="40"
-                                class="text-white/20"></i></div>
+                        <p class="text-zinc-400 text-base md:text-lg leading-relaxed mb-4">Construyo identidades visuales sólidas y memorables que transmiten la esencia de tu negocio.</p>
+                        <div class="mobile-visual-inline lg:hidden"><i data-lucide="layers" size="40" class="text-white/20"></i></div>
                     </div>
                 </div>
                 <div class="tab-trigger tab-item" data-tab="uxui">
                     <h3 class="text-2xl md:text-3xl font-bold tracking-tight">Diseño UX/UI</h3>
                     <div class="tab-description">
-                        <p class="text-zinc-400 text-base md:text-lg leading-relaxed mb-4">Creación de interfaces de
-                            alta fidelidad centradas en el usuario y experiencias digitales intuitivas.</p>
-                        <div class="mobile-visual-inline lg:hidden"><i data-lucide="layout" size="40"
-                                class="text-blue-500/20"></i></div>
+                        <p class="text-zinc-400 text-base md:text-lg leading-relaxed mb-4">Creación de interfaces de alta fidelidad centradas en el usuario y experiencias digitales intuitivas.</p>
+                        <div class="mobile-visual-inline lg:hidden"><i data-lucide="layout" size="40" class="text-blue-500/20"></i></div>
                     </div>
                 </div>
                 <div class="tab-trigger tab-item" data-tab="strategy">
                     <h3 class="text-2xl md:text-3xl font-bold tracking-tight">Estrategia Digital</h3>
                     <div class="tab-description">
-                        <p class="text-zinc-400 text-base md:text-lg leading-relaxed mb-4">Diseño de hojas de ruta que
-                            transforman objetivos de negocio en productos digitales medibles y escalables.</p>
-                        <div class="mobile-visual-inline lg:hidden"><i data-lucide="target" size="40"
-                                class="text-emerald-500/20"></i></div>
+                        <p class="text-zinc-400 text-base md:text-lg leading-relaxed mb-4">Diseño de hojas de ruta que transforman objetivos de negocio en productos digitales medibles y escalables.</p>
+                        <div class="mobile-visual-inline lg:hidden"><i data-lucide="target" size="40" class="text-emerald-500/20"></i></div>
                     </div>
                 </div>
             </div>
             <div class="lg:col-span-8 sticky-visual hidden lg:flex">
-                <div id="branding" class="visual-content active"><i data-lucide="layers" size="120"
-                        class="text-white/20"></i></div>
-                <div id="uxui" class="visual-content"><i data-lucide="layout" size="100" class="text-blue-500/20"></i>
-                </div>
-                <div id="strategy" class="visual-content"><i data-lucide="target" size="120"
-                        class="text-emerald-500/20"></i></div>
+                <div id="branding" class="visual-content active"><i data-lucide="layers" size="120" class="text-white/20"></i></div>
+                <div id="uxui" class="visual-content"><i data-lucide="layout" size="100" class="text-blue-500/20"></i></div>
+                <div id="strategy" class="visual-content"><i data-lucide="target" size="120" class="text-emerald-500/20"></i></div>
             </div>
         </div>
     </section>
@@ -335,18 +226,12 @@
                     <div class="font-semibold tracking-tighter text-lg mb-6 text-white">Andrés Rosendo</div>
                     <div class="flex flex-col gap-6">
                         <div class="flex flex-wrap gap-5">
-                            <a href="#" class="text-zinc-500 hover:text-white transition-all"><i
-                                    data-lucide="message-circle" size="20"></i></a>
-                            <a href="#" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="instagram"
-                                    size="20"></i></a>
-                            <a href="#" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="twitter"
-                                    size="20"></i></a>
-                            <a href="#" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="at-sign"
-                                    size="20"></i></a>
-                            <a href="#" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="music-2"
-                                    size="20"></i></a>
-                            <a href="#" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="linkedin"
-                                    size="20"></i></a>
+                            <a href="#" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="message-circle" size="20"></i></a>
+                            <a href="#" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="instagram" size="20"></i></a>
+                            <a href="#" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="twitter" size="20"></i></a>
+                            <a href="#" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="at-sign" size="20"></i></a>
+                            <a href="#" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="music-2" size="20"></i></a>
+                            <a href="#" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="linkedin" size="20"></i></a>
                         </div>
                         <div class="inline-flex items-center text-[11px] text-zinc-500 tracking-wider uppercase">
                             <span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-2 animate-pulse"></span>
@@ -369,10 +254,7 @@
                 <div class="flex flex-col gap-4">
                     <h4 class="text-white font-medium text-sm">Contacto</h4>
                     <a href="mailto:tu@email.com" class="text-zinc-500 hover:text-white text-sm transition">Email</a>
-                    <a href="https://wa.me/584245692491" target="_blank"
-                        class="text-zinc-400 hover:text-white text-sm transition font-medium flex items-center">WhatsApp
-                        <span
-                            class="text-[9px] bg-white text-black px-1.5 py-0.5 rounded ml-2 font-bold uppercase">New</span></a>
+                    <a href="https://wa.me/584245692491" target="_blank" class="text-zinc-400 hover:text-white text-sm transition font-medium flex items-center">WhatsApp <span class="text-[9px] bg-white text-black px-1.5 py-0.5 rounded ml-2 font-bold uppercase">New</span></a>
                 </div>
                 <div class="flex flex-col gap-4">
                     <h4 class="text-white font-medium text-sm">Legal</h4>
@@ -405,7 +287,7 @@
             const container = document.getElementById('logo-container');
             const glow = document.getElementById('logo-glow');
             const aboutText = document.getElementById('about-text');
-
+            
             if (!section || !container) return;
 
             const rect = section.getBoundingClientRect();
@@ -415,19 +297,19 @@
             let progress = -rect.top / (sectionHeight - viewHeight);
             progress = Math.max(0, Math.min(1, progress));
 
-            // Animación Logo
+            // Animación Logo: Escala de 0.4 a 1.15
             container.style.transform = `scale(${0.4 + (progress * 0.75)})`;
-            container.style.opacity = progress * 1.5;
+            container.style.opacity = progress * 1.8;
             container.style.filter = `blur(${20 - (progress * 20)}px)`;
-
+            
             // Animación Brillo
             glow.style.opacity = progress;
             glow.style.transform = `scale(${0.5 + progress})`;
 
-            // Animación Texto Persona (Aparece un poco después del logo)
-            let textProgress = Math.max(0, (progress - 0.3) / 0.7);
+            // Animación Texto: Aparece suavemente al final
+            let textProgress = Math.max(0, (progress - 0.25) / 0.75);
             aboutText.style.opacity = textProgress;
-            aboutText.style.transform = `translateY(${20 - (textProgress * 20)}px)`;
+            aboutText.style.transform = `translateY(${30 - (textProgress * 30)}px)`;
         });
 
         // Tabs Logic
@@ -449,5 +331,4 @@
         document.querySelectorAll('.tab-trigger').forEach(trigger => observer.observe(trigger));
     </script>
 </body>
-
 </html>
