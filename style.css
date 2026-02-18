@@ -254,7 +254,7 @@ body {
         opacity: 1 !important;
         filter: none !important;
         transform: none !important;
-        border-radius: 5px;
+        border-radius: 10px;
     }
 
     .visual-area {
