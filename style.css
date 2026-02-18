@@ -32,6 +32,14 @@ body {
     opacity: 1;
 }
 
+@media (max-width: 1024px) {
+    .tab-item {
+        opacity: 1 !important;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+}
+
 .tab-description {
     max-height: 0;
     overflow: hidden;
@@ -47,6 +55,12 @@ body {
 
 #servicios {
     padding-bottom: 50vh;
+}
+
+@media (max-width: 1024px) {
+    #servicios {
+        padding-bottom: 5rem;
+    }
 }
 
 .tab-item a i {
