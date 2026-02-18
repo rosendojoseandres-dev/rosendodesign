@@ -152,12 +152,16 @@
                 display: none !important;
             }
 
+            /* Nueva Lógica Servicios Limpia en Móvil */
             .tab-item {
                 opacity: 1 !important;
-                background: #080808;
-                border-radius: 20px;
-                border: 1px solid #161616;
-                margin-bottom: 1rem;
+                background: transparent !important;
+                border: none !important;
+                border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+                border-radius: 0 !important;
+                margin-bottom: 0 !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
             }
 
             .tab-description {
@@ -168,12 +172,12 @@
             .mobile-visual-inline {
                 display: flex;
                 height: 180px;
-                background: #000;
-                border-radius: 12px;
-                margin-top: 1rem;
+                background: #080808;
+                border-radius: 24px;
+                margin-top: 1.5rem;
                 align-items: center;
                 justify-content: center;
-                border: 1px solid #1a1a1a;
+                border: 1px solid rgba(255, 255, 255, 0.05);
             }
         }
     </style>
