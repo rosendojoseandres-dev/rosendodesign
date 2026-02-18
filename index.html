@@ -61,17 +61,24 @@
         .logos-slide { display: flex; width: max-content; animation: scroll 40s linear infinite; }
         .logos-container { overflow: hidden; mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); }
 
-        /* --- Carrusel de Proyectos/Testimonios (Centrado) --- */
+        /* --- CARRUSEL ADAPTADO (ESTILO FRAMER) --- */
+        #carousel-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            overflow: visible;
+        }
+
         .carousel-viewport {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
+            padding: 2rem 1rem;
             transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-            width: max-content;
-            padding: 2rem 0;
             will-change: transform;
         }
 
         .project-card {
+            flex-shrink: 0;
             width: 850px;
             height: 480px;
             background: #0a0a0a;
@@ -95,16 +102,42 @@
 
         .visual-area { background: #0d0d0d; display: flex; align-items: center; justify-content: center; border-left: 1px solid #1a1a1a; }
         
+        /* Versión Móvil: Comportamiento Framer */
+        @media (max-width: 1024px) {
+            #carousel-container {
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 2rem;
+                justify-content: flex-start;
+            }
+            #carousel-container::-webkit-scrollbar { display: none; }
+
+            .carousel-viewport {
+                padding: 0 2rem; /* Espaciado lateral para que se vea la siguiente card */
+                transform: none !important; /* Desactivamos el JS en móvil */
+            }
+
+            .project-card {
+                width: 85vw; /* Casi todo el ancho */
+                height: auto;
+                min-height: 500px;
+                grid-template-columns: 1fr;
+                scroll-snap-align: center;
+                opacity: 1;
+                transform: none;
+                filter: none;
+            }
+            .visual-area { height: 200px; order: -1; border-left: none; border-bottom: 1px solid #1a1a1a; }
+            .project-card.active { border-color: #1a1a1a; }
+        }
+
         .bento-card {
             background: #0a0a0a;
             border: 1px solid #1a1a1a;
             border-radius: 28px;
             transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        @media (max-width: 1024px) {
-            .project-card { grid-template-columns: 1fr; width: 85vw; height: auto; }
-            .visual-area { height: 200px; order: -1; border-left: none; border-bottom: 1px solid #1a1a1a; }
         }
     </style>
 </head>
@@ -222,15 +255,15 @@
     </main>
 
     <section class="py-32 flex flex-col items-center overflow-hidden">
-        <div class="w-full flex justify-center">
+        <div id="carousel-container">
             <div class="carousel-viewport" id="viewport">
                 <div class="project-card active" id="card-0">
-                    <div class="p-14 flex flex-col justify-between">
+                    <div class="p-8 md:p-14 flex flex-col justify-between">
                         <div>
-                            <div class="w-10 h-10 bg-orange-500 rounded-xl mb-10 flex items-center justify-center"><i data-lucide="flame" class="text-white"></i></div>
-                            <p class="text-[28px] font-medium tracking-tight">“Rediseñamos la identidad de HM Burguers para transmitir una esencia urbana y audaz.”</p>
+                            <div class="w-10 h-10 bg-orange-500 rounded-xl mb-6 md:mb-10 flex items-center justify-center"><i data-lucide="flame" class="text-white"></i></div>
+                            <p class="text-2xl md:text-[28px] font-medium tracking-tight">“Rediseñamos la identidad de HM Burguers para transmitir una esencia urbana y audaz.”</p>
                         </div>
-                        <div class="flex justify-between items-end">
+                        <div class="flex justify-between items-end mt-8">
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs">HM</div>
                                 <div><p class="text-[13px] font-semibold">Andrés Rosendo</p><p class="text-[12px] text-zinc-500">Case Study</p></div>
@@ -241,12 +274,12 @@
                     <div class="visual-area"><i data-lucide="flame" size="100" class="text-orange-500/10"></i></div>
                 </div>
                 <div class="project-card" id="card-1">
-                    <div class="p-14 flex flex-col justify-between">
+                    <div class="p-8 md:p-14 flex flex-col justify-between">
                         <div>
-                            <div class="w-10 h-10 bg-purple-600 rounded-xl mb-10 flex items-center justify-center"><i data-lucide="layout" class="text-white"></i></div>
-                            <p class="text-[28px] font-medium tracking-tight">“Klyn App: Una interfaz minimalista diseñada para optimizar servicios domésticos.”</p>
+                            <div class="w-10 h-10 bg-purple-600 rounded-xl mb-6 md:mb-10 flex items-center justify-center"><i data-lucide="layout" class="text-white"></i></div>
+                            <p class="text-2xl md:text-[28px] font-medium tracking-tight">“Klyn App: Una interfaz minimalista diseñada para optimizar servicios domésticos.”</p>
                         </div>
-                        <div class="flex justify-between items-end">
+                        <div class="flex justify-between items-end mt-8">
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs">KL</div>
                                 <div><p class="text-[13px] font-semibold">Andrés Rosendo</p><p class="text-[12px] text-zinc-500">UX/UI Design</p></div>
@@ -257,12 +290,12 @@
                     <div class="visual-area"><i data-lucide="smartphone" size="100" class="text-purple-500/10"></i></div>
                 </div>
                 <div class="project-card" id="card-2">
-                    <div class="p-14 flex flex-col justify-between">
+                    <div class="p-8 md:p-14 flex flex-col justify-between">
                         <div>
-                            <div class="w-10 h-10 bg-emerald-600 rounded-xl mb-10 flex items-center justify-center"><i data-lucide="target" class="text-white"></i></div>
-                            <p class="text-[28px] font-medium tracking-tight">“Impacto digital escalable y estratégico para marcas en crecimiento.”</p>
+                            <div class="w-10 h-10 bg-emerald-600 rounded-xl mb-6 md:mb-10 flex items-center justify-center"><i data-lucide="target" class="text-white"></i></div>
+                            <p class="text-2xl md:text-[28px] font-medium tracking-tight">“Impacto digital escalable y estratégico para marcas en crecimiento.”</p>
                         </div>
-                        <div class="flex justify-between items-end">
+                        <div class="flex justify-between items-end mt-8">
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs">JD</div>
                                 <div><p class="text-[13px] font-semibold">Juan Delgado</p><p class="text-[12px] text-zinc-500">Digital Corp</p></div>
@@ -287,7 +320,7 @@
                 <span class="nav-label text-zinc-600 text-xs font-bold uppercase tracking-widest cursor-pointer hover:text-white transition" onclick="goToSlide(1)">Klyn App</span>
                 <span class="nav-label text-zinc-600 text-xs font-bold uppercase tracking-widest cursor-pointer hover:text-white transition" onclick="goToSlide(2)">Estrategia</span>
             </div>
-            <div class="flex gap-3">
+            <div class="hidden md:flex gap-3">
                 <button class="p-3 border border-zinc-800 rounded-full hover:border-white transition" onclick="prevSlide()"><i data-lucide="chevron-left" size="18"></i></button>
                 <button class="p-3 border border-zinc-800 rounded-full hover:border-white transition" onclick="nextSlide()"><i data-lucide="chevron-right" size="18"></i></button>
             </div>
@@ -348,57 +381,81 @@
     <script>
         lucide.createIcons();
 
-        // --- Lógica Carrusel (Centrado) ---
+        // --- Lógica Carrusel (Escritorio vs Móvil) ---
         let currentSlide = 0;
         const totalSlides = 3;
         const viewport = document.getElementById('viewport');
         const cards = document.querySelectorAll('.project-card');
         const labels = document.querySelectorAll('.nav-label');
+        const container = document.getElementById('carousel-container');
 
         function updateCarousel() {
-            const gap = 32;
-            const cardWidth = cards[0].offsetWidth;
-            const containerWidth = document.body.clientWidth;
-            const offset = -(currentSlide * (cardWidth + gap)) + (containerWidth / 2) - (cardWidth / 2);
-            
-            viewport.style.transform = `translateX(${offset}px)`;
-            cards.forEach((card, i) => card.classList.toggle('active', i === currentSlide));
-            labels.forEach((label, i) => {
-                label.classList.toggle('active', i === currentSlide);
-                label.classList.toggle('text-white', i === currentSlide);
-                label.classList.toggle('text-zinc-600', i !== currentSlide);
-            });
+            if (window.innerWidth > 1024) {
+                const gap = 24;
+                const cardWidth = cards[0].offsetWidth;
+                const bodyWidth = document.body.clientWidth;
+                const offset = -(currentSlide * (cardWidth + gap)) + (bodyWidth / 2) - (cardWidth / 2);
+                
+                viewport.style.transform = `translateX(${offset}px)`;
+                
+                cards.forEach((card, i) => card.classList.toggle('active', i === currentSlide));
+                labels.forEach((label, i) => {
+                    label.classList.toggle('active', i === currentSlide);
+                    label.classList.toggle('text-white', i === currentSlide);
+                    label.classList.toggle('text-zinc-600', i !== currentSlide);
+                });
+            }
         }
+
+        // Listener para actualizar labels en móvil mientras el usuario hace scroll manual
+        container.addEventListener('scroll', () => {
+            if (window.innerWidth <= 1024) {
+                const scrollPos = container.scrollLeft;
+                const cardWidth = cards[0].offsetWidth + 24;
+                const index = Math.round(scrollPos / cardWidth);
+                
+                labels.forEach((label, i) => {
+                    label.classList.toggle('text-white', i === index);
+                    label.classList.toggle('text-zinc-600', i !== index);
+                });
+            }
+        });
 
         function nextSlide() { currentSlide = (currentSlide + 1) % totalSlides; updateCarousel(); }
         function prevSlide() { currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; updateCarousel(); }
-        function goToSlide(index) { currentSlide = index; updateCarousel(); }
+        function goToSlide(index) { 
+            currentSlide = index; 
+            if (window.innerWidth <= 1024) {
+                const cardWidth = cards[0].offsetWidth + 24;
+                container.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+            } else {
+                updateCarousel(); 
+            }
+        }
 
         window.addEventListener('load', updateCarousel);
         window.addEventListener('resize', updateCarousel);
 
-        // --- Logo Reveal ---
+        // --- Logo Reveal & Tabs (Resto de la lógica intacta) ---
         window.addEventListener('scroll', () => {
             const section = document.getElementById('logo-reveal-section');
-            const container = document.getElementById('logo-container');
+            const logo = document.getElementById('logo-container');
             const glow = document.getElementById('logo-glow');
             const aboutText = document.getElementById('about-text');
-            if (!section || !container) return;
+            if (!section || !logo) return;
             const rect = section.getBoundingClientRect();
             const progress = Math.max(0, Math.min(1, -rect.top / (section.offsetHeight - window.innerHeight)));
             
-            container.style.transform = `scale(${0.4 + (progress * 0.75)})`;
-            container.style.opacity = progress * 1.8;
-            container.style.filter = `blur(${20 - (progress * 20)}px)`;
+            logo.style.transform = `scale(${0.4 + (progress * 0.75)})`;
+            logo.style.opacity = progress * 1.8;
+            logo.style.filter = `blur(${20 - (progress * 20)}px)`;
             glow.style.opacity = progress;
-            glow.style.transform = `scale(${0.5 + progress})`;
             
             let textProgress = Math.max(0, (progress - 0.25) / 0.75);
             aboutText.style.opacity = textProgress;
             aboutText.style.transform = `translateY(${30 - (textProgress * 30)}px)`;
         });
 
-        // --- Tabs ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting && window.innerWidth > 1024) {
