@@ -184,19 +184,19 @@
         .glow-effect { background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0) 70%); }
         .bento-card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 28px; }
 
-        /* MODIFICACIÓN: Eliminación de recuadros en Servicios móvil */
         @media (max-width: 1024px) {
             #mobile-menu.active { display: flex; }
             h1.text-gradient { font-size: 2.6rem !important; }
             .sticky-visual { display: none !important; }
             
+            /* Eliminación de recuadros en Servicios móvil */
             .tab-item { 
                 opacity: 1 !important; 
-                background: transparent !important; /* Eliminado fondo */
-                border: none !important;           /* Eliminado borde total */
-                border-top: 1px solid rgba(255, 255, 255, 0.05) !important; /* Mantiene línea separadora sutil */
-                border-radius: 0 !important;        /* Eliminado radio */
-                margin-bottom: 0 !important;        /* Eliminado margen entre recuadros */
+                background: transparent !important;
+                border: none !important;
+                border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+                border-radius: 0 !important;
+                margin-bottom: 0 !important;
                 padding-left: 0 !important;
                 padding-right: 0 !important;
             }
@@ -321,6 +321,79 @@
             </div>
         </div>
     </section>
+
+    <section class="py-24 flex flex-col items-center overflow-hidden">
+        <div class="carousel-outer" id="carousel-scroll-container">
+            <div id="carousel-viewport">
+                <div class="project-card active">
+                    <div class="w-12 h-12 bg-orange-500 rounded-2xl mb-8 flex items-center justify-center mx-auto"><i data-lucide="flame" class="text-white"></i></div>
+                    <p class="text-3xl font-bold leading-tight text-white mb-6">HM Burguers</p>
+                    <p class="text-zinc-400 text-lg mb-8 px-4">“Rediseñamos la identidad para transmitir una esencia urbana y potente.”</p>
+                    <div class="flex items-center gap-3 justify-center mb-8">
+                        <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs text-white">HM</div>
+                        <div class="text-left"><p class="text-[13px] font-semibold text-white">Andrés Rosendo</p><p class="text-[12px] text-zinc-500">Branding</p></div>
+                    </div>
+                    <div class="project-visual-area"><i data-lucide="flame" size="80" class="text-orange-500/20"></i></div>
+                </div>
+                <div class="project-card">
+                    <div class="w-12 h-12 bg-purple-600 rounded-2xl mb-8 flex items-center justify-center mx-auto"><i data-lucide="smartphone" class="text-white"></i></div>
+                    <p class="text-3xl font-bold leading-tight text-white mb-6">Klyn App</p>
+                    <p class="text-zinc-400 text-lg mb-8 px-4">“Interfaz minimalista diseñada para optimizar servicios domésticos.”</p>
+                    <div class="flex items-center gap-3 justify-center mb-8">
+                        <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs text-white">KL</div>
+                        <div class="text-left"><p class="text-[13px] font-semibold text-white">Andrés Rosendo</p><p class="text-[12px] text-zinc-500">UX/UI Design</p></div>
+                    </div>
+                    <div class="project-visual-area"><i data-lucide="layout" size="80" class="text-purple-500/20"></i></div>
+                </div>
+                <div class="project-card">
+                    <div class="w-12 h-12 bg-emerald-600 rounded-2xl mb-8 flex items-center justify-center mx-auto"><i data-lucide="target" class="text-white"></i></div>
+                    <p class="text-3xl font-bold leading-tight text-white mb-6">Estrategia</p>
+                    <p class="text-zinc-400 text-lg mb-8 px-4">“Consultoría estratégica para el posicionamiento de productos digitales.”</p>
+                    <div class="flex items-center gap-3 justify-center mb-8">
+                        <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs text-white">ST</div>
+                        <div class="text-left"><p class="text-[13px] font-semibold text-white">Andrés Rosendo</p><p class="text-[12px] text-zinc-500">Digital Strategy</p></div>
+                    </div>
+                    <div class="project-visual-area"><i data-lucide="trending-up" size="80" class="text-emerald-500/20"></i></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full max-w-4xl flex items-center justify-center gap-12 px-6 mt-10">
+            <button onclick="prevProj()" class="p-4 rounded-full border border-zinc-800 hover:border-white transition text-white"><i data-lucide="arrow-left" size="24"></i></button>
+            <div class="flex gap-4">
+                <span class="proj-label w-2 h-2 rounded-full bg-white cursor-pointer" onclick="goProj(0)"></span>
+                <span class="proj-label w-2 h-2 rounded-full bg-zinc-800 cursor-pointer" onclick="goProj(1)"></span>
+                <span class="proj-label w-2 h-2 rounded-full bg-zinc-800 cursor-pointer" onclick="goProj(2)"></span>
+            </div>
+            <button onclick="nextProj()" class="p-4 rounded-full border border-zinc-800 hover:border-white transition text-white"><i data-lucide="arrow-right" size="24"></i></button>
+        </div>
+    </section>
+
+    <main id="proyectos" class="max-w-7xl mx-auto px-6 py-20">
+        <h2 class="text-2xl md:text-3xl font-bold mb-12 tracking-tight">Proyectos Seleccionados</h2>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            <div class="bento-card md:col-span-8 p-12 h-[500px] flex flex-col justify-end group cursor-pointer">
+                <span class="text-blue-500 font-bold text-xs uppercase tracking-widest">Branding</span>
+                <h3 class="text-4xl font-bold mt-2">HM Burguers</h3>
+            </div>
+            <div class="bento-card md:col-span-4 p-8 flex flex-col justify-end group cursor-pointer">
+                <span class="text-purple-500 font-bold text-xs uppercase tracking-widest">UX/UI</span>
+                <h3 class="text-2xl font-bold mt-2">Klyn App</h3>
+            </div>
+        </div>
+    </main>
+
+    <footer class="pt-24 pb-12 border-t border-zinc-900 bg-black">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="font-semibold tracking-tighter text-2xl mb-8 text-white">Andrés Rosendo</div>
+            <div class="flex justify-center gap-8 mb-12">
+                <a href="https://www.instagram.com/andresrosendom/" target="_blank" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="instagram" size="24"></i></a>
+                <a href="https://www.linkedin.com/in/andresrosendom/" target="_blank" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="linkedin" size="24"></i></a>
+                <a href="https://wa.me/584245692491" target="_blank" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="message-circle" size="24"></i></a>
+            </div>
+            <div class="pt-8 border-t border-zinc-900 text-zinc-600 text-[12px]">© Andrés Rosendo 2026. Venezuela.</div>
+        </div>
+    </footer>
 
     <script>
         lucide.createIcons();
