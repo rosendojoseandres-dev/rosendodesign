@@ -84,7 +84,7 @@ body {
     /* Mobile default */
     background: #080808;
     border: 1px solid #161616;
-    border-radius: 40px;
+    border-radius: 5px;
     overflow: hidden;
 }
 
@@ -161,7 +161,7 @@ body {
 .bento-card {
     background: #0a0a0a;
     border: 1px solid #1a1a1a;
-    border-radius: 28px;
+    border-radius: 5px;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -180,7 +180,7 @@ body {
     height: 480px;
     background: #0a0a0a;
     border: 1px solid #1a1a1a;
-    border-radius: 40px;
+    border-radius: 5px;
     display: grid;
     grid-template-columns: 1.2fr 1fr;
     overflow: hidden;
@@ -239,7 +239,7 @@ body {
         height: 240px;
         /* Taller mobile visual */
         background: #080808;
-        border-radius: 24px;
+        border-radius: 5px;
         margin-top: 1.5rem;
         align-items: center;
         justify-content: center;
@@ -251,6 +251,10 @@ body {
         grid-template-columns: 1fr;
         width: 85vw;
         height: auto;
+        opacity: 1 !important;
+        filter: none !important;
+        transform: none !important;
+        border-radius: 5px;
     }
 
     .visual-area {
