@@ -84,7 +84,7 @@ body {
     /* Mobile default */
     background: #080808;
     border: 1px solid #161616;
-    border-radius: 5px;
+    border-radius: 10px;
     overflow: hidden;
 }
 
@@ -161,14 +161,14 @@ body {
 .bento-card {
     background: #0a0a0a;
     border: 1px solid #1a1a1a;
-    border-radius: 5px;
+    border-radius: 10px;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* --- Carrusel de Proyectos/Testimonios (Centrado) --- */
 .carousel-viewport {
     display: flex;
-    gap: 2rem;
+    gap: 32px;
     transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
     width: max-content;
     padding: 2rem 0;
@@ -180,7 +180,7 @@ body {
     height: 480px;
     background: #0a0a0a;
     border: 1px solid #1a1a1a;
-    border-radius: 5px;
+    border-radius: 10px;
     display: grid;
     grid-template-columns: 1.2fr 1fr;
     overflow: hidden;
@@ -239,7 +239,7 @@ body {
         height: 240px;
         /* Taller mobile visual */
         background: #080808;
-        border-radius: 5px;
+        border-radius: 10px;
         margin-top: 1.5rem;
         align-items: center;
         justify-content: center;
@@ -265,7 +265,7 @@ body {
     }
 
     .carousel-viewport {
-        gap: 1.5rem;
+        gap: 32px;
     }
 
     .nav-label {
