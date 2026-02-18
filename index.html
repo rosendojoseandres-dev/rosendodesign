@@ -91,10 +91,15 @@
             }
         }
 
-        /* --- Animación Carrusel Infinito (Logos) --- */
+        /* --- Animación Carrusel Infinito --- */
         @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         .logos-slide {
@@ -118,54 +123,7 @@
             filter: grayscale(0) opacity(1);
         }
 
-        /* --- NUEVO: ESTILOS CARRUSEL PROYECTOS --- */
-        .carousel-outer { width: 100%; overflow: hidden; position: relative; padding: 4rem 0; }
-        
-        #carousel-viewport {
-            display: flex;
-            gap: 2rem;
-            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-            will-change: transform;
-        }
-
-        .project-card {
-            flex-shrink: 0;
-            width: 850px;
-            height: 480px;
-            background: #0a0a0a;
-            border: 1px solid #1a1a1a;
-            border-radius: 40px;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            overflow: hidden;
-            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-            opacity: 0.2;
-            transform: scale(0.9);
-            filter: blur(8px);
-        }
-
-        .project-card.active { opacity: 1; transform: scale(1); filter: blur(0); border-color: rgba(255, 255, 255, 0.15); }
-
-        .project-visual-area { background: #0d0d0d; display: flex; align-items: center; justify-content: center; border-left: 1px solid #1a1a1a; }
-
-        @media (max-width: 1024px) {
-            .carousel-outer { overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
-            .carousel-outer::-webkit-scrollbar { display: none; }
-            #carousel-viewport { transform: none !important; gap: 1rem; padding: 0 10vw; }
-            .project-card { 
-                width: 80vw; 
-                height: auto; 
-                min-height: 450px; 
-                grid-template-columns: 1fr; 
-                scroll-snap-align: center;
-                opacity: 0.4;
-                filter: blur(2px);
-            }
-            .project-card.active { opacity: 1; filter: blur(0); }
-            .project-visual-area { height: 180px; order: -1; border-left: none; border-bottom: 1px solid #1a1a1a; }
-        }
-
-        /* --- Animación Estilo Framer (Logo Reveal) --- */
+        /* --- Animación Estilo Framer --- */
         #logo-container {
             will-change: transform, opacity, filter;
         }
@@ -231,7 +189,8 @@
                     <img src="assets/LOGO BLANCO.svg" alt="Logo" class="h-6 md:h-7 w-auto object-contain">
                     <div class="flex items-center gap-3">
                         <span class="w-[1px] h-4 bg-white/20 hidden md:block"></span>
-                        <span class="font-medium tracking-tight text-sm md:text-base text-white">Hola soy, Andrés Rosendo!</span>
+                        <span class="font-medium tracking-tight text-sm md:text-base text-white">Hola soy, Andrés
+                            Rosendo!</span>
                     </div>
                 </a>
                 <div class="hidden md:flex items-center space-x-6">
@@ -279,6 +238,7 @@
                 <span class="logo-item text-zinc-200 font-bold tracking-widest text-xl">Creative Suite</span>
                 <span class="logo-item text-zinc-200 font-bold tracking-widest text-xl">Affinity</span>
                 <span class="logo-item text-zinc-200 font-bold tracking-widest text-xl">Canva</span>
+
                 <span class="logo-item text-zinc-200 font-bold tracking-widest text-xl">Figma</span>
                 <span class="logo-item text-zinc-200 font-bold tracking-widest text-xl">Adobe XD</span>
                 <span class="logo-item text-zinc-200 font-bold tracking-widest text-xl">Creative Suite</span>
@@ -291,11 +251,14 @@
     <section class="relative h-[180vh] bg-black -mt-10" id="logo-reveal-section">
         <div class="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden px-6">
             <div id="logo-glow" class="glow-effect absolute w-[600px] h-[600px] rounded-full opacity-0 scale-50"></div>
+
             <div id="logo-container" class="relative z-10 opacity-0 scale-[0.4] blur-xl mb-8">
                 <img src="assets/LOGO BLANCO.svg" alt="Andrés Rosendo Logo" class="w-32 md:w-56 h-auto">
             </div>
+
             <div id="about-text" class="relative z-10 max-w-2xl text-center opacity-0 translate-y-10">
-                <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-gradient">Más que píxeles, soluciones.</h2>
+                <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-gradient">Más que píxeles,
+                    soluciones.</h2>
                 <p class="text-zinc-400 text-lg md:text-xl leading-relaxed">
                     Soy un apasionado por resolver problemas a través del diseño. Creo fielmente que la estética sin
                     estrategia es solo decoración, por eso me enfoco en crear experiencias que realmente conecten con
@@ -311,87 +274,38 @@
                 <div class="tab-trigger tab-item active" data-tab="branding">
                     <h3 class="text-2xl md:text-3xl font-bold tracking-tight">Branding</h3>
                     <div class="tab-description">
-                        <p class="text-zinc-400 text-base md:text-lg leading-relaxed mb-4">Construyo identidades visuales sólidas y memorables que transmiten la esencia de tu negocio.</p>
-                        <div class="mobile-visual-inline lg:hidden"><i data-lucide="layers" size="40" class="text-white/20"></i></div>
+                        <p class="text-zinc-400 text-base md:text-lg leading-relaxed mb-4">Construyo identidades
+                            visuales sólidas y memorables que transmiten la esencia de tu negocio.</p>
+                        <div class="mobile-visual-inline lg:hidden"><i data-lucide="layers" size="40"
+                                class="text-white/20"></i></div>
                     </div>
                 </div>
                 <div class="tab-trigger tab-item" data-tab="uxui">
                     <h3 class="text-2xl md:text-3xl font-bold tracking-tight">Diseño UX/UI</h3>
                     <div class="tab-description">
-                        <p class="text-zinc-400 text-base md:text-lg leading-relaxed mb-4">Creación de interfaces de alta fidelidad centradas en el usuario y experiencias digitales intuitivas.</p>
-                        <div class="mobile-visual-inline lg:hidden"><i data-lucide="layout" size="40" class="text-blue-500/20"></i></div>
+                        <p class="text-zinc-400 text-base md:text-lg leading-relaxed mb-4">Creación de interfaces de
+                            alta fidelidad centradas en el usuario y experiencias digitales intuitivas.</p>
+                        <div class="mobile-visual-inline lg:hidden"><i data-lucide="layout" size="40"
+                                class="text-blue-500/20"></i></div>
                     </div>
                 </div>
                 <div class="tab-trigger tab-item" data-tab="strategy">
                     <h3 class="text-2xl md:text-3xl font-bold tracking-tight">Estrategia Digital</h3>
                     <div class="tab-description">
-                        <p class="text-zinc-400 text-base md:text-lg leading-relaxed mb-4">Diseño de hojas de ruta que transforman objetivos de negocio en productos digitales medibles y escalables.</p>
-                        <div class="mobile-visual-inline lg:hidden"><i data-lucide="target" size="40" class="text-emerald-500/20"></i></div>
+                        <p class="text-zinc-400 text-base md:text-lg leading-relaxed mb-4">Diseño de hojas de ruta que
+                            transforman objetivos de negocio en productos digitales medibles y escalables.</p>
+                        <div class="mobile-visual-inline lg:hidden"><i data-lucide="target" size="40"
+                                class="text-emerald-500/20"></i></div>
                     </div>
                 </div>
             </div>
             <div class="lg:col-span-8 sticky-visual hidden lg:flex">
-                <div id="branding" class="visual-content active"><i data-lucide="layers" size="120" class="text-white/20"></i></div>
-                <div id="uxui" class="visual-content"><i data-lucide="layout" size="100" class="text-blue-500/20"></i></div>
-                <div id="strategy" class="visual-content"><i data-lucide="target" size="120" class="text-emerald-500/20"></i></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 flex flex-col items-center">
-        <div class="carousel-outer" id="carousel-scroll-container">
-            <div id="carousel-viewport">
-                <div class="project-card active">
-                    <div class="p-10 md:p-14 flex flex-col justify-between">
-                        <div>
-                            <div class="w-10 h-10 bg-orange-500 rounded-xl mb-8 flex items-center justify-center"><i data-lucide="flame" class="text-white"></i></div>
-                            <p class="text-2xl md:text-[28px] font-medium leading-tight text-white">“Rediseñamos la identidad de HM Burguers para transmitir una esencia urbana.”</p>
-                        </div>
-                        <div class="flex items-center gap-3 mt-6">
-                            <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs text-white">HM</div>
-                            <div><p class="text-[13px] font-semibold text-white">Andrés Rosendo</p><p class="text-[12px] text-zinc-500">Case Study</p></div>
-                        </div>
-                    </div>
-                    <div class="project-visual-area"><i data-lucide="flame" size="100" class="text-orange-500/10"></i></div>
+                <div id="branding" class="visual-content active"><i data-lucide="layers" size="120"
+                        class="text-white/20"></i></div>
+                <div id="uxui" class="visual-content"><i data-lucide="layout" size="100" class="text-blue-500/20"></i>
                 </div>
-                <div class="project-card">
-                    <div class="p-10 md:p-14 flex flex-col justify-between">
-                        <div>
-                            <div class="w-10 h-10 bg-purple-600 rounded-xl mb-8 flex items-center justify-center"><i data-lucide="layout" class="text-white"></i></div>
-                            <p class="text-2xl md:text-[28px] font-medium leading-tight text-white">“Klyn App: Una interfaz minimalista diseñada para servicios domésticos.”</p>
-                        </div>
-                        <div class="flex items-center gap-3 mt-6">
-                            <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs text-white">KL</div>
-                            <div><p class="text-[13px] font-semibold text-white">Andrés Rosendo</p><p class="text-[12px] text-zinc-500">UX/UI Design</p></div>
-                        </div>
-                    </div>
-                    <div class="project-visual-area"><i data-lucide="smartphone" size="100" class="text-purple-500/10"></i></div>
-                </div>
-                <div class="project-card">
-                    <div class="p-10 md:p-14 flex flex-col justify-between">
-                        <div>
-                            <div class="w-10 h-10 bg-emerald-600 rounded-xl mb-8 flex items-center justify-center"><i data-lucide="target" class="text-white"></i></div>
-                            <p class="text-2xl md:text-[28px] font-medium leading-tight text-white">“Impacto digital estratégico para marcas en crecimiento acelerado.”</p>
-                        </div>
-                        <div class="flex items-center gap-3 mt-6">
-                            <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs text-white">ST</div>
-                            <div><p class="text-[13px] font-semibold text-white">Andrés Rosendo</p><p class="text-[12px] text-zinc-500">Estrategia</p></div>
-                        </div>
-                    </div>
-                    <div class="project-visual-area"><i data-lucide="trending-up" size="100" class="text-emerald-500/10"></i></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="w-full max-w-4xl flex items-center justify-between px-6 mt-10">
-            <div class="flex gap-6 md:gap-8 overflow-x-auto no-scrollbar">
-                <span class="proj-label text-xs font-bold uppercase tracking-widest cursor-pointer text-white" onclick="goProj(0)">HM Burguers</span>
-                <span class="proj-label text-xs font-bold uppercase tracking-widest cursor-pointer text-zinc-600" onclick="goProj(1)">Klyn App</span>
-                <span class="proj-label text-xs font-bold uppercase tracking-widest cursor-pointer text-zinc-600" onclick="goProj(2)">Estrategia</span>
-            </div>
-            <div class="hidden md:flex gap-4">
-                <button onclick="prevProj()" class="p-3 rounded-full border border-zinc-800 hover:border-white transition text-white"><i data-lucide="chevron-left" size="20"></i></button>
-                <button onclick="nextProj()" class="p-3 rounded-full border border-zinc-800 hover:border-white transition text-white"><i data-lucide="chevron-right" size="20"></i></button>
+                <div id="strategy" class="visual-content"><i data-lucide="target" size="120"
+                        class="text-emerald-500/20"></i></div>
             </div>
         </div>
     </section>
@@ -417,13 +331,26 @@
                     <div class="font-semibold tracking-tighter text-lg mb-6 text-white">Andrés Rosendo</div>
                     <div class="flex flex-col gap-6">
                         <div class="flex flex-wrap gap-5">
-                            <a href="https://www.facebook.com/andres.rosendo.9" target="_blank" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="facebook" size="20"></i></a>
-                            <a href="https://www.instagram.com/andresrosendom/" target="_blank" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="instagram" size="20"></i></a>
-                            <a href="https://www.threads.com/@andresrosendom" target="_blank" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="at-sign" size="20"></i></a>
-                            <a href="https://www.linkedin.com/in/andresrosendom/?originalSubdomain=ve" target="_blank" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="linkedin" size="20"></i></a>
+                            <a href="https://www.facebook.com/andres.rosendo.9" target="_blank"
+                                class="text-zinc-500 hover:text-white transition-all">
+                                <i data-lucide="facebook" size="20"></i>
+                            </a>
+                            <a href="https://www.instagram.com/andresrosendom/" target="_blank"
+                                class="text-zinc-500 hover:text-white transition-all">
+                                <i data-lucide="instagram" size="20"></i>
+                            </a>
+                            <a href="https://www.threads.com/@andresrosendom" target="_blank"
+                                class="text-zinc-500 hover:text-white transition-all">
+                                <i data-lucide="at-sign" size="20"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/andresrosendom/?originalSubdomain=ve" target="_blank"
+                                class="text-zinc-500 hover:text-white transition-all">
+                                <i data-lucide="linkedin" size="20"></i>
+                            </a>
                         </div>
                         <div class="inline-flex items-center text-[11px] text-zinc-400 tracking-wider uppercase">
-                            <span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-2 animate-pulse"></span> Hablemos de tu proyecto
+                            <span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+                            Hablemos de tu proyecto
                         </div>
                     </div>
                 </div>
@@ -442,7 +369,10 @@
                 <div class="flex flex-col gap-4">
                     <h4 class="text-white font-medium text-sm">Contacto</h4>
                     <a href="mailto:rosendojoseandres@gmail.com" class="text-zinc-500 hover:text-white text-sm transition">Email</a>
-                    <a href="https://wa.me/584245692491" target="_blank" class="text-zinc-400 hover:text-white text-sm transition font-medium flex items-center">WhatsApp <span class="text-[9px] bg-white text-black px-1.5 py-0.5 rounded ml-2 font-bold uppercase">New</span></a>
+                    <a href="https://wa.me/584245692491" target="_blank"
+                        class="text-zinc-400 hover:text-white text-sm transition font-medium flex items-center">WhatsApp
+                        <span
+                            class="text-[9px] bg-white text-black px-1.5 py-0.5 rounded ml-2 font-bold uppercase">New</span></a>
                 </div>
                 <div class="flex flex-col gap-4">
                     <h4 class="text-white font-medium text-sm">Legal</h4>
@@ -469,71 +399,35 @@
             lucide.createIcons();
         }
 
-        // --- CARRUSEL PROYECTOS LOGIC ---
-        let curProj = 0;
-        const totalProj = 3;
-        const vport = document.getElementById('carousel-viewport');
-        const projCards = document.querySelectorAll('.project-card');
-        const projLabels = document.querySelectorAll('.proj-label');
-        const projScroll = document.getElementById('carousel-scroll-container');
-
-        function updateProjUI(idx) {
-            curProj = idx;
-            projCards.forEach((c, i) => c.classList.toggle('active', i === idx));
-            projLabels.forEach((l, i) => {
-                l.classList.toggle('text-white', i === idx);
-                l.classList.toggle('text-zinc-600', i !== idx);
-            });
-            if (window.innerWidth > 1024) {
-                const w = projCards[0].offsetWidth;
-                const offset = -(idx * (w + 32)) + (window.innerWidth / 2) - (w / 2);
-                vport.style.transform = `translateX(${offset}px)`;
-            }
-        }
-
-        projScroll.addEventListener('scroll', () => {
-            if (window.innerWidth <= 1024) {
-                const center = projScroll.scrollLeft + (projScroll.offsetWidth / 2);
-                let closest = 0; let minD = Infinity;
-                projCards.forEach((c, i) => {
-                    const d = Math.abs(center - (c.offsetLeft + c.offsetWidth / 2));
-                    if (d < minD) { minD = d; closest = i; }
-                });
-                if(closest !== curProj) updateProjUI(closest);
-            }
-        });
-
-        function nextProj() { if(curProj < totalProj - 1) goProj(curProj + 1); }
-        function prevProj() { if(curProj > 0) goProj(curProj - 1); }
-        function goProj(idx) {
-            if (window.innerWidth <= 1024) {
-                const card = projCards[idx];
-                projScroll.scrollTo({ left: card.offsetLeft - (projScroll.offsetWidth / 2) + (card.offsetWidth / 2), behavior: 'smooth' });
-            } else { updateProjUI(idx); }
-        }
-        window.addEventListener('resize', () => updateProjUI(curProj));
-        window.addEventListener('load', () => updateProjUI(0));
-
-        // Animación Logo Reveal
+        // Animación Logo + Texto Persona
         window.addEventListener('scroll', () => {
             const section = document.getElementById('logo-reveal-section');
             const container = document.getElementById('logo-container');
             const glow = document.getElementById('logo-glow');
             const aboutText = document.getElementById('about-text');
+
             if (!section || !container) return;
+
             const rect = section.getBoundingClientRect();
-            let progress = Math.max(0, Math.min(1, -rect.top / (section.offsetHeight - window.innerHeight)));
+            const sectionHeight = section.offsetHeight;
+            const viewHeight = window.innerHeight;
+
+            let progress = -rect.top / (sectionHeight - viewHeight);
+            progress = Math.max(0, Math.min(1, progress));
+
             container.style.transform = `scale(${0.4 + (progress * 0.75)})`;
             container.style.opacity = progress * 1.8;
             container.style.filter = `blur(${20 - (progress * 20)}px)`;
             glow.style.opacity = progress;
             glow.style.transform = `scale(${0.5 + progress})`;
+
             let textProgress = Math.max(0, (progress - 0.25) / 0.75);
             aboutText.style.opacity = textProgress;
             aboutText.style.transform = `translateY(${30 - (textProgress * 30)}px)`;
         });
 
         // Tabs Logic
+        const options = { root: null, threshold: 0.7 };
         const callback = (entries) => {
             if (window.innerWidth > 1024) {
                 entries.forEach(entry => {
@@ -547,8 +441,9 @@
                 });
             }
         };
-        const observer = new IntersectionObserver(callback, { threshold: 0.7 });
+        const observer = new IntersectionObserver(callback, options);
         document.querySelectorAll('.tab-trigger').forEach(trigger => observer.observe(trigger));
     </script>
 </body>
+
 </html>
