@@ -254,9 +254,22 @@ body {
     }
 
     .visual-area {
-        height: 200px;
+        height: 180px;
         order: -1;
         border-left: none;
         border-bottom: 1px solid #1a1a1a;
+    }
+
+    .carousel-viewport {
+        gap: 1.5rem;
+    }
+
+    .nav-label {
+        font-size: 0.65rem !important;
+        gap: 1rem !important;
+    }
+
+    .flex.gap-3 button {
+        padding: 0.5rem !important;
     }
 }
