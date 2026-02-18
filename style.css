@@ -265,8 +265,25 @@ body {
     }
 
     .nav-label {
-        font-size: 0.65rem !important;
-        gap: 1rem !important;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        font-size: 0 !important;
+        background: #333 !important;
+        transition: all 0.3s ease;
+        padding: 0 !important;
+        border: none !important;
+    }
+
+    .nav-label.active {
+        background: #fff !important;
+        transform: scale(1.2);
+    }
+
+    .flex.gap-8 {
+        gap: 0.75rem !important;
+        align-items: center;
+        justify-content: center;
     }
 
     .flex.gap-3 button {
