@@ -4,9 +4,9 @@ function toggleMenu() {
     const menu = document.getElementById('mobile-menu');
     const icon = document.getElementById('menu-icon');
     if (!menu || !icon) return;
-    const isOpen = menu.style.display === 'flex';
-    menu.style.display = isOpen ? 'none' : 'flex';
-    icon.setAttribute('data-lucide', isOpen ? 'menu' : 'x');
+    menu.classList.toggle('active');
+    const isOpen = menu.classList.contains('active');
+    icon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
     lucide.createIcons();
 }
 

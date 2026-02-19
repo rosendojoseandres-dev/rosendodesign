@@ -49,12 +49,11 @@
             </div>
         </div>
         <div id="mobile-menu"
-            class="absolute top-20 left-6 right-6 bg-black/95 border border-zinc-800 backdrop-blur-2xl rounded-[2rem] p-6 text-center shadow-2xl md:hidden"
-            style="display:none; flex-direction:column; gap:0.5rem;">
-            <a href="#servicios" class="block text-lg font-medium py-3 text-white" onclick="toggleMenu()">Servicios</a>
-            <a href="#proyectos" class="block text-lg font-medium py-3 text-white" onclick="toggleMenu()">Proyectos</a>
+            class="hidden absolute top-20 left-6 right-6 bg-black/95 border border-zinc-800 backdrop-blur-2xl rounded-[2rem] p-6 flex-col space-y-4 text-center shadow-2xl md:hidden">
+            <a href="#servicios" class="text-lg font-medium py-2" onclick="toggleMenu()">Servicios</a>
+            <a href="#proyectos" class="text-lg font-medium py-2" onclick="toggleMenu()">Proyectos</a>
             <a href="https://wa.me/584245692491" target="_blank"
-                class="block bg-white text-black py-3 rounded-full font-bold mt-2">Contacto</a>
+                class="bg-white text-black py-3 rounded-full font-bold">Contacto</a>
         </div>
     </nav>
 
@@ -67,7 +66,7 @@
             </span>
         </div>
         <h1
-            class="text-6xl md:text-8xl font-extrabold tracking-tighter text-gradient leading-[1.05] mb-8 text-center mx-auto">
+            class="text-4xl md:text-8xl font-extrabold tracking-tighter text-gradient leading-[1.05] mb-8 text-center mx-auto">
             Diseñador Gráfico Especialista UX/UI
         </h1>
         <p class="text-zinc-500 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-center mb-16">
@@ -355,7 +354,8 @@
                 </div>
                 <div class="flex flex-col gap-4">
                     <h4 class="text-white font-medium text-sm">Contacto</h4>
-                    <a href="/cdn-cgi/l/email-protection#70021f03151e141f1a1f0315111e1402150330171d11191c5e131f1d" class="text-zinc-500 hover:text-white text-sm transition">Email</a>
+                    <a href="mailto:rosendojoseandres@gmail.com"
+                        class="text-zinc-500 hover:text-white text-sm transition">Email</a>
                     <a href="https://wa.me/584245692491" target="_blank"
                         class="text-zinc-400 hover:text-white text-sm transition font-medium flex items-center">WhatsApp
                         <span
@@ -374,4 +374,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false"
+    <script src="script.js"></script>
+</body>
+
+</html>
