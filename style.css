@@ -255,6 +255,10 @@ body {
     will-change: transform, opacity;
 }
 
+.tab-trigger {
+    will-change: transform, opacity;
+}
+
 .tab-item {
     padding: 2rem 0;
     transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
@@ -280,31 +284,7 @@ body {
     margin-top: 1.5rem;
 }
 
-/* ============================================
-   PRELOADER
-   ============================================ */
-#loader.loader-hidden {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.loader-bar {
-    animation: loading 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
-}
-
-@keyframes loading {
-    0% {
-        transform: translateX(-100%);
-    }
-
-    50% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(100%);
-    }
-}
+/* Responsive Fixes handled below */
 
 /* ============================================
    RESPONSIVE FIXES
@@ -335,5 +315,39 @@ body {
         justify-content: center;
         border: 1px solid rgba(255, 255, 255, 0.05);
         overflow: hidden;
+    }
+
+    /* --- Mobile Carousel Fixes --- */
+    .project-card {
+        width: calc(100vw - 48px);
+        height: auto;
+        grid-template-columns: 1fr;
+        transform: scale(0.95);
+        opacity: 0.15;
+    }
+
+    .project-card.active {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    .visual-area {
+        height: 200px;
+        border-left: none;
+        border-top: 1px solid #1a1a1a;
+    }
+
+    .nav-label {
+        font-size: 10px !important;
+        letter-spacing: 0.1em;
+    }
+
+    button[onclick*="Slide"] {
+        padding: 0.6rem !important;
+    }
+
+    button[onclick*="Slide"] i {
+        width: 16px !important;
+        height: 16px !important;
     }
 }
