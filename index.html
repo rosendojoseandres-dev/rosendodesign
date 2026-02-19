@@ -33,6 +33,7 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
+        /* --- Lógica de Tabs --- */
         .tab-item {
             transition: all 1.2s cubic-bezier(0.2, 1, 0.3, 1);
             opacity: 0.3;
@@ -62,7 +63,7 @@
         }
 
         .tab-item.active .tab-description {
-            max-height: 500px;
+            max-height: 1000px; /* Aumentado para asegurar visualización en móvil */
             opacity: 1;
             margin-top: 1.5rem;
         }
@@ -75,6 +76,12 @@
             #servicios {
                 padding-bottom: 5rem;
             }
+            /* Asegurar que las descripciones no se corten en móvil */
+            .tab-description {
+                max-height: none !important;
+                opacity: 1 !important;
+                display: block !important;
+            }
         }
 
         .tab-item a i {
@@ -83,6 +90,11 @@
 
         .tab-item a:hover i {
             transform: translateX(4px);
+        }
+
+        /* Prevenir scroll horizontal accidental del sangrado */
+        body {
+            overflow-x: hidden;
         }
 
         .sticky-visual {
@@ -124,6 +136,7 @@
             pointer-events: auto;
         }
 
+        /* --- Animación Carrusel Infinito --- */
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
@@ -165,6 +178,7 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        /* --- Carrusel de Proyectos/Testimonios (Centrado) --- */
         .carousel-viewport {
             display: flex;
             gap: 32px;
@@ -204,6 +218,7 @@
             border-left: 1px solid #1a1a1a;
         }
 
+        /* --- PRELOADER --- */
         #loader.loader-hidden {
             opacity: 0;
             pointer-events: none;
@@ -231,6 +246,7 @@
                 border: 1px solid rgba(255, 255, 255, 0.05);
                 overflow: hidden;
             }
+
             .project-card {
                 width: calc(100vw - 48px);
                 height: auto;
@@ -238,21 +254,39 @@
                 transform: scale(0.95);
                 opacity: 0.15;
             }
+
             .project-card.active {
                 transform: scale(1);
                 opacity: 1;
             }
+
             .visual-area {
                 height: 200px;
                 border-left: none;
                 border-top: 1px solid #1a1a1a;
+            }
+
+            /* AJUSTE SOLICITADO: OPCIONES Y FLECHAS MÁS PEQUEÑAS */
+            .nav-label {
+                font-size: 8px !important; 
+                letter-spacing: 0.05em;
+            }
+
+            .carousel-controls button {
+                padding: 0.4rem !important;
+            }
+            
+            .carousel-controls i {
+                width: 14px !important;
+                height: 14px !important;
             }
         }
     </style>
 </head>
 
 <body class="antialiased">
-    <div id="loader" class="fixed inset-0 z-[1000] bg-black flex items-center justify-center transition-opacity duration-700">
+    <div id="loader"
+        class="fixed inset-0 z-[1000] bg-black flex items-center justify-center transition-opacity duration-700">
         <div class="loader-content flex flex-col items-center gap-6">
             <img src="assets/LOGO BLANCO.svg" alt="Logo" class="h-12 md:h-16 w-auto animate-pulse">
             <div class="h-[1px] w-24 bg-white/10 relative overflow-hidden">
@@ -263,43 +297,52 @@
 
     <nav class="fixed top-6 left-0 right-0 z-[100]">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="ui-border bg-black/60 backdrop-blur-xl rounded-full px-6 py-3 flex justify-between items-center">
+            <div
+                class="ui-border bg-black/60 backdrop-blur-xl rounded-full px-6 py-3 flex justify-between items-center">
                 <a href="#" class="flex items-center gap-3 group">
                     <img src="assets/LOGO BLANCO.svg" alt="Logo" class="h-6 md:h-7 w-auto object-contain">
                     <div class="flex items-center gap-3">
                         <span class="w-[1px] h-4 bg-white/20 hidden md:block"></span>
-                        <span class="font-medium tracking-tight text-sm md:text-base text-white">Hola soy, Andrés Rosendo!</span>
+                        <span class="font-medium tracking-tight text-sm md:text-base text-white">Hola soy, Andrés
+                            Rosendo!</span>
                     </div>
                 </a>
                 <div class="hidden md:flex items-center space-x-6">
                     <a href="#servicios" class="text-zinc-400 hover:text-white transition text-sm">Servicios</a>
                     <a href="#proyectos" class="text-zinc-400 hover:text-white transition text-sm">Proyectos</a>
-                    <a href="https://wa.me/584245692491" target="_blank" class="bg-white text-black px-5 py-2 rounded-full font-bold text-sm transition hover:bg-zinc-200">Contacto</a>
+                    <a href="https://wa.me/584245692491" target="_blank"
+                        class="bg-white text-black px-5 py-2 rounded-full font-bold text-sm transition hover:bg-zinc-200">Contacto</a>
                 </div>
                 <button class="md:hidden text-white" onclick="toggleMenu()">
                     <i data-lucide="menu" id="menu-icon"></i>
                 </button>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden absolute top-20 left-6 right-6 bg-black/95 border border-zinc-800 backdrop-blur-2xl rounded-[2rem] p-6 flex-col space-y-4 text-center shadow-2xl md:hidden">
+        <div id="mobile-menu"
+            class="hidden absolute top-20 left-6 right-6 bg-black/95 border border-zinc-800 backdrop-blur-2xl rounded-[2rem] p-6 flex-col space-y-4 text-center shadow-2xl md:hidden">
             <a href="#servicios" class="text-lg font-medium py-2" onclick="toggleMenu()">Servicios</a>
             <a href="#proyectos" class="text-lg font-medium py-2" onclick="toggleMenu()">Proyectos</a>
-            <a href="https://wa.me/584245692491" target="_blank" class="bg-white text-black py-3 rounded-full font-bold">Contacto</a>
+            <a href="https://wa.me/584245692491" target="_blank"
+                class="bg-white text-black py-3 rounded-full font-bold">Contacto</a>
         </div>
     </nav>
 
     <header class="pt-48 pb-10 px-6 text-center max-w-5xl mx-auto">
         <div class="flex justify-center">
-            <span class="inline-flex items-center px-4 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/50 text-zinc-400 text-[10px] md:text-xs font-medium mb-8">
+            <span
+                class="inline-flex items-center px-4 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/50 text-zinc-400 text-[10px] md:text-xs font-medium mb-8">
                 <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
                 Disponible para trabajar
             </span>
         </div>
-        <h1 class="text-4xl md:text-8xl font-extrabold tracking-tighter text-gradient leading-[1.05] mb-8 text-center mx-auto">
+        <h1
+            class="text-4xl md:text-8xl font-extrabold tracking-tighter text-gradient leading-[1.05] mb-8 text-center mx-auto">
             Diseñador Gráfico Especialista UX/UI
         </h1>
         <p class="text-zinc-500 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-center mb-16">
-            Especialista en la creación de ecosistemas digitales donde el <span class="text-zinc-400">Branding</span> y el <span class="text-zinc-400">Diseño UX/UI</span> convergen para potenciar productos escalables. Mi enfoque combina la construcción de identidades visuales memorables con una arquitectura de información estratégica.
+            Especialista en la creación de ecosistemas digitales donde el <span class="text-zinc-400">Branding</span> y
+            el <span class="text-zinc-400">Diseño UX/UI</span> convergen para potenciar productos escalables. Mi enfoque
+            combina la construcción de identidades visuales memorables con una arquitectura de información estratégica.
         </p>
 
         <div class="logos-container py-4">
@@ -325,9 +368,12 @@
                 <img src="assets/LOGO BLANCO.svg" alt="Andrés Rosendo Logo" class="w-32 md:w-56 h-auto">
             </div>
             <div id="about-text" class="relative z-10 max-w-2xl text-center opacity-0 translate-y-10">
-                <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-gradient">Más que píxeles, soluciones.</h2>
+                <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-gradient">Más que píxeles,
+                    soluciones.</h2>
                 <p class="text-zinc-400 text-lg md:text-xl leading-relaxed">
-                    Soy un apasionado por resolver problemas a través del diseño. Creo fielmente que la estética sin estrategia es solo decoración, por eso me enfoco en crear experiencias que realmente conecten con las personas.
+                    Soy un apasionado por resolver problemas a través del diseño. Creo fielmente que la estética sin
+                    estrategia es solo decoración, por eso me enfoco en crear experiencias que realmente conecten con
+                    las personas.
                 </p>
             </div>
         </div>
@@ -339,31 +385,43 @@
                 <div class="tab-trigger tab-item active" data-tab="branding">
                     <h3 class="text-lg md:text-xl font-bold tracking-tight mb-2">Branding</h3>
                     <div class="tab-description">
-                        <p class="text-zinc-400 text-sm md:text-base leading-relaxed mb-4">Construyo identidades visuales sólidas y memorables que transmiten la esencia de tu negocio.</p>
+                        <p class="text-zinc-400 text-sm md:text-base leading-relaxed mb-4">Construyo identidades
+                            visuales sólidas y memorables que transmiten la esencia de tu negocio.</p>
                         <div class="mobile-visual-inline lg:hidden mb-6">
-                            <img src="assets/branding.jpg" alt="Branding" class="w-full h-[250px] object-cover rounded-[10px] border border-zinc-800/50 shadow-2xl">
+                            <img src="assets/branding.jpg" alt="Branding"
+                                class="w-full h-[250px] object-cover rounded-[10px] border border-zinc-800/50 shadow-2xl">
                         </div>
-                        <a href="#" class="text-zinc-200 hover:text-white transition inline-flex items-center gap-2 font-medium text-sm">Ver más <i data-lucide="chevron-right" size="14"></i></a>
+                        <a href="#"
+                            class="text-zinc-200 hover:text-white transition inline-flex items-center gap-2 font-medium text-sm">Ver
+                            más <i data-lucide="chevron-right" size="14"></i></a>
                     </div>
                 </div>
                 <div class="tab-trigger tab-item" data-tab="uxui">
                     <h3 class="text-lg md:text-xl font-bold tracking-tight mb-2">Diseño UX/UI</h3>
                     <div class="tab-description">
-                        <p class="text-zinc-400 text-sm md:text-base leading-relaxed mb-4">Creación de interfaces de alta fidelidad centradas en el usuario y experiencias digitales intuitivas.</p>
+                        <p class="text-zinc-400 text-sm md:text-base leading-relaxed mb-4">Creación de interfaces de
+                            alta fidelidad centradas en el usuario y experiencias digitales intuitivas.</p>
                         <div class="mobile-visual-inline lg:hidden mb-6">
-                            <img src="assets/branding.jpg" alt="UX/UI Design" class="w-full h-[250px] object-cover rounded-[10px] border border-zinc-800/50 shadow-2xl">
+                            <img src="assets/branding.jpg" alt="UX/UI Design"
+                                class="w-full h-[250px] object-cover rounded-[10px] border border-zinc-800/50 shadow-2xl">
                         </div>
-                        <a href="#" class="text-zinc-200 hover:text-white transition inline-flex items-center gap-2 font-medium text-sm">Ver más <i data-lucide="chevron-right" size="14"></i></a>
+                        <a href="#"
+                            class="text-zinc-200 hover:text-white transition inline-flex items-center gap-2 font-medium text-sm">Ver
+                            más <i data-lucide="chevron-right" size="14"></i></a>
                     </div>
                 </div>
                 <div class="tab-trigger tab-item" data-tab="strategy">
                     <h3 class="text-lg md:text-xl font-bold tracking-tight mb-2">Estrategia</h3>
                     <div class="tab-description">
-                        <p class="text-zinc-400 text-sm md:text-base leading-relaxed mb-4">Diseño de hojas de ruta que transforman objetivos de negocio en productos digitales medibles y escalables.</p>
+                        <p class="text-zinc-400 text-sm md:text-base leading-relaxed mb-4">Diseño de hojas de ruta que
+                            transforman objetivos de negocio en productos digitales medibles y escalables.</p>
                         <div class="mobile-visual-inline lg:hidden mb-6">
-                            <img src="assets/branding.jpg" alt="Estrategia" class="w-full h-[250px] object-cover rounded-[10px] border border-zinc-800/50 shadow-2xl">
+                            <img src="assets/branding.jpg" alt="Estrategia"
+                                class="w-full h-[250px] object-cover rounded-[10px] border border-zinc-800/50 shadow-2xl">
                         </div>
-                        <a href="#" class="text-zinc-200 hover:text-white transition inline-flex items-center gap-2 font-medium text-sm">Ver más <i data-lucide="chevron-right" size="14"></i></a>
+                        <a href="#"
+                            class="text-zinc-200 hover:text-white transition inline-flex items-center gap-2 font-medium text-sm">Ver
+                            más <i data-lucide="chevron-right" size="14"></i></a>
                     </div>
                 </div>
             </div>
@@ -384,16 +442,20 @@
     <main id="proyectos" class="max-w-[1440px] mx-auto px-6 py-20">
         <h2 class="text-2xl md:text-3xl font-bold mb-12 tracking-tight">Proyectos Seleccionados</h2>
         <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-            <div class="bento-card md:col-span-8 p-12 h-[500px] flex flex-col justify-end group cursor-pointer relative overflow-hidden">
+            <div
+                class="bento-card md:col-span-8 p-12 h-[500px] flex flex-col justify-end group cursor-pointer relative overflow-hidden">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
-                <img src="assets/branding.jpg" alt="HM Burguers" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <img src="assets/branding.jpg" alt="HM Burguers"
+                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                 <div class="relative z-20">
                     <span class="text-blue-500 font-bold text-xs uppercase tracking-widest">Branding</span>
                     <h3 class="text-4xl font-bold mt-2">HM Burguers</h3>
                 </div>
             </div>
-            <div class="bento-card md:col-span-4 p-8 flex flex-col justify-end group cursor-pointer relative overflow-hidden bg-zinc-900 border border-white/5">
-                <div class="absolute inset-0 flex items-center justify-center opacity-10 group-hover:opacity-20 transition-opacity">
+            <div
+                class="bento-card md:col-span-4 p-8 flex flex-col justify-end group cursor-pointer relative overflow-hidden bg-zinc-900 border border-white/5">
+                <div
+                    class="absolute inset-0 flex items-center justify-center opacity-10 group-hover:opacity-20 transition-opacity">
                     <i data-lucide="smartphone" size="120" class="text-purple-500"></i>
                 </div>
                 <div class="relative z-20">
@@ -413,7 +475,8 @@
                             <div class="w-10 h-10 bg-orange-500 rounded-[10px] mb-10 flex items-center justify-center">
                                 <i data-lucide="flame" class="text-white"></i>
                             </div>
-                            <p class="text-[20px] md:text-[28px] font-medium tracking-tight">“Rediseñamos la identidad de HM Burguers para transmitir una esencia urbana y audaz.”</p>
+                            <p class="text-[20px] md:text-[28px] font-medium tracking-tight">“Rediseñamos la identidad
+                                de HM Burguers para transmitir una esencia urbana y audaz.”</p>
                         </div>
                         <div class="flex justify-between items-end">
                             <div class="flex items-center gap-3">
@@ -480,14 +543,21 @@
         </div>
 
         <div class="w-full max-w-[940px] flex items-center justify-between mt-12 px-6">
-            <div class="flex gap-8 overflow-x-auto no-scrollbar">
-                <span class="nav-label active text-xs font-bold uppercase tracking-widest cursor-pointer text-white" onclick="goToSlide(0)">HM Burguers</span>
-                <span class="nav-label text-zinc-600 text-xs font-bold uppercase tracking-widest cursor-pointer hover:text-white transition" onclick="goToSlide(1)">Klyn App</span>
-                <span class="nav-label text-zinc-600 text-xs font-bold uppercase tracking-widest cursor-pointer hover:text-white transition" onclick="goToSlide(2)">Estrategia</span>
+            <div class="flex gap-4 md:gap-8 overflow-x-auto no-scrollbar">
+                <span class="nav-label active text-[10px] md:text-xs font-bold uppercase tracking-widest cursor-pointer text-white"
+                    onclick="goToSlide(0)">HM Burguers</span>
+                <span
+                    class="nav-label text-zinc-600 text-[10px] md:text-xs font-bold uppercase tracking-widest cursor-pointer hover:text-white transition"
+                    onclick="goToSlide(1)">Klyn App</span>
+                <span
+                    class="nav-label text-zinc-600 text-[10px] md:text-xs font-bold uppercase tracking-widest cursor-pointer hover:text-white transition"
+                    onclick="goToSlide(2)">Estrategia</span>
             </div>
-            <div class="flex gap-3">
-                <button class="p-3 border border-zinc-800 rounded-full hover:border-white transition" onclick="prevSlide()"><i data-lucide="chevron-left" size="18"></i></button>
-                <button class="p-3 border border-zinc-800 rounded-full hover:border-white transition" onclick="nextSlide()"><i data-lucide="chevron-right" size="18"></i></button>
+            <div class="flex gap-2 carousel-controls">
+                <button class="p-2 md:p-3 border border-zinc-800 rounded-full hover:border-white transition"
+                    onclick="prevSlide()"><i data-lucide="chevron-left" class="w-4 h-4 md:w-[18px] md:h-[18px]"></i></button>
+                <button class="p-2 md:p-3 border border-zinc-800 rounded-full hover:border-white transition"
+                    onclick="nextSlide()"><i data-lucide="chevron-right" class="w-4 h-4 md:w-[18px] md:h-[18px]"></i></button>
             </div>
         </div>
     </section>
@@ -499,10 +569,18 @@
                     <div class="font-semibold tracking-tighter text-lg mb-6 text-white">Andrés Rosendo</div>
                     <div class="flex flex-col gap-6">
                         <div class="flex flex-wrap gap-5">
-                            <a href="https://www.facebook.com/andres.rosendo.9" target="_blank" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="facebook" size="20"></i></a>
-                            <a href="https://www.instagram.com/andresrosendom/" target="_blank" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="instagram" size="20"></i></a>
-                            <a href="https://www.threads.com/@andresrosendom" target="_blank" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="at-sign" size="20"></i></a>
-                            <a href="https://www.linkedin.com/in/andresrosendom/?originalSubdomain=ve" target="_blank" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="linkedin" size="20"></i></a>
+                            <a href="https://www.facebook.com/andres.rosendo.9" target="_blank"
+                                class="text-zinc-500 hover:text-white transition-all"><i data-lucide="facebook"
+                                    size="20"></i></a>
+                            <a href="https://www.instagram.com/andresrosendom/" target="_blank"
+                                class="text-zinc-500 hover:text-white transition-all"><i data-lucide="instagram"
+                                    size="20"></i></a>
+                            <a href="https://www.threads.com/@andresrosendom" target="_blank"
+                                class="text-zinc-500 hover:text-white transition-all"><i data-lucide="at-sign"
+                                    size="20"></i></a>
+                            <a href="https://www.linkedin.com/in/andresrosendom/?originalSubdomain=ve" target="_blank"
+                                class="text-zinc-500 hover:text-white transition-all"><i data-lucide="linkedin"
+                                    size="20"></i></a>
                         </div>
                         <div class="inline-flex items-center text-[11px] text-zinc-400 tracking-wider uppercase">
                             <span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-2 animate-pulse"></span>
@@ -524,8 +602,12 @@
                 </div>
                 <div class="flex flex-col gap-4">
                     <h4 class="text-white font-medium text-sm">Contacto</h4>
-                    <a href="mailto:rosendojoseandres@gmail.com" class="text-zinc-500 hover:text-white text-sm transition">Email</a>
-                    <a href="https://wa.me/584245692491" target="_blank" class="text-zinc-400 hover:text-white text-sm transition font-medium flex items-center">WhatsApp <span class="text-[9px] bg-white text-black px-1.5 py-0.5 rounded ml-2 font-bold uppercase">New</span></a>
+                    <a href="mailto:rosendojoseandres@gmail.com"
+                        class="text-zinc-500 hover:text-white text-sm transition">Email</a>
+                    <a href="https://wa.me/584245692491" target="_blank"
+                        class="text-zinc-400 hover:text-white text-sm transition font-medium flex items-center">WhatsApp
+                        <span
+                            class="text-[9px] bg-white text-black px-1.5 py-0.5 rounded ml-2 font-bold uppercase">New</span></a>
                 </div>
                 <div class="flex flex-col gap-4">
                     <h4 class="text-white font-medium text-sm">Legal</h4>
@@ -541,7 +623,6 @@
     </footer>
 
     <script>
-        /* === CONTENIDO LITERAL DE SCRIPT.JS === */
         lucide.createIcons();
 
         function toggleMenu() {
