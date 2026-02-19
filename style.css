@@ -1,64 +1,353 @@
 body {
+    font-family: 'Inter', sans-serif;
     background-color: #000;
     color: #fff;
-    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
     overflow-x: hidden;
+    width: 100%;
 }
 
 .text-gradient {
     background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.4) 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.ui-border { border: 1px solid rgba(255, 255, 255, 0.1); }
-
-/* Tabs Logic */
-.tab-item {
-    opacity: 0.3;
-    padding: 2rem 0;
-    transition: opacity 0.5s ease;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+.ui-border {
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.tab-item.active { opacity: 1; }
+/* --- Lógica de Tabs --- */
+.tab-item {
+    transition: all 1.2s cubic-bezier(0.2, 1, 0.3, 1);
+    opacity: 0.3;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border-top: none;
+    cursor: pointer;
+}
+
+.tab-item.active {
+    opacity: 1;
+}
+
+@media (max-width: 1024px) {
+    .tab-item {
+        opacity: 1 !important;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+}
 
 .tab-description {
     max-height: 0;
     overflow: hidden;
-    transition: all 0.5s ease;
+    transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
 }
 
-.tab-item.active .tab-description { max-height: 500px; }
+.tab-item.active .tab-description {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 1.5rem;
+}
 
-/* Sticky Visual (Estilo Framer) */
+#servicios {
+    padding-bottom: 50vh;
+}
+
+@media (max-width: 1024px) {
+    #servicios {
+        padding-bottom: 5rem;
+    }
+}
+
+.tab-item a i {
+    transition: transform 0.3s ease;
+}
+
+.tab-item a:hover i {
+    transform: translateX(4px);
+}
+
+/* Prevenir scroll horizontal accidental del sangrado */
+body {
+    overflow-x: hidden;
+}
+
 .sticky-visual {
     position: sticky;
-    top: 120px;
-    height: 560px;
-    background: #080808;
-    border-radius: 32px;
+    top: 7.5vh;
+    height: 85vh;
+    width: 100%;
+    background: #0d0d0d;
+    border-radius: 12px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.visual-content { display: none; width: 100%; height: 100%; }
-.visual-content.active { display: block; animation: fadeIn 0.8s ease; }
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+@media (min-width: 1024px) {
+    .sticky-visual {
+        min-width: 100%;
+    }
 }
 
-/* --- AJUSTES MÓVILES --- */
-@media (max-width: 768px) {
-    h1.text-gradient {
-        font-size: 3.2rem !important; /* Título grande en móvil */
-        line-height: 1.05;
-        letter-spacing: -0.04em;
+.visual-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+    filter: blur(10px);
+    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.visual-content.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+    pointer-events: auto;
+}
+
+/* --- Animación Carrusel Infinito --- */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.logos-slide {
+    display: flex;
+    width: max-content;
+    animation: scroll 40s linear infinite;
+}
+
+.logos-container {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.logo-item {
+    filter: grayscale(1) opacity(0.4);
+    transition: all 0.3s ease;
+}
+
+.logo-item:hover {
+    filter: grayscale(0) opacity(1);
+}
+
+#logo-container {
+    will-change: transform, opacity, filter;
+}
+
+.glow-effect {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+.bento-card {
+    background: #0a0a0a;
+    border: 1px solid #1a1a1a;
+    border-radius: 10px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Carrusel de Proyectos/Testimonios (Centrado) --- */
+.carousel-viewport {
+    display: flex;
+    gap: 32px;
+    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    width: max-content;
+    padding: 2rem 0;
+    will-change: transform;
+}
+
+.project-card {
+    width: 850px;
+    height: 480px;
+    background: #0a0a0a;
+    border: 1px solid #1a1a1a;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    overflow: hidden;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    opacity: 0.2;
+    transform: scale(0.9);
+    filter: blur(4px);
+}
+
+.project-card.active {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.visual-area {
+    background: #0d0d0d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid #1a1a1a;
+}
+
+.visual-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateY(40px) scale(0.94);
+    filter: blur(15px);
+    transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.visual-content.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+    pointer-events: auto;
+}
+
+/* ============================================
+   PRELOADER
+   ============================================ */
+#loader.loader-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loader-bar {
+    animation: loading 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes loading {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    50% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.tab-trigger {
+    will-change: transform, opacity;
+}
+
+.tab-trigger {
+    will-change: transform, opacity;
+}
+
+.tab-item {
+    padding: 2rem 0;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    opacity: 0.12;
+    cursor: pointer;
+    position: relative;
+}
+
+.tab-item.active {
+    opacity: 1;
+}
+
+.tab-description {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+}
+
+.tab-item.active .tab-description {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 1.5rem;
+}
+
+/* Responsive Fixes handled below */
+
+/* ============================================
+   RESPONSIVE FIXES
+   ============================================ */
+@media (max-width: 1024px) {
+    #servicios {
+        padding-bottom: 5rem;
+    }
+
+    .tab-item {
+        opacity: 1 !important;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .tab-description {
+        max-height: none !important;
+        opacity: 1 !important;
     }
 
     .mobile-visual-inline {
+        display: flex;
         height: 250px;
         background: #080808;
-        border-radius: 20px;
+        border-radius: 10px;
+        margin-top: 1.5rem;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        overflow: hidden;
+    }
+
+    /* --- Mobile Carousel Fixes --- */
+    .project-card {
+        width: calc(100vw - 48px);
+        height: auto;
+        grid-template-columns: 1fr;
+        transform: scale(0.95);
+        opacity: 0.15;
+    }
+
+    .project-card.active {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    .visual-area {
+        height: 200px;
+        border-left: none;
+        border-top: 1px solid #1a1a1a;
+    }
+
+    .nav-label {
+        font-size: 10px !important;
+        letter-spacing: 0.1em;
+    }
+
+    button[onclick*="Slide"] {
+        padding: 0.6rem !important;
+    }
+
+    button[onclick*="Slide"] i {
+        width: 16px !important;
+        height: 16px !important;
+    }
+}

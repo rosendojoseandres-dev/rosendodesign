@@ -1,23 +1,52 @@
 lucide.createIcons();
 
-// MENU MOVIL CORREGIDO
 function toggleMenu() {
     const menu = document.getElementById('mobile-menu');
     const icon = document.getElementById('menu-icon');
-    
-    if (menu.classList.contains('hidden')) {
-        menu.classList.remove('hidden');
-        menu.classList.add('flex');
-        icon.setAttribute('data-lucide', 'x');
-    } else {
-        menu.classList.add('hidden');
-        menu.classList.remove('flex');
-        icon.setAttribute('data-lucide', 'menu');
-    }
+    if (!menu || !icon) return;
+    const isOpen = menu.style.display === 'flex';
+    menu.style.display = isOpen ? 'none' : 'flex';
+    icon.setAttribute('data-lucide', isOpen ? 'menu' : 'x');
     lucide.createIcons();
 }
 
-// LOGO REVEAL ON SCROLL
+// ============================================
+//  CAROUSEL (PROYECTOS)
+// ============================================
+let currentSlide = 0;
+const totalSlides = 3;
+
+function updateCarousel() {
+    const viewport = document.getElementById('viewport');
+    const cards = document.querySelectorAll('.project-card');
+    const labels = document.querySelectorAll('.nav-label');
+
+    if (!viewport || !cards.length) return;
+
+    const gap = 32;
+    const cardWidth = cards[0].offsetWidth;
+    const containerWidth = document.body.clientWidth;
+
+    // Exact centering math
+    const offset = -(currentSlide * (cardWidth + gap)) + (containerWidth / 2) - (cardWidth / 2);
+
+    viewport.style.transform = `translateX(${offset}px)`;
+
+    cards.forEach((card, i) => card.classList.toggle('active', i === currentSlide));
+    labels.forEach((label, i) => {
+        label.classList.toggle('active', i === currentSlide);
+        label.classList.toggle('text-white', i === currentSlide);
+        label.classList.toggle('text-zinc-600', i !== currentSlide);
+    });
+}
+
+function nextSlide() { currentSlide = (currentSlide + 1) % totalSlides; updateCarousel(); }
+function prevSlide() { currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; updateCarousel(); }
+function goToSlide(index) { currentSlide = index; updateCarousel(); }
+
+// ============================================
+//  LOGO REVEAL (PARALLAX)
+// ============================================
 function updateLogoReveal() {
     const section = document.getElementById('logo-reveal-section');
     const container = document.getElementById('logo-container');
@@ -36,40 +65,63 @@ function updateLogoReveal() {
     container.style.transform = `scale(${0.4 + (progress * 0.75)})`;
     container.style.opacity = progress * 1.8;
     container.style.filter = `blur(${20 - (progress * 20)}px)`;
-    glow.style.opacity = progress;
-    glow.style.transform = `scale(${0.5 + progress})`;
+    if (glow) {
+        glow.style.opacity = progress;
+        glow.style.transform = `scale(${0.5 + progress})`;
+    }
 
-    let textProgress = Math.max(0, (progress - 0.25) / 0.75);
-    aboutText.style.opacity = textProgress;
-    aboutText.style.transform = `translateY(${30 - (textProgress * 30)}px)`;
+    if (aboutText) {
+        let textProgress = Math.max(0, (progress - 0.25) / 0.75);
+        aboutText.style.opacity = textProgress;
+        aboutText.style.transform = `translateY(${30 - (textProgress * 30)}px)`;
+    }
 }
 
-// PRELOADER & SCROLL
-window.addEventListener('load', () => {
-    const loader = document.getElementById('loader');
-    if (loader) {
-        setTimeout(() => loader.classList.add('loader-hidden'), 1200);
-    }
-    updateLogoReveal();
-});
-
-window.addEventListener('scroll', () => {
-    requestAnimationFrame(updateLogoReveal);
-});
-
-// OBSERVER PARA TABS (ESCRITORIO)
-const observer = new IntersectionObserver((entries) => {
+// ============================================
+//  SERVICES (TABS + OBSERVER)
+// ============================================
+const observerOptions = { root: null, threshold: 0.6 };
+const observerCallback = (entries) => {
     if (window.innerWidth > 1024) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const id = entry.target.getAttribute('data-tab');
-                document.querySelectorAll('.tab-item').forEach(i => i.classList.remove('active'));
+                const tabId = entry.target.getAttribute('data-tab');
+                document.querySelectorAll('.tab-trigger').forEach(t => t.classList.remove('active'));
                 entry.target.classList.add('active');
+
                 document.querySelectorAll('.visual-content').forEach(v => v.classList.remove('active'));
-                document.getElementById(id).classList.add('active');
+                const visual = document.getElementById(tabId);
+                if (visual) visual.classList.add('active');
             }
         });
     }
-}, { threshold: 0.6 });
+};
 
-document.querySelectorAll('.tab-trigger').forEach(t => observer.observe(t));
+const servicesObserver = new IntersectionObserver(observerCallback, observerOptions);
+document.querySelectorAll('.tab-trigger').forEach(trigger => servicesObserver.observe(trigger));
+
+// ============================================
+//  LOAD & SCROLL HANDLERS
+// ============================================
+window.addEventListener('load', () => {
+    updateCarousel();
+    updateLogoReveal();
+
+    // Hide Preloader
+    const loader = document.getElementById('loader');
+    if (loader) {
+        setTimeout(() => {
+            loader.classList.add('loader-hidden');
+        }, 1200); // Slight delay for branding impact
+    }
+});
+
+window.addEventListener('scroll', () => {
+    requestAnimationFrame(() => {
+        updateLogoReveal();
+    });
+}, { passive: true });
+
+window.addEventListener('resize', () => {
+    updateCarousel();
+});
