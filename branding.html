@@ -31,6 +31,30 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
+        .image-container {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #080808;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-cover: cover;
+            opacity: 0.6;
+            transition: opacity 0.5s ease;
+        }
+
+        .image-container:hover img {
+            opacity: 1;
+        }
+
         nav {
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
@@ -77,15 +101,19 @@
                 <h2 class="text-4xl font-bold tracking-tight sticky top-32">El Proceso Estratégico</h2>
             </div>
             <div class="md:col-span-8 space-y-40">
+                
                 <div>
                     <div class="flex items-center gap-4 mb-8">
                         <span class="text-white font-mono text-sm tracking-tighter">/ 01</span>
                         <div class="h-[1px] w-12 bg-zinc-800"></div>
                     </div>
                     <h3 class="text-4xl font-bold mb-6 italic">Auditoría & Discovery</h3>
-                    <p class="text-zinc-500 text-xl leading-relaxed max-w-xl">
+                    <p class="text-zinc-500 text-xl leading-relaxed max-w-xl mb-10">
                         Analizamos tu mercado, competencia y valores para encontrar ese ángulo único que hará que tu marca destaque. Soy un apasionado por resolver problemas a través del diseño.
                     </p>
+                    <div class="image-container">
+                        <img src="assets/branding.jpg" alt="Discovery Process">
+                    </div>
                 </div>
 
                 <div>
@@ -94,9 +122,12 @@
                         <div class="h-[1px] w-12 bg-zinc-800"></div>
                     </div>
                     <h3 class="text-4xl font-bold mb-6 italic">Concepto Visual</h3>
-                    <p class="text-zinc-500 text-xl leading-relaxed max-w-xl">
+                    <p class="text-zinc-500 text-xl leading-relaxed max-w-xl mb-10">
                         Traducción de la estrategia en elementos visuales: paleta de color, tipografía y estilo gráfico. Creo fielmente que la estética sin estrategia es solo decoración.
                     </p>
+                    <div class="image-container">
+                        <img src="assets/branding.jpg" alt="Visual Concept">
+                    </div>
                 </div>
 
                 <div>
@@ -105,10 +136,14 @@
                         <div class="h-[1px] w-12 bg-zinc-800"></div>
                     </div>
                     <h3 class="text-4xl font-bold mb-6 italic">Sistema de Marca</h3>
-                    <p class="text-zinc-500 text-xl leading-relaxed max-w-xl">
+                    <p class="text-zinc-500 text-xl leading-relaxed max-w-xl mb-10">
                         Construcción integral de todas las piezas: desde el identificador principal hasta el manual de uso y aplicaciones digitales, asegurando que el branding y el UX/UI converjan.
                     </p>
+                    <div class="image-container">
+                        <img src="assets/branding.jpg" alt="Brand System">
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
