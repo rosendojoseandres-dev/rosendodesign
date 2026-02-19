@@ -43,18 +43,16 @@
                     <a href="https://wa.me/584245692491" target="_blank"
                         class="bg-white text-black px-5 py-2 rounded-full font-bold text-sm transition hover:bg-zinc-200">Contacto</a>
                 </div>
-                <button class="md:hidden text-white" onclick="toggleMenu()">
-                    <i data-lucide="menu" id="menu-icon"></i>
-                </button>
-            </div>
-        </div>
-        <div id="mobile-menu"
-            class="hidden absolute top-20 left-6 right-6 bg-black/95 border border-zinc-800 backdrop-blur-2xl rounded-[2rem] p-6 flex-col space-y-4 text-center shadow-2xl md:hidden">
-            <a href="#servicios" class="text-lg font-medium py-2" onclick="toggleMenu()">Servicios</a>
-            <a href="#proyectos" class="text-lg font-medium py-2" onclick="toggleMenu()">Proyectos</a>
-            <a href="https://wa.me/584245692491" target="_blank"
-                class="bg-white text-black py-3 rounded-full font-bold">Contacto</a>
-        </div>
+                <button class="md:hidden text-white p-2" onclick="toggleMenu()">
+    <i data-lucide="menu" id="menu-icon"></i>
+</button>
+
+<div id="mobile-menu" class="hidden absolute top-20 left-6 right-6 bg-zinc-900/95 border border-white/10 backdrop-blur-2xl rounded-[2.5rem] p-8 flex-col space-y-6 text-center shadow-2xl md:hidden">
+    <a href="#servicios" class="text-2xl font-semibold text-white" onclick="toggleMenu()">Servicios</a>
+    <a href="#proyectos" class="text-2xl font-semibold text-white" onclick="toggleMenu()">Proyectos</a>
+    <div class="h-[1px] bg-white/10 w-full my-2"></div>
+    <a href="https://wa.me/584245692491" target="_blank" class="bg-white text-black py-4 rounded-full font-extrabold text-xl shadow-lg">Contacto</a>
+</div>
     </nav>
 
     <header class="pt-48 pb-10 px-6 text-center max-w-5xl mx-auto">
@@ -66,7 +64,7 @@
             </span>
         </div>
         <h1
-            class="text-6xl md:text-8xl font-extrabold tracking-tighter text-gradient leading-[1.05] mb-8 text-center mx-auto">
+            class="text-5xl md:text-8xl font-extrabold tracking-tighter text-gradient leading-[1.05] mb-8 text-center mx-auto">
             Diseñador Gráfico Especialista UX/UI
         </h1>
         <p class="text-zinc-500 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-center mb-16">
@@ -379,3 +377,4 @@
 
 
 </html>
+
