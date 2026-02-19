@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacidad - Andrés Rosendo</title>
+    <link rel="icon" type="image/svg+xml" href="assets/FAVICON.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #000; color: #fff; scroll-behavior: smooth; overflow-x: hidden; }
+        .ui-border { border: 1px solid rgba(255, 255, 255, 0.08); }
+        nav { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .text-gradient { background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.4) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+
+<body class="antialiased">
+    <nav class="fixed top-6 left-0 right-0 z-[100]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="ui-border bg-black/60 rounded-full px-6 py-3 flex justify-between items-center">
+                <a href="index.html" class="flex items-center gap-3">
+                    <img src="assets/LOGO BLANCO.svg" alt="Logo" class="h-6 w-auto">
+                    <div class="flex items-center gap-3">
+                        <span class="w-[1px] h-4 bg-white/20 hidden md:block"></span>
+                        <span class="font-medium text-sm text-white">Andrés Rosendo</span>
+                    </div>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#servicios" class="text-zinc-400 hover:text-white transition text-sm">Servicios</a>
+                    <a href="index.html#proyectos" class="text-zinc-400 hover:text-white transition text-sm">Proyectos</a>
+                    <a href="https://wa.me/584245692491" target="_blank" class="bg-white text-black px-5 py-2 rounded-full font-bold text-sm hover:bg-zinc-200 transition">Contacto</a>
+                </div>
+                <button class="md:hidden text-white" onclick="toggleMenu()">
+                    <i data-lucide="menu" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden absolute top-20 left-6 right-6 bg-black/95 border border-zinc-800 backdrop-blur-2xl rounded-[2rem] p-6 flex-col space-y-4 text-center md:hidden">
+            <a href="index.html#servicios" class="text-lg font-medium py-2" onclick="toggleMenu()">Servicios</a>
+            <a href="index.html#proyectos" class="text-lg font-medium py-2" onclick="toggleMenu()">Proyectos</a>
+            <a href="https://wa.me/584245692491" target="_blank" class="bg-white text-black py-3 rounded-full font-bold">Contacto</a>
+        </div>
+    </nav>
+
+    <main class="pt-48 pb-32 px-6 max-w-4xl mx-auto min-h-screen">
+        <span class="text-zinc-500 uppercase tracking-[0.3em] text-[10px] font-bold mb-8 block">Legal & Transparencia</span>
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter text-gradient mb-16">Política de Privacidad.</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+            <div class="md:col-span-4">
+                <p class="text-zinc-500 text-sm font-mono italic">Última actualización: 2026</p>
+            </div>
+            <div class="md:col-span-8 space-y-12">
+                <section>
+                    <h2 class="text-white text-xl font-bold mb-4">1. Recopilación de Datos</h2>
+                    <p class="text-zinc-400 leading-relaxed">Este sitio web funciona principalmente como un portafolio informativo. Los únicos datos personales que se procesan son aquellos que usted decide enviar voluntariamente a través de los canales directos de contacto como <strong>WhatsApp</strong> o <strong>Correo Electrónico</strong>.</p>
+                </section>
+
+                <section>
+                    <h2 class="text-white text-xl font-bold mb-4">2. Uso de la Información</h2>
+                    <p class="text-zinc-400 leading-relaxed">Cualquier información compartida (nombre, detalles del proyecto, archivos) será utilizada estrictamente para la gestión profesional de su solicitud, elaboración de presupuestos y ejecución de servicios de diseño.</p>
+                </section>
+
+                <section>
+                    <h2 class="text-white text-xl font-bold mb-4">3. Terceros</h2>
+                    <p class="text-zinc-400 leading-relaxed">No vendo, alquilo ni distribuyo sus datos personales a ninguna entidad externa. Su privacidad y la confidencialidad de sus ideas de negocio son prioridad.</p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="pt-24 pb-12 border-t border-zinc-900 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12 mb-20">
+                <div class="col-span-2 lg:col-span-2">
+                    <div class="font-semibold tracking-tighter text-lg mb-6 text-white">Andrés Rosendo</div>
+                    <div class="flex flex-col gap-6">
+                        <div class="flex flex-wrap gap-5">
+                            <a href="https://www.facebook.com/andres.rosendo.9" target="_blank" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="facebook" size="20"></i></a>
+                            <a href="https://www.instagram.com/andresrosendom/" target="_blank" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="instagram" size="20"></i></a>
+                            <a href="https://www.threads.com/@andresrosendom" target="_blank" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="at-sign" size="20"></i></a>
+                            <a href="https://www.linkedin.com/in/andresrosendom/?originalSubdomain=ve" target="_blank" class="text-zinc-500 hover:text-white transition-all"><i data-lucide="linkedin" size="20"></i></a>
+                        </div>
+                        <div class="inline-flex items-center text-[11px] text-zinc-400 tracking-wider uppercase">
+                            <span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+                            Hablemos de tu proyecto
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    <h4 class="text-white font-medium text-sm">Navegación</h4>
+                    <a href="index.html" class="text-zinc-500 hover:text-white text-sm transition">Inicio</a>
+                    <a href="index.html#servicios" class="text-zinc-500 hover:text-white text-sm transition">Servicios</a>
+                    <a href="index.html#proyectos" class="text-zinc-500 hover:text-white text-sm transition">Proyectos</a>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    <h4 class="text-white font-medium text-sm">Servicios</h4>
+                    <a href="branding.html" class="text-zinc-500 hover:text-white text-sm transition">Branding</a>
+                    <a href="ux-ui.html" class="text-zinc-500 hover:text-white text-sm transition">Diseño UX/UI</a>
+                    <a href="estrategia.html" class="text-zinc-500 hover:text-white text-sm transition">Estrategia</a>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    <h4 class="text-white font-medium text-sm">Contacto</h4>
+                    <a href="mailto:rosendojoseandres@gmail.com" class="text-zinc-500 hover:text-white text-sm transition">Email</a>
+                    <a href="https://wa.me/584245692491" target="_blank" class="text-zinc-400 hover:text-white text-sm transition font-medium flex items-center">WhatsApp <span class="text-[9px] bg-white text-black px-1.5 py-0.5 rounded ml-2 font-bold uppercase">New</span></a>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    <h4 class="text-white font-medium text-sm">Legal</h4>
+                    <a href="privacidad.html" class="text-zinc-500 hover:text-white text-sm transition font-bold">Privacidad</a>
+                    <a href="cookies.html" class="text-zinc-500 hover:text-white text-sm transition">Cookies</a>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-zinc-600 text-[12px]">© Andrés Rosendo 2026.</div>
+                <div class="text-zinc-600 text-[12px]">Venezuela, Cabudare.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+            icon.setAttribute('data-lucide', menu.classList.contains('hidden') ? 'menu' : 'x');
+            lucide.createIcons();
+        }
+    </script>
+</body>
+
+</html>
