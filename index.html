@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andres Rosendo</title>
+    <title>Andres Rosendo - Portfolio</title>
     <link rel="icon" type="image/svg+xml" href="assets/FAVICON.svg">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -11,7 +11,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        /* CSS INTEGRADO (style.css) */
+        /* === RESET & BASE === */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #000;
@@ -28,173 +28,129 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .ui-border {
+        .ui-border { border: 1px solid rgba(255, 255, 255, 0.08); }
+
+        /* === NAVEGACIÓN Y MENÚ MÓVIL (CORREGIDO) === */
+        #mobile-menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 85px; /* Más separado de la barra */
+            left: 0; right: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 28px;
+            padding: 24px;
+            margin: 0 24px;
+            z-index: 100;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        #mobile-menu.active { display: flex; }
+
+        /* === LOGO REVEAL (CORREGIDO) === */
+        /* Animación suave para el scroll del logo */
+        #logo-container {
+            transition: transform 0.2s ease-out, opacity 0.2s ease-out, filter 0.2s ease-out;
+            will-change: transform, opacity;
         }
 
-        /* Lógica de Tabs / Servicios */
+        /* === SERVICIOS (ANIMACIÓN RESTAURADA) === */
         .tab-item {
             transition: all 1.2s cubic-bezier(0.2, 1, 0.3, 1);
-            opacity: 0.12;
+            opacity: 0.3;
             padding-top: 2rem;
             padding-bottom: 2rem;
             cursor: pointer;
-            position: relative;
         }
-
         .tab-item.active { opacity: 1; }
 
         .tab-description {
             max-height: 0;
             overflow: hidden;
-            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
             opacity: 0;
         }
-
         .tab-item.active .tab-description {
-            max-height: 500px;
+            max-height: 200px;
             opacity: 1;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
         }
 
         .sticky-visual {
             position: sticky;
-            top: 7.5vh;
-            height: 85vh;
-            width: 100%;
-            background: #0d0d0d;
-            border-radius: 12px;
+            top: 10vh;
+            height: 80vh;
+            border-radius: 24px;
             overflow: hidden;
+            background: #050505;
         }
-
         .visual-content {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             opacity: 0;
-            transform: translateY(40px) scale(0.94);
-            filter: blur(15px);
-            transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
-            pointer-events: none;
+            transform: scale(0.9) translateY(20px);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             align-items: center;
             justify-content: center;
         }
-
         .visual-content.active {
             opacity: 1;
-            transform: translateY(0) scale(1);
-            filter: blur(0px);
-            pointer-events: auto;
+            transform: scale(1) translateY(0);
         }
 
-        /* Carrusel Infinito (Logos) */
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .logos-slide {
-            display: flex;
-            width: max-content;
-            animation: scroll 40s linear infinite;
-        }
-
-        .logos-container {
-            overflow: hidden;
-            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-        }
-
-        /* Carrusel de Proyectos */
+        /* === CARRUSEL DE PROYECTOS (RESTAURADO) === */
         .carousel-viewport {
             display: flex;
             gap: 32px;
             transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
             width: max-content;
-            padding: 2rem 0;
+            padding: 4rem 0;
             will-change: transform;
         }
-
         .project-card {
             width: 850px;
-            height: 480px;
+            height: 500px;
             background: #0a0a0a;
             border: 1px solid #1a1a1a;
-            border-radius: 10px;
+            border-radius: 20px;
             display: grid;
-            grid-template-columns: 1.2fr 1fr;
+            grid-template-columns: 1fr 1.2fr;
             overflow: hidden;
             transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
             opacity: 0.2;
             transform: scale(0.9);
             filter: blur(4px);
         }
-
         .project-card.active {
             opacity: 1;
             transform: scale(1);
             filter: blur(0);
-            border-color: rgba(255, 255, 255, 0.12);
         }
 
-        /* Menú Móvil Mejorado */
-        #mobile-menu {
-            display: none;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-        }
-
-        #mobile-menu.active {
-            display: flex;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Preloader */
+        /* === PRELOADER === */
         #loader.loader-hidden { opacity: 0; pointer-events: none; }
-        .loader-bar { animation: loading 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite; }
-        @keyframes loading {
-            0% { transform: translateX(-100%); }
-            50% { transform: translateX(0); }
-            100% { transform: translateX(100%); }
-        }
+        .loader-bar { animation: loading 1.8s infinite; }
+        @keyframes loading { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
 
-        /* Logo Reveal Parallax */
-        .glow-effect { background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0) 70%); }
-
-        /* Ajustes Responsivos */
         @media (max-width: 1024px) {
-            h1 {
-                font-size: 38px !important;
-                line-height: 1.1 !important;
-                max-width: 320px !important;
-            }
             .project-card {
                 width: calc(100vw - 48px);
-                height: auto;
                 grid-template-columns: 1fr;
-                transform: scale(0.95);
-                opacity: 0.15;
+                height: auto;
             }
-            .project-card.active { opacity: 1; transform: scale(1); }
-            .visual-area { height: 200px; border-top: 1px solid #1a1a1a; }
-            .tab-item { opacity: 1 !important; }
-            .tab-description { max-height: none !important; opacity: 1 !important; }
+            .sticky-visual { display: none; }
         }
     </style>
 </head>
-
 <body class="antialiased">
 
     <div id="loader" class="fixed inset-0 z-[1000] bg-black flex items-center justify-center transition-opacity duration-700">
         <div class="loader-content flex flex-col items-center gap-6">
-            <img src="assets/LOGO BLANCO.svg" alt="Logo" class="h-12 md:h-16 w-auto animate-pulse">
+            <img src="assets/LOGO BLANCO.svg" alt="Logo" class="h-12 w-auto animate-pulse">
             <div class="h-[1px] w-24 bg-white/10 relative overflow-hidden">
-                <div class="loader-bar absolute top-0 left-0 h-full bg-white w-full -translate-x-full"></div>
+                <div class="loader-bar absolute top-0 left-0 h-full bg-white w-full"></div>
             </div>
         </div>
     </div>
@@ -202,218 +158,237 @@
     <nav class="fixed top-6 left-0 right-0 z-[100]">
         <div class="max-w-7xl mx-auto px-6">
             <div class="ui-border bg-black/60 backdrop-blur-xl rounded-full px-6 py-3 flex justify-between items-center relative">
-                <a href="#" class="flex items-center gap-3 group">
-                    <img src="assets/LOGO BLANCO.svg" alt="Logo" class="h-6 md:h-7 w-auto object-contain">
-                    <div class="flex items-center gap-3">
-                        <span class="w-[1px] h-4 bg-white/20 hidden md:block"></span>
-                        <span class="font-medium tracking-tight text-sm md:text-base text-white">Hola soy, Andrés Rosendo!</span>
-                    </div>
+                <a href="#" class="flex items-center gap-3">
+                    <img src="assets/LOGO BLANCO.svg" alt="Logo" class="h-6 w-auto">
+                    <span class="font-medium text-sm text-white">Andrés Rosendo</span>
                 </a>
-                <div class="hidden md:flex items-center space-x-6">
+                
+                <div class="hidden md:flex items-center space-x-8">
                     <a href="#servicios" class="text-zinc-400 hover:text-white transition text-sm">Servicios</a>
                     <a href="#proyectos" class="text-zinc-400 hover:text-white transition text-sm">Proyectos</a>
-                    <a href="https://wa.me/584245692491" target="_blank" class="bg-white text-black px-5 py-2 rounded-full font-bold text-sm transition hover:bg-zinc-200">Contacto</a>
+                    <a href="https://wa.me/584245692491" target="_blank" class="bg-white text-black px-5 py-2 rounded-full font-bold text-sm hover:bg-zinc-200 transition">Contacto</a>
                 </div>
-                <button class="md:hidden text-white p-2" onclick="toggleMenu()">
+
+                <button class="md:hidden text-white" onclick="toggleMenu()">
                     <i data-lucide="menu" id="menu-icon"></i>
                 </button>
 
-                <div id="mobile-menu" class="hidden absolute top-16 left-0 right-0 bg-black/80 backdrop-blur-2xl border border-white/10 rounded-[2rem] p-6 flex-col space-y-4 text-center shadow-2xl md:hidden mx-auto w-full">
-                    <a href="#servicios" class="text-lg font-medium text-white/90" onclick="toggleMenu()">Servicios</a>
-                    <a href="#proyectos" class="text-lg font-medium text-white/90" onclick="toggleMenu()">Proyectos</a>
-                    <a href="https://wa.me/584245692491" target="_blank" class="bg-white text-black py-2.5 rounded-full font-bold text-sm mx-auto w-full max-w-[150px]">Contacto</a>
+                <div id="mobile-menu">
+                    <a href="#servicios" class="py-4 text-center border-b border-white/5 text-zinc-400" onclick="toggleMenu()">Servicios</a>
+                    <a href="#proyectos" class="py-4 text-center border-b border-white/5 text-zinc-400" onclick="toggleMenu()">Proyectos</a>
+                    <a href="https://wa.me/584245692491" class="py-5 text-center font-bold text-white">WhatsApp</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <header class="pt-48 pb-10 px-6 text-center max-w-5xl mx-auto">
-        <div class="flex justify-center">
-            <span class="inline-flex items-center px-4 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/50 text-zinc-400 text-[10px] md:text-xs font-medium mb-8">
-                <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
-                Disponible para trabajar
-            </span>
-        </div>
-        <h1 class="text-4xl md:text-8xl font-extrabold tracking-tighter text-gradient leading-[1.05] mb-8 text-center mx-auto">
-            Diseñador Gráfico Especialista UX/UI
+    <header class="pt-48 pb-32 px-6 text-center max-w-5xl mx-auto">
+        <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter text-gradient mb-8 leading-[1.1]">
+            Diseñador Gráfico<br>Especialista UX/UI
         </h1>
-        <p class="text-zinc-500 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-center mb-16">
-            Especialista en la creación de ecosistemas digitales donde el <span class="text-zinc-400">Branding</span> y
-            el <span class="text-zinc-400">Diseño UX/UI</span> convergen para potenciar productos escalables.
+        <p class="text-zinc-500 text-lg md:text-xl max-w-2xl mx-auto">
+            Especialista en la creación de ecosistemas digitales donde el Branding y el Diseño UX/UI convergen para crear experiencias memorables.
         </p>
-
-        <div class="logos-container py-4">
-            <div class="logos-slide flex items-center gap-16 md:gap-28">
-                <span class="logo-item text-zinc-200 font-bold tracking-widest text-xl">Figma</span>
-                <span class="logo-item text-zinc-200 font-bold tracking-widest text-xl">Adobe XD</span>
-                <span class="logo-item text-zinc-200 font-bold tracking-widest text-xl">Creative Suite</span>
-                <span class="logo-item text-zinc-200 font-bold tracking-widest text-xl">Affinity</span>
-                <span class="logo-item text-zinc-200 font-bold tracking-widest text-xl">Canva</span>
-                <span class="logo-item text-zinc-200 font-bold tracking-widest text-xl">Figma</span>
-                <span class="logo-item text-zinc-200 font-bold tracking-widest text-xl">Adobe XD</span>
-                <span class="logo-item text-zinc-200 font-bold tracking-widest text-xl">Creative Suite</span>
-                <span class="logo-item text-zinc-200 font-bold tracking-widest text-xl">Affinity</span>
-                <span class="logo-item text-zinc-200 font-bold tracking-widest text-xl">Canva</span>
-            </div>
-        </div>
     </header>
 
-    <section class="relative h-[180vh] bg-black -mt-10" id="logo-reveal-section">
-        <div class="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden px-6">
-            <div id="logo-glow" class="glow-effect absolute w-[600px] h-[600px] rounded-full opacity-0 scale-50"></div>
-            <div id="logo-container" class="relative z-10 opacity-0 scale-[0.4] blur-xl mb-8">
-                <img src="assets/LOGO BLANCO.svg" alt="Andrés Rosendo Logo" class="w-32 md:w-56 h-auto">
+    <section class="relative h-[200vh] bg-black" id="logo-reveal-section">
+        <div class="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+            <div id="logo-container" class="opacity-0 scale-50 blur-md">
+                <img src="assets/LOGO BLANCO.svg" alt="Logo" class="w-32 md:w-48">
             </div>
-            <div id="about-text" class="relative z-10 max-w-2xl text-center opacity-0 translate-y-10">
-                <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-gradient">Más que píxeles, soluciones.</h2>
-                <p class="text-zinc-400 text-lg md:text-xl leading-relaxed">
-                    Soy un apasionado por resolver problemas a través del diseño.
-                </p>
+            <div id="about-text" class="mt-12 opacity-0 translate-y-10 text-center px-6">
+                <h2 class="text-3xl md:text-5xl font-bold text-gradient max-w-3xl">
+                    Más que píxeles, construyo soluciones visuales estratégicas.
+                </h2>
             </div>
         </div>
     </section>
 
-    <section id="servicios" class="max-w-7xl mx-auto px-6 py-20 overflow-visible">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            <div class="lg:col-span-4 py-10 lg:py-20">
+    <section id="servicios" class="max-w-7xl mx-auto px-6 py-32">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            <div class="lg:col-span-5 flex flex-col justify-center">
                 <div class="tab-trigger tab-item active" data-tab="branding">
-                    <h3 class="text-lg md:text-xl font-bold tracking-tight mb-2">Branding</h3>
-                    <div class="tab-description">
-                        <p class="text-zinc-400 text-sm md:text-base leading-relaxed mb-4">Construyo identidades visuales sólidas y memorables.</p>
-                        <div class="mobile-visual-inline lg:hidden mb-6"><img src="assets/branding.jpg" class="rounded-lg"></div>
+                    <h3 class="text-3xl font-bold mb-2">Visual Branding</h3>
+                    <div class="tab-description text-zinc-400 text-lg">
+                        Creamos identidades visuales que no solo se ven bien, sino que cuentan una historia y conectan emocionalmente con tu audiencia.
                     </div>
                 </div>
                 <div class="tab-trigger tab-item" data-tab="uxui">
-                    <h3 class="text-lg md:text-xl font-bold tracking-tight mb-2">Diseño UX/UI</h3>
-                    <div class="tab-description">
-                        <p class="text-zinc-400 text-sm md:text-base leading-relaxed mb-4">Interfaces centradas en el usuario.</p>
-                        <div class="mobile-visual-inline lg:hidden mb-6"><img src="assets/branding.jpg" class="rounded-lg"></div>
+                    <h3 class="text-3xl font-bold mb-2">Diseño UX/UI</h3>
+                    <div class="tab-description text-zinc-400 text-lg">
+                        Interfaces intuitivas y estéticas centradas en el usuario, optimizando la conversión y la facilidad de uso en cada clic.
+                    </div>
+                </div>
+                <div class="tab-trigger tab-item" data-tab="social">
+                    <h3 class="text-3xl font-bold mb-2">Estrategia Digital</h3>
+                    <div class="tab-description text-zinc-400 text-lg">
+                        Elevamos tu presencia en plataformas digitales mediante contenido visual de alto impacto y coherencia de marca.
                     </div>
                 </div>
             </div>
-            <div class="lg:col-span-8 sticky-visual hidden lg:flex">
-                <div id="branding" class="visual-content active"><img src="assets/branding.jpg" class="w-full h-full object-cover"></div>
-                <div id="uxui" class="visual-content"><img src="assets/branding.jpg" class="w-full h-full object-cover"></div>
+            <div class="lg:col-span-7 sticky-visual">
+                <div id="branding" class="visual-content active bg-zinc-900/50 border border-white/5 flex flex-col p-12">
+                    <span class="text-xs uppercase tracking-widest text-zinc-500 mb-4">Focus 01</span>
+                    <h4 class="text-4xl font-bold">Identidad<br>Corporativa</h4>
+                </div>
+                <div id="uxui" class="visual-content bg-zinc-900/50 border border-white/5 flex flex-col p-12">
+                    <span class="text-xs uppercase tracking-widest text-zinc-500 mb-4">Focus 02</span>
+                    <h4 class="text-4xl font-bold">Prototipado<br>de Alta Fidelidad</h4>
+                </div>
+                <div id="social" class="visual-content bg-zinc-900/50 border border-white/5 flex flex-col p-12">
+                    <span class="text-xs uppercase tracking-widest text-zinc-500 mb-4">Focus 03</span>
+                    <h4 class="text-4xl font-bold">Engagement<br>Visual</h4>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="proyectos" class="py-32 flex flex-col items-center overflow-hidden">
+    <section id="proyectos" class="py-32 overflow-hidden flex flex-col items-center">
+        <h2 class="text-4xl font-bold mb-20">Proyectos Destacados</h2>
         <div class="carousel-viewport" id="viewport">
-            <div class="project-card active" id="card-0">
-                <div class="p-8 md:p-14 flex flex-col justify-between">
-                    <p class="text-[20px] md:text-[28px] font-medium tracking-tight">“Rediseñamos HM Burguers.”</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs">HM</div>
-                        <p class="text-[13px] font-semibold">Andrés Rosendo</p>
+            <div class="project-card active">
+                <div class="p-12 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-bold text-zinc-500 uppercase tracking-widest">Branding</span>
+                        <h4 class="text-4xl font-bold mt-4">HM Burguers</h4>
                     </div>
+                    <p class="text-zinc-400">Rediseño integral de identidad visual y estrategia de redes sociales.</p>
                 </div>
-                <div class="visual-area">Visual HM</div>
+                <div class="bg-zinc-900 flex items-center justify-center text-zinc-800 font-bold">IMAGEN_01</div>
             </div>
-            <div class="project-card" id="card-1">
-                <div class="p-8 md:p-14 flex flex-col justify-between">
-                    <p class="text-[20px] md:text-[28px] font-medium tracking-tight">“Klyn App: Minimalismo.”</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs">KL</div>
-                        <p class="text-[13px] font-semibold">UX Design</p>
+            <div class="project-card">
+                <div class="p-12 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-bold text-zinc-500 uppercase tracking-widest">App Design</span>
+                        <h4 class="text-4xl font-bold mt-4">Klyn App</h4>
                     </div>
+                    <p class="text-zinc-400">Interfaz de usuario para plataforma de servicios de limpieza on-demand.</p>
                 </div>
-                <div class="visual-area">Visual KLYN</div>
+                <div class="bg-zinc-900 flex items-center justify-center text-zinc-800 font-bold">IMAGEN_02</div>
             </div>
         </div>
         
-        <div class="flex gap-4 mt-12">
-            <button class="p-4 border border-zinc-800 rounded-full hover:border-white transition" onclick="prevSlide()"><i data-lucide="chevron-left"></i></button>
-            <button class="p-4 border border-zinc-800 rounded-full hover:border-white transition" onclick="nextSlide()"><i data-lucide="chevron-right"></i></button>
+        <div class="flex gap-6 mt-16">
+            <button onclick="prevSlide()" class="p-5 border border-zinc-800 rounded-full hover:border-white hover:bg-white hover:text-black transition-all">
+                <i data-lucide="arrow-left"></i>
+            </button>
+            <button onclick="nextSlide()" class="p-5 border border-zinc-800 rounded-full hover:border-white hover:bg-white hover:text-black transition-all">
+                <i data-lucide="arrow-right"></i>
+            </button>
         </div>
     </section>
 
+    <footer class="border-t border-zinc-900 pt-32 pb-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
+                <div class="col-span-1 md:col-span-2">
+                    <img src="assets/LOGO BLANCO.svg" alt="Logo" class="h-8 mb-6">
+                    <p class="text-zinc-500 max-w-sm text-lg">Construyendo el futuro visual de marcas innovadoras.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6">Navegación</h4>
+                    <ul class="space-y-4 text-zinc-500">
+                        <li><a href="#servicios" class="hover:text-white transition">Servicios</a></li>
+                        <li><a href="#proyectos" class="hover:text-white transition">Proyectos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6">Contacto</h4>
+                    <ul class="space-y-4 text-zinc-500">
+                        <li><a href="mailto:rosendojoseandres@gmail.com" class="hover:text-white transition">Email</a></li>
+                        <li><a href="https://wa.me/584245692491" class="hover:text-white transition">WhatsApp</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 text-zinc-600 text-sm">
+                <p>© 2026 Andrés Rosendo. Todos los derechos reservados.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition">Instagram</a>
+                    <a href="#" class="hover:text-white transition">Behance</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        /* JS INTEGRADO (script.js) */
         lucide.createIcons();
 
+        // MENÚ MÓVIL
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
             const icon = document.getElementById('menu-icon');
-            if (!menu || !icon) return;
             menu.classList.toggle('active');
             const isOpen = menu.classList.contains('active');
             icon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
             lucide.createIcons();
         }
 
-        // CAROUSEL
-        let currentSlide = 0;
-        const totalSlides = 2;
+        // LOGO REVEAL (CORREGIDO - ANIMACIÓN LARGA Y SUAVE)
+        window.addEventListener('scroll', () => {
+            const section = document.getElementById('logo-reveal-section');
+            const container = document.getElementById('logo-container');
+            const text = document.getElementById('about-text');
+            
+            const rect = section.getBoundingClientRect();
+            const sectionHeight = section.offsetHeight;
+            
+            // Calculamos el progreso basado en el recorrido de la sección
+            let progress = -rect.top / (sectionHeight - window.innerHeight);
+            progress = Math.max(0, Math.min(1, progress));
 
+            // Aplicamos transformaciones
+            container.style.opacity = progress;
+            container.style.transform = `scale(${0.4 + (progress * 0.6)})`;
+            container.style.filter = `blur(${(1 - progress) * 15}px)`;
+            
+            text.style.opacity = progress > 0.5 ? (progress - 0.5) * 2 : 0;
+            text.style.transform = `translateY(${(1 - progress) * 30}px)`;
+        });
+
+        // CARRUSEL (RESTAURADO)
+        let currentSlide = 0;
+        const cards = document.querySelectorAll('.project-card');
+        
         function updateCarousel() {
             const viewport = document.getElementById('viewport');
-            const cards = document.querySelectorAll('.project-card');
-            if (!viewport || !cards.length) return;
-
             const cardWidth = cards[0].offsetWidth;
-            const offset = -(currentSlide * (cardWidth + 32)) + (window.innerWidth / 2) - (cardWidth / 2);
-            viewport.style.transform = `translateX(${offset}px)`;
+            const gap = 32;
+            const centerOffset = (window.innerWidth / 2) - (cardWidth / 2);
+            const scrollAmount = -(currentSlide * (cardWidth + gap)) + centerOffset;
+            
+            viewport.style.transform = `translateX(${scrollAmount}px)`;
             cards.forEach((card, i) => card.classList.toggle('active', i === currentSlide));
         }
 
-        function nextSlide() { currentSlide = (currentSlide + 1) % totalSlides; updateCarousel(); }
-        function prevSlide() { currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; updateCarousel(); }
+        function nextSlide() { currentSlide = (currentSlide + 1) % cards.length; updateCarousel(); }
+        function prevSlide() { currentSlide = (currentSlide - 1 + cards.length) % cards.length; updateCarousel(); }
 
-        // LOGO REVEAL (PARALLAX)
-        function updateLogoReveal() {
-            const section = document.getElementById('logo-reveal-section');
-            const container = document.getElementById('logo-container');
-            const glow = document.getElementById('logo-glow');
-            const text = document.getElementById('about-text');
-            if (!section || !container) return;
+        // OBSERVER SERVICIOS (ANIMACIÓN RESTAURADA)
+        const observerOptions = { threshold: 0.6 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && window.innerWidth > 1024) {
+                    const tabId = entry.target.getAttribute('data-tab');
+                    document.querySelectorAll('.tab-trigger').forEach(t => t.classList.remove('active'));
+                    entry.target.classList.add('active');
+                    
+                    document.querySelectorAll('.visual-content').forEach(v => v.classList.remove('active'));
+                    document.getElementById(tabId).classList.add('active');
+                }
+            });
+        }, observerOptions);
 
-            const rect = section.getBoundingClientRect();
-            let progress = -rect.top / (section.offsetHeight - window.innerHeight);
-            progress = Math.max(0, Math.min(1, progress));
+        document.querySelectorAll('.tab-trigger').forEach(t => observer.observe(t));
 
-            container.style.transform = `scale(${0.4 + (progress * 0.75)})`;
-            container.style.opacity = progress * 1.8;
-            container.style.filter = `blur(${20 - (progress * 20)}px)`;
-            if (glow) glow.style.opacity = progress;
-            if (text) {
-                text.style.opacity = progress;
-                text.style.transform = `translateY(${30 - (progress * 30)}px)`;
-            }
-        }
-
-        // SERVICES OBSERVER
-        const servicesObserver = new IntersectionObserver((entries) => {
-            if (window.innerWidth > 1024) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const tabId = entry.target.getAttribute('data-tab');
-                        document.querySelectorAll('.tab-trigger').forEach(t => t.classList.remove('active'));
-                        entry.target.classList.add('active');
-                        document.querySelectorAll('.visual-content').forEach(v => v.classList.remove('active'));
-                        document.getElementById(tabId).classList.add('active');
-                    }
-                });
-            }
-        }, { threshold: 0.6 });
-
-        document.querySelectorAll('.tab-trigger').forEach(t => servicesObserver.observe(t));
-
-        // EVENTOS
+        // INICIALIZACIÓN
         window.addEventListener('load', () => {
             updateCarousel();
-            setTimeout(() => document.getElementById('loader').classList.add('loader-hidden'), 1200);
+            setTimeout(() => document.getElementById('loader').classList.add('loader-hidden'), 1000);
         });
-
-        window.addEventListener('scroll', () => {
-            requestAnimationFrame(updateLogoReveal);
-        }, { passive: true });
-
         window.addEventListener('resize', updateCarousel);
     </script>
 </body>
 </html>
-
 
 
 
