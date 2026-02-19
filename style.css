@@ -32,197 +32,206 @@ body {
     opacity: 1;
 }
 
-@media (max-width: 1024px) {
-    .tab-item {
-        opacity: 1 !important;
-        padding-top: 1.5rem;
-        padding-bottom: 1.5rem;
-    }
+/* --- Services Visuals --- */
+.sticky-visual {
+    position: sticky;
+    top: 150px;
+    height: 500px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #080808;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.visual-content {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.visual-content.active {
+    opacity: 1;
 }
 
 .tab-description {
     max-height: 0;
     overflow: hidden;
-    transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
+    transition: all 0.6s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 .tab-item.active .tab-description {
-    max-height: 500px;
+    max-height: 200px;
     opacity: 1;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
 }
 
-#servicios {
-    padding-bottom: 50vh;
-}
-
-@media (max-width: 1024px) {
-    #servicios {
-        padding-bottom: 5rem;
-    }
-}
-
-.tab-item a i {
-    transition: transform 0.3s ease;
-}
-
-.tab-item a:hover i {
-    transform: translateX(4px);
-}
-
-.sticky-visual {
-    position: sticky;
-    top: 7.5vh;
-    height: 85vh;
-    width: 100%;
-    background: #0d0d0d;
-    border-radius: 12px;
-    overflow: hidden;
-}
-
-@media (min-width: 1024px) {
-    .sticky-visual {
-        min-width: 100%;
-    }
-}
-
-.visual-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transform: translateY(30px) scale(0.96);
-    filter: blur(10px);
-    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-    pointer-events: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.visual-content.active {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0px);
-    pointer-events: auto;
-}
-
-/* --- Animación Carrusel Infinito --- */
-@keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-
-.logos-slide {
-    display: flex;
-    width: max-content;
-    animation: scroll 40s linear infinite;
-}
-
-.logos-container {
-    overflow: hidden;
-    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-}
-
-.logo-item {
-    filter: grayscale(1) opacity(0.4);
-    transition: all 0.3s ease;
-}
-
-.logo-item:hover {
-    filter: grayscale(0) opacity(1);
-}
-
+/* --- Logo Parallax --- */
 .glow-effect {
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
 }
 
-/* --- Carrusel de Proyectos --- */
+/* --- Bento Grid --- */
+.bento-card {
+    border-radius: 32px;
+}
+
+/* --- Carousel --- */
 .carousel-viewport {
     display: flex;
     gap: 32px;
-    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-    width: max-content;
-    padding: 2rem 0;
+    transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
     will-change: transform;
+    padding: 0 50px;
 }
 
 .project-card {
-    width: 850px;
+    flex-shrink: 0;
+    width: 840px;
     height: 480px;
-    background: #0a0a0a;
-    border: 1px solid #1a1a1a;
-    border-radius: 10px;
+    background: #080808;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 40px;
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
+    grid-template-columns: 1.2fr 0.8fr;
     overflow: hidden;
-    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
     opacity: 0.2;
     transform: scale(0.9);
-    filter: blur(4px);
 }
 
 .project-card.active {
     opacity: 1;
     transform: scale(1);
-    filter: blur(0);
-    border-color: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.visual-area {
+    background: #0d0d0d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-label {
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.nav-label::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: white;
+    transition: width 0.4s ease;
+}
+
+.nav-label.active::after {
+    width: 100%;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
 }
 
 /* --- Preloader --- */
-#loader.loader-hidden {
+.loader-hidden {
     opacity: 0;
     pointer-events: none;
 }
 
 .loader-bar {
-    animation: loading 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    animation: load 1.5s ease-in-out infinite;
 }
 
-@keyframes loading {
+@keyframes load {
     0% { transform: translateX(-100%); }
     50% { transform: translateX(0); }
     100% { transform: translateX(100%); }
 }
 
-/* ============================================
-   ESTO ES LO NUEVO (ANEXADO SIN BORRAR NADA)
-   ============================================ */
+/* --- Logos Marquee --- */
+@keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
 
+.logos-container {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+.logos-slide {
+    display: inline-flex;
+    animation: scroll 30s linear infinite;
+}
+
+/* --- MENÚ MÓVIL ANIMACIÓN --- */
+#mobile-menu {
+    display: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.4s ease;
+}
+
+#mobile-menu.active {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================\
+   RESPONSIVE FIXES
+   ============================================ */
 @media (max-width: 1024px) {
+    #servicios {
+        padding-bottom: 5rem;
+    }
+
+    .tab-item {
+        opacity: 1 !important;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .tab-description {
+        max-height: none !important;
+        opacity: 1 !important;
+    }
+
+    .mobile-visual-inline {
+        display: flex;
+        height: 250px;
+        background: #080808;
+        border-radius: 10px;
+        margin-top: 1.5rem;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        overflow: hidden;
+    }
+
+    /* --- Mobile Carousel Fixes --- */
     .project-card {
         width: calc(100vw - 48px);
         height: auto;
         grid-template-columns: 1fr;
+        transform: scale(0.95);
+        opacity: 0.15;
     }
 
-    /* Título imponente en 2 líneas exactamente */
-    h1.text-gradient {
-        font-size: 2.8rem !important; 
-        line-height: 0.95 !important;
-        letter-spacing: -0.05em !important;
-        padding: 0 15px !important;
+    .project-card.active {
+        opacity: 1;
+        transform: scale(1);
     }
 
-    /* Estilos del Menú Móvil (Glassmorphism) */
-    #mobile-menu {
-        display: none; 
-        position: fixed;
-        top: 90px;
-        left: 24px;
-        right: 24px;
-        background: rgba(10, 10, 10, 0.95);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(25px);
-        border-radius: 2.5rem;
-        padding: 2.5rem;
-        z-index: 1000;
-        flex-direction: column;
-        gap: 1.5rem;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    .visual-area {
+        height: 200px;
+        order: -1;
     }
 }
