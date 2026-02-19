@@ -1,29 +1,23 @@
 lucide.createIcons();
 
-// ============================================
-//  MENÚ MÓVIL (Sincronizado con CSS)
-// ============================================
 function toggleMenu() {
     const menu = document.getElementById('mobile-menu');
     const icon = document.getElementById('menu-icon');
     if (!menu || !icon) return;
 
-    // Usamos el método de clases para que el CSS transicione correctamente
-    const isHidden = window.getComputedStyle(menu).display === 'none';
+    // Alternar clase active
+    menu.classList.toggle('active');
     
-    if (isHidden) {
-        menu.style.display = 'flex';
-        icon.setAttribute('data-lucide', 'x');
-    } else {
-        menu.style.display = 'none';
-        icon.setAttribute('data-lucide', 'menu');
-    }
+    // Cambiar icono
+    const isOpen = menu.classList.contains('active');
+    icon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
     
+    // Refrescar iconos
     lucide.createIcons();
 }
 
 // ============================================
-//  CAROUSEL (PROYECTOS) - Tu lógica original
+//  CAROUSEL (PROYECTOS)
 // ============================================
 let currentSlide = 0;
 const totalSlides = 3;
@@ -39,7 +33,7 @@ function updateCarousel() {
     const cardWidth = cards[0].offsetWidth;
     const containerWidth = document.body.clientWidth;
 
-    // Exact centering math (Respetado línea por línea)
+    // Centrado exacto
     const offset = -(currentSlide * (cardWidth + gap)) + (containerWidth / 2) - (cardWidth / 2);
 
     viewport.style.transform = `translateX(${offset}px)`;
@@ -57,7 +51,7 @@ function prevSlide() { currentSlide = (currentSlide - 1 + totalSlides) % totalSl
 function goToSlide(index) { currentSlide = index; updateCarousel(); }
 
 // ============================================
-//  LOGO REVEAL (PARALLAX) - Tu lógica original
+//  LOGO REVEAL (PARALLAX)
 // ============================================
 function updateLogoReveal() {
     const section = document.getElementById('logo-reveal-section');
@@ -77,7 +71,6 @@ function updateLogoReveal() {
     container.style.transform = `scale(${0.4 + (progress * 0.75)})`;
     container.style.opacity = progress * 1.8;
     container.style.filter = `blur(${20 - (progress * 20)}px)`;
-    
     if (glow) {
         glow.style.opacity = progress;
         glow.style.transform = `scale(${0.5 + progress})`;
@@ -91,7 +84,7 @@ function updateLogoReveal() {
 }
 
 // ============================================
-//  SERVICES (TABS + OBSERVER) - Tu lógica original
+//  SERVICES (TABS + OBSERVER)
 // ============================================
 const observerOptions = { root: null, threshold: 0.6 };
 const observerCallback = (entries) => {
@@ -120,7 +113,6 @@ window.addEventListener('load', () => {
     updateCarousel();
     updateLogoReveal();
 
-    // Hide Preloader con el delay de branding original
     const loader = document.getElementById('loader');
     if (loader) {
         setTimeout(() => {
