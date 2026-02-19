@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrategia - Andrés Rosendo</title>
+    <link rel="icon" type="image/svg+xml" href="assets/FAVICON.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #000; color: #fff; scroll-behavior: smooth; overflow-x: hidden; }
+        .text-gradient { background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.4) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .ui-border { border: 1px solid rgba(255, 255, 255, 0.08); }
+        .image-container { width: 100%; aspect-ratio: 16/9; background: #080808; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .image-container img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: opacity 0.5s ease; }
+        .image-container:hover img { opacity: 1; }
+        nav { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    </style>
+</head>
+
+<body class="antialiased">
+    <nav class="fixed top-6 left-0 right-0 z-[100]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="ui-border bg-black/60 rounded-full px-6 py-3 flex justify-between items-center">
+                <a href="index.html" class="flex items-center gap-3">
+                    <img src="assets/LOGO BLANCO.svg" alt="Logo" class="h-6 w-auto">
+                    <div class="flex items-center gap-3">
+                        <span class="w-[1px] h-4 bg-white/20 hidden md:block"></span>
+                        <span class="font-medium text-sm text-white">Andrés Rosendo</span>
+                    </div>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#servicios" class="text-zinc-400 hover:text-white transition text-sm">Servicios</a>
+                    <a href="index.html#proyectos" class="text-zinc-400 hover:text-white transition text-sm">Proyectos</a>
+                    <a href="https://wa.me/584245692491" target="_blank" class="bg-white text-black px-5 py-2 rounded-full font-bold text-sm hover:bg-zinc-200 transition">Contacto</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-64 pb-32 px-6 max-w-7xl mx-auto">
+        <div class="max-w-4xl">
+            <span class="text-zinc-500 uppercase tracking-[0.3em] text-[10px] font-bold mb-8 block">Servicio Especializado</span>
+            <h1 class="text-6xl md:text-9xl font-extrabold tracking-tighter text-gradient leading-[0.9] mb-12">Planificación para Marcas Escalables.</h1>
+            <p class="text-zinc-400 text-xl md:text-xl max-w-2xl leading-relaxed">
+                No solo diseño interfaces, diseño el <span class="text-white">camino estratégico</span> que lleva a tu negocio a conectar con su audiencia ideal.
+            </p>
+        </div>
+    </header>
+
+    <section class="max-w-7xl mx-auto px-6 py-32 border-t border-zinc-900">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-20">
+            <div class="md:col-span-4"><h2 class="text-4xl font-bold tracking-tight sticky top-32">Visión de Negocio</h2></div>
+            <div class="md:col-span-8 space-y-40">
+                <div>
+                    <div class="flex items-center gap-4 mb-8"><span class="text-white font-mono text-sm tracking-tighter">/ 01</span><div class="h-[1px] w-12 bg-zinc-800"></div></div>
+                    <h3 class="text-4xl font-bold mb-6">Investigación & Benchmark</h3>
+                    <p class="text-zinc-400 text-lg leading-relaxed max-w-xl mb-10">Analizo la competencia y el mercado para encontrar oportunidades no explotadas y definir un posicionamiento sólido y diferenciador.</p>
+                    <div class="image-container"><img src="assets/strategy-market.jpg" alt="Market Analysis"></div>
+                </div>
+                <div>
+                    <div class="flex items-center gap-4 mb-8"><span class="text-white font-mono text-sm tracking-tighter">/ 02</span><div class="h-[1px] w-12 bg-zinc-800"></div></div>
+                    <h3 class="text-4xl font-bold mb-6">Arquitectura de Marca</h3>
+                    <p class="text-zinc-400 text-lg leading-relaxed max-w-xl mb-10">Defino los valores, la voz y el tono que harán que tu marca no solo sea vista, sino recordada y elegida por encima de las demás.</p>
+                    <div class="image-container"><img src="assets/brand-architecture.jpg" alt="Brand Strategy"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<footer class="pt-24 pb-12 border-t border-zinc-900 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12 mb-20">
+                <div class="col-span-2 lg:col-span-2">
+                    <div class="font-semibold tracking-tighter text-lg mb-6 text-white">Andrés Rosendo</div>
+                    <div class="flex flex-col gap-6">
+                        <div class="flex flex-wrap gap-5">
+                            <a href="https://www.facebook.com/andres.rosendo.9" target="_blank"
+                                class="text-zinc-500 hover:text-white transition-all"><i data-lucide="facebook"
+                                    size="20"></i></a>
+                            <a href="https://www.instagram.com/andresrosendom/" target="_blank"
+                                class="text-zinc-500 hover:text-white transition-all"><i data-lucide="instagram"
+                                    size="20"></i></a>
+                            <a href="https://www.threads.com/@andresrosendom" target="_blank"
+                                class="text-zinc-500 hover:text-white transition-all"><i data-lucide="at-sign"
+                                    size="20"></i></a>
+                            <a href="https://www.linkedin.com/in/andresrosendom/?originalSubdomain=ve" target="_blank"
+                                class="text-zinc-500 hover:text-white transition-all"><i data-lucide="linkedin"
+                                    size="20"></i></a>
+                        </div>
+                        <div class="inline-flex items-center text-[11px] text-zinc-400 tracking-wider uppercase">
+                            <span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+                            Hablemos de tu proyecto
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h4 class="text-white font-medium text-sm">Navegación</h4>
+                    <a href="#" class="text-zinc-500 hover:text-white text-sm transition">Inicio</a>
+                    <a href="#servicios" class="text-zinc-500 hover:text-white text-sm transition">Servicios</a>
+                    <a href="#proyectos" class="text-zinc-500 hover:text-white text-sm transition">Proyectos</a>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h4 class="text-white font-medium text-sm">Servicios</h4>
+                    <a href="#" class="text-zinc-500 hover:text-white text-sm transition">Branding</a>
+                    <a href="#" class="text-zinc-500 hover:text-white text-sm transition">Diseño UX/UI</a>
+                    <a href="#" class="text-zinc-500 hover:text-white text-sm transition">Estrategia</a>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h4 class="text-white font-medium text-sm">Contacto</h4>
+                    <a href="mailto:rosendojoseandres@gmail.com"
+                        class="text-zinc-500 hover:text-white text-sm transition">Email</a>
+                    <a href="https://wa.me/584245692491" target="_blank"
+                        class="text-zinc-400 hover:text-white text-sm transition font-medium flex items-center">WhatsApp
+                        <span
+                            class="text-[9px] bg-white text-black px-1.5 py-0.5 rounded ml-2 font-bold uppercase">New</span></a>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h4 class="text-white font-medium text-sm">Legal</h4>
+                    <a href="#" class="text-zinc-500 hover:text-white text-sm transition">Privacidad</a>
+                    <a href="#" class="text-zinc-500 hover:text-white text-sm transition">Cookies</a>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-zinc-600 text-[12px]">© Andrés Rosendo 2026.</div>
+                <div class="text-zinc-600 text-[12px]">Venezuela, Cabudare.</div>
+            </div>
+        </div>
+    </footer>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
