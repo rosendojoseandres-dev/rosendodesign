@@ -14,6 +14,16 @@
 </head>
 
 <body class="antialiased">
+    <!-- PRELOADER -->
+    <div id="loader"
+        class="fixed inset-0 z-[1000] bg-black flex items-center justify-center transition-opacity duration-700">
+        <div class="loader-content flex flex-col items-center gap-6">
+            <img src="assets/LOGO BLANCO.svg" alt="Logo" class="h-12 md:h-16 w-auto animate-pulse">
+            <div class="h-[1px] w-24 bg-white/10 relative overflow-hidden">
+                <div class="loader-bar absolute top-0 left-0 h-full bg-white w-full -translate-x-full"></div>
+            </div>
+        </div>
+    </div>
 
     <nav class="fixed top-6 left-0 right-0 z-[100]">
         <div class="max-w-7xl mx-auto px-6">
@@ -121,9 +131,9 @@
                     <div class="tab-description">
                         <p class="text-zinc-400 text-sm md:text-base leading-relaxed mb-4">Creación de interfaces de
                             alta fidelidad centradas en el usuario y experiencias digitales intuitivas.</p>
-                        <div
-                            class="mobile-visual-inline lg:hidden mb-6 flex items-center justify-center bg-zinc-900/50 h-[250px] rounded-[10px] border border-zinc-800/50">
-                            <i data-lucide="layout" size="64" class="text-blue-500/20"></i>
+                        <div class="mobile-visual-inline lg:hidden mb-6">
+                            <img src="assets/branding.jpg" alt="UX/UI Design"
+                                class="w-full h-[250px] object-cover rounded-[10px] border border-zinc-800/50 shadow-2xl">
                         </div>
                         <a href="#"
                             class="text-zinc-200 hover:text-white transition inline-flex items-center gap-2 font-medium text-sm">Ver
@@ -135,9 +145,9 @@
                     <div class="tab-description">
                         <p class="text-zinc-400 text-sm md:text-base leading-relaxed mb-4">Diseño de hojas de ruta que
                             transforman objetivos de negocio en productos digitales medibles y escalables.</p>
-                        <div
-                            class="mobile-visual-inline lg:hidden mb-6 flex items-center justify-center bg-zinc-900/50 h-[250px] rounded-[10px] border border-zinc-800/50">
-                            <i data-lucide="target" size="64" class="text-emerald-500/20"></i>
+                        <div class="mobile-visual-inline lg:hidden mb-6">
+                            <img src="assets/branding.jpg" alt="Estrategia"
+                                class="w-full h-[250px] object-cover rounded-[10px] border border-zinc-800/50 shadow-2xl">
                         </div>
                         <a href="#"
                             class="text-zinc-200 hover:text-white transition inline-flex items-center gap-2 font-medium text-sm">Ver
@@ -150,10 +160,10 @@
                     <img src="assets/branding.jpg" alt="Branding" class="w-full h-full object-cover">
                 </div>
                 <div id="uxui" class="visual-content">
-                    <i data-lucide="layout" size="100" class="text-blue-500/20"></i>
+                    <img src="assets/branding.jpg" alt="UX/UI Design" class="w-full h-full object-cover">
                 </div>
                 <div id="strategy" class="visual-content">
-                    <i data-lucide="target" size="120" class="text-emerald-500/20"></i>
+                    <img src="assets/branding.jpg" alt="Estrategia" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>

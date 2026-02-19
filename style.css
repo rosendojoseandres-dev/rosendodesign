@@ -78,20 +78,17 @@ body {
 
 .sticky-visual {
     position: sticky;
-    top: 10vh;
-    height: 800px;
+    top: 7.5vh;
+    height: 85vh;
     width: 100%;
-    /* Mobile default */
-    background: #080808;
-    border: 1px solid #161616;
-    border-radius: 10px;
+    background: #0d0d0d;
+    border-radius: 12px;
     overflow: hidden;
 }
 
 @media (min-width: 1024px) {
     .sticky-visual {
-        min-width: 2200px;
-        /* Force bleeding width regardless of 8/12 span */
+        min-width: 100%;
     }
 }
 
@@ -102,9 +99,9 @@ body {
     width: 100%;
     height: 100%;
     opacity: 0;
-    transform: translateY(40px) scale(0.94);
-    filter: blur(15px);
-    transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(30px) scale(0.96);
+    filter: blur(10px);
+    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
     pointer-events: none;
     display: flex;
     align-items: center;
@@ -205,28 +202,122 @@ body {
     border-left: 1px solid #1a1a1a;
 }
 
+.visual-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateY(40px) scale(0.94);
+    filter: blur(15px);
+    transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.visual-content.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+    pointer-events: auto;
+}
+
+/* ============================================
+   PRELOADER
+   ============================================ */
+#loader.loader-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loader-bar {
+    animation: loading 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes loading {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    50% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.tab-trigger {
+    will-change: transform, opacity;
+}
+
+.tab-item {
+    padding: 2rem 0;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    opacity: 0.12;
+    cursor: pointer;
+    position: relative;
+}
+
+.tab-item.active {
+    opacity: 1;
+}
+
+.tab-description {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+}
+
+.tab-item.active .tab-description {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 1.5rem;
+}
+
+/* ============================================
+   PRELOADER
+   ============================================ */
+#loader.loader-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loader-bar {
+    animation: loading 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes loading {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    50% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* ============================================
+   RESPONSIVE FIXES
+   ============================================ */
 @media (max-width: 1024px) {
-    #mobile-menu.active {
-        display: flex;
-    }
-
-    h1.text-gradient {
-        font-size: 2.6rem !important;
-    }
-
-    .sticky-visual {
-        display: none !important;
+    #servicios {
+        padding-bottom: 5rem;
     }
 
     .tab-item {
         opacity: 1 !important;
-        background: transparent !important;
-        border: none !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
-        border-radius: 0 !important;
-        margin-bottom: 0 !important;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
     }
 
     .tab-description {
@@ -236,8 +327,7 @@ body {
 
     .mobile-visual-inline {
         display: flex;
-        height: 240px;
-        /* Taller mobile visual */
+        height: 250px;
         background: #080808;
         border-radius: 10px;
         margin-top: 1.5rem;
@@ -245,52 +335,5 @@ body {
         justify-content: center;
         border: 1px solid rgba(255, 255, 255, 0.05);
         overflow: hidden;
-    }
-
-    .project-card {
-        grid-template-columns: 1fr;
-        width: 85vw;
-        height: auto;
-        opacity: 1 !important;
-        filter: none !important;
-        transform: none !important;
-        border-radius: 10px;
-    }
-
-    .visual-area {
-        height: 180px;
-        order: -1;
-        border-left: none;
-        border-bottom: 1px solid #1a1a1a;
-    }
-
-    .carousel-viewport {
-        gap: 32px;
-    }
-
-    .nav-label {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        font-size: 0 !important;
-        background: #333 !important;
-        transition: all 0.3s ease;
-        padding: 0 !important;
-        border: none !important;
-    }
-
-    .nav-label.active {
-        background: #fff !important;
-        transform: scale(1.2);
-    }
-
-    .flex.gap-8 {
-        gap: 0.75rem !important;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .flex.gap-3 button {
-        padding: 0.5rem !important;
     }
 }
