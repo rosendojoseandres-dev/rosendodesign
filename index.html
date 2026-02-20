@@ -569,17 +569,17 @@
     <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-white/5 rounded-full blur-[120px] pointer-events-none"></div>
 
     <div class="relative z-10 text-center px-6 w-full pointer-events-none">
-        <h2 class="text-5xl md:text-7xl font-extrabold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-zinc-600 mb-6 leading-[1.1] max-w-[900px] mx-auto">
-            Desbloquea el potencial <br> de tu marca.
+        <h2 class="text-4xl md:text-7xl font-extrabold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-zinc-600 mb-6 leading-[1.1] max-w-[900px] mx-auto">
+            Desbloquea el Potencial <br> de tu Marca.
         </h2>
         
-        <p class="text-zinc-400 text-base md:text-xl mb-10 max-w-xl mx-auto leading-relaxed">
+        <p class="text-zinc-400 text-sm md:text-xl mb-10 max-w-xl mx-auto leading-relaxed px-4">
             Transforma ideas en experiencias digitales que cautivan y conectan con tu audiencia ideal.
         </p>
         
         <div class="pointer-events-auto">
             <a href="https://wa.me/584245692491" target="_blank" 
-               class="inline-flex items-center justify-center bg-white/5 backdrop-blur-md text-white border border-white/20 px-10 py-4 rounded-full font-semibold text-sm hover:bg-white hover:text-black transition-all hover:scale-105 duration-500 shadow-[0_0_40px_rgba(255,255,255,0.1)]">
+               class="inline-flex items-center justify-center bg-white/5 backdrop-blur-md text-white border border-white/20 px-8 md:px-10 py-3 md:py-4 rounded-full font-semibold text-xs md:text-sm hover:bg-white hover:text-black transition-all hover:scale-105 duration-500 shadow-[0_0_40px_rgba(255,255,255,0.1)]">
                 Hablemos de tu Proyecto
             </a>
         </div>
@@ -590,10 +590,12 @@
             const canvas = document.getElementById('networkCanvas');
             const ctx = canvas.getContext('2d');
             let particles = [];
-            let mouse = { x: null, y: null, radius: 180 };
+            let mouse = { x: null, y: null, radius: 150 };
 
-            const PARTICLE_COUNT = 140; 
-            const CONNECTION_DISTANCE = 220; 
+            // CONFIGURACIÓN ADAPTATIVA
+            let isMobile = window.innerWidth < 768;
+            let PARTICLE_COUNT = isMobile ? 50 : 130; 
+            let CONNECTION_DISTANCE = isMobile ? 120 : 200; 
 
             window.addEventListener('mousemove', (e) => {
                 const rect = canvas.getBoundingClientRect();
@@ -604,6 +606,12 @@
             function init() {
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
+                
+                // Recalcular limites en resize
+                isMobile = window.innerWidth < 768;
+                PARTICLE_COUNT = isMobile ? 50 : 130;
+                CONNECTION_DISTANCE = isMobile ? 120 : 200;
+                
                 particles = [];
                 for (let i = 0; i < PARTICLE_COUNT; i++) {
                     particles.push(new Particle(i));
@@ -613,33 +621,24 @@
             class Particle {
                 constructor(index) {
                     this.index = index;
-                    // Posición inicial
                     this.x = Math.random() * canvas.width;
                     this.y = Math.random() * canvas.height;
-                    // Velocidad
-                    this.vx = (Math.random() - 0.5) * 0.5;
-                    this.vy = (Math.random() - 0.5) * 0.5;
-                    // Estética final
-                    this.maxRadius = Math.random() * 2.5 + 1;
-                    this.maxAlpha = Math.random() * 0.5 + 0.2;
+                    this.vx = (Math.random() - 0.5) * (isMobile ? 0.3 : 0.5);
+                    this.vy = (Math.random() - 0.5) * (isMobile ? 0.3 : 0.5);
+                    this.maxRadius = Math.random() * (isMobile ? 1.5 : 2.5) + 1;
+                    this.maxAlpha = Math.random() * 0.4 + 0.2;
                     
-                    // ANIMACIÓN DE APARICIÓN
                     this.growth = 0; 
-                    this.delay = index * 4; // Retraso mayor para ver la construcción
-                    this.spawnSpeed = 0.015; // Velocidad de "inflado"
+                    this.delay = index * (isMobile ? 2 : 4); 
+                    this.spawnSpeed = 0.015;
                 }
 
                 update() {
-                    // Esperar su turno para nacer
                     if (this.delay > 0) {
                         this.delay--;
                         return;
                     }
-
-                    // Crecer hasta el tamaño final
-                    if (this.growth < 1) {
-                        this.growth += this.spawnSpeed;
-                    }
+                    if (this.growth < 1) this.growth += this.spawnSpeed;
 
                     this.x += this.vx;
                     this.y += this.vy;
@@ -653,22 +652,18 @@
                         let distance = Math.sqrt(dx * dx + dy * dy);
                         if (distance < mouse.radius) {
                             const force = (mouse.radius - distance) / mouse.radius;
-                            this.x -= dx * force * 0.03;
-                            this.y -= dy * force * 0.03;
+                            this.x -= dx * force * 0.02;
+                            this.y -= dy * force * 0.02;
                         }
                     }
                 }
 
                 draw() {
                     if (this.delay > 0 || this.growth <= 0) return;
-
                     ctx.beginPath();
-                    // Radio animado
                     ctx.arc(this.x, this.y, this.maxRadius * this.growth, 0, Math.PI * 2);
                     ctx.fillStyle = `rgba(255, 255, 255, ${this.maxAlpha * this.growth})`;
-                    
-                    // LUX animado
-                    ctx.shadowBlur = 10 * this.growth;
+                    ctx.shadowBlur = (isMobile ? 5 : 10) * this.growth;
                     ctx.shadowColor = "white";
                     ctx.fill();
                     ctx.shadowBlur = 0;
@@ -677,11 +672,8 @@
 
             function drawLines() {
                 for (let i = 0; i < particles.length; i++) {
-                    // Si la partícula i no ha nacido, saltar
                     if (particles[i].delay > 0) continue;
-
                     for (let j = i + 1; j < particles.length; j++) {
-                        // Si la partícula j no ha nacido, saltar
                         if (particles[j].delay > 0) continue;
 
                         const dx = particles[i].x - particles[j].x;
@@ -690,12 +682,12 @@
 
                         if (distance < CONNECTION_DISTANCE) {
                             ctx.beginPath();
-                            // LUX de línea: depende de la distancia y de qué tan "formadas" estén las dos partículas
                             const maturity = (particles[i].growth + particles[j].growth) / 2;
-                            const opacity = (1 - distance / CONNECTION_DISTANCE) * 0.3 * maturity;
+                            // Opacidad más baja para no tapar el texto
+                            const opacity = (1 - distance / CONNECTION_DISTANCE) * (isMobile ? 0.15 : 0.25) * maturity;
                             
                             ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
-                            ctx.lineWidth = 1.2;
+                            ctx.lineWidth = isMobile ? 0.8 : 1.2;
                             ctx.moveTo(particles[i].x, particles[i].y);
                             ctx.lineTo(particles[j].x, particles[j].y);
                             ctx.stroke();
@@ -707,14 +699,11 @@
             function animate() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 ctx.globalCompositeOperation = 'lighter';
-                
                 for (let p of particles) {
                     p.update();
                     p.draw();
                 }
-                
                 drawLines();
-                
                 ctx.globalCompositeOperation = 'source-over';
                 requestAnimationFrame(animate);
             }
@@ -906,6 +895,7 @@
 </body>
 
 </html>
+
 
 
 
