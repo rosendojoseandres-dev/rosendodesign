@@ -10,278 +10,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <style>
-        /* === CONTENIDO LITERAL DE STYLE.CSS === */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #000;
-            color: #fff;
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-            width: 100%;
-        }
-
-        .text-gradient {
-            background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.4) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .ui-border {
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        /* --- Lógica de Tabs --- */
-        .tab-item {
-            transition: all 1.2s cubic-bezier(0.2, 1, 0.3, 1);
-            opacity: 0.3;
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-            border-top: none;
-            cursor: pointer;
-        }
-
-        .tab-item.active {
-            opacity: 1;
-        }
-
-        @media (max-width: 1024px) {
-            .tab-item {
-                opacity: 1 !important;
-                padding-top: 1.5rem;
-                padding-bottom: 1.5rem;
-            }
-        }
-
-        .tab-description {
-            max-height: 0;
-            overflow: hidden;
-            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0;
-        }
-
-        .tab-item.active .tab-description {
-            max-height: 1000px; /* Aumentado para asegurar visualización en móvil */
-            opacity: 1;
-            margin-top: 1.5rem;
-        }
-
-        #servicios {
-            padding-bottom: 50vh;
-        }
-
-        @media (max-width: 1024px) {
-            #servicios {
-                padding-bottom: 5rem;
-            }
-            /* Asegurar que las descripciones no se corten en móvil */
-            .tab-description {
-                max-height: none !important;
-                opacity: 1 !important;
-                display: block !important;
-            }
-        }
-
-        .tab-item a i {
-            transition: transform 0.3s ease;
-        }
-
-        .tab-item a:hover i {
-            transform: translateX(4px);
-        }
-
-        /* Prevenir scroll horizontal accidental del sangrado */
-        body {
-            overflow-x: hidden;
-        }
-
-        .sticky-visual {
-            position: sticky;
-            top: 7.5vh;
-            height: 85vh;
-            width: 100%;
-            background: #0d0d0d;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        @media (min-width: 1024px) {
-            .sticky-visual {
-                min-width: 100%;
-            }
-        }
-
-        .visual-content {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transform: translateY(30px) scale(0.96);
-            filter: blur(10px);
-            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-            pointer-events: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .visual-content.active {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-            filter: blur(0px);
-            pointer-events: auto;
-        }
-
-        /* --- Animación Carrusel Infinito --- */
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .logos-slide {
-            display: flex;
-            width: max-content;
-            animation: scroll 40s linear infinite;
-        }
-
-        .logos-container {
-            overflow: hidden;
-            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-        }
-
-        .logo-item {
-            filter: grayscale(1) opacity(0.4);
-            transition: all 0.3s ease;
-        }
-
-        .logo-item:hover {
-            filter: grayscale(0) opacity(1);
-        }
-
-        #logo-container {
-            will-change: transform, opacity, filter;
-        }
-
-        .glow-effect {
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
-        }
-
-        .bento-card {
-            background: #0a0a0a;
-            border: 1px solid #1a1a1a;
-            border-radius: 10px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* --- Carrusel de Proyectos/Testimonios (Centrado) --- */
-        .carousel-viewport {
-            display: flex;
-            gap: 32px;
-            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-            width: max-content;
-            padding: 2rem 0;
-            will-change: transform;
-        }
-
-        .project-card {
-            width: 850px;
-            height: 480px;
-            background: #0a0a0a;
-            border: 1px solid #1a1a1a;
-            border-radius: 10px;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            overflow: hidden;
-            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-            opacity: 0.2;
-            transform: scale(0.9);
-            filter: blur(4px);
-        }
-
-        .project-card.active {
-            opacity: 1;
-            transform: scale(1);
-            filter: blur(0);
-            border-color: rgba(255, 255, 255, 0.12);
-        }
-
-        .visual-area {
-            background: #0d0d0d;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-left: 1px solid #1a1a1a;
-        }
-
-        /* --- PRELOADER --- */
-        #loader.loader-hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .loader-bar {
-            animation: loading 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
-        }
-
-        @keyframes loading {
-            0% { transform: translateX(-100%); }
-            50% { transform: translateX(0); }
-            100% { transform: translateX(100%); }
-        }
-
-        @media (max-width: 1024px) {
-            .mobile-visual-inline {
-                display: flex;
-                height: 250px;
-                background: #080808;
-                border-radius: 10px;
-                margin-top: 1.5rem;
-                align-items: center;
-                justify-content: center;
-                border: 1px solid rgba(255, 255, 255, 0.05);
-                overflow: hidden;
-            }
-
-            .project-card {
-                width: calc(100vw - 48px);
-                height: auto;
-                grid-template-columns: 1fr;
-                transform: scale(0.95);
-                opacity: 0.15;
-            }
-
-            .project-card.active {
-                transform: scale(1);
-                opacity: 1;
-            }
-
-            .visual-area {
-                height: 200px;
-                border-left: none;
-                border-top: 1px solid #1a1a1a;
-            }
-
-            /* AJUSTE SOLICITADO: OPCIONES Y FLECHAS MÁS PEQUEÑAS */
-            .nav-label {
-                font-size: 8px !important; 
-                letter-spacing: 0.05em;
-            }
-
-            .carousel-controls button {
-                padding: 0.4rem !important;
-            }
-            
-            .carousel-controls i {
-                width: 14px !important;
-                height: 14px !important;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="antialiased">
@@ -379,61 +108,65 @@
         </div>
     </section>
 
-    <section id="servicios" class="max-w-7xl mx-auto px-6 py-20 overflow-visible">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            <div class="lg:col-span-4 py-10 lg:py-20">
-                <div class="tab-trigger tab-item active" data-tab="branding">
-                    <h3 class="text-lg md:text-xl font-bold tracking-tight mb-2">Branding</h3>
+    <section id="servicios" class="max-w-[1200px] mx-auto px-6 overflow-visible relative">
+        <div class="flex flex-col lg:flex-row gap-8 lg:gap-[100px] items-start">
+
+            <!-- Left Column: Navigation Tabs (max 315px como Framer) -->
+            <div class="w-full lg:w-auto lg:max-w-[315px] lg:min-w-[280px] flex flex-col text-column">
+                <div class="tab-trigger tab-item active" data-tab="branding" data-index="0">
+                    <h3 class="text-2xl md:text-3xl font-bold tracking-tight mb-2">Branding</h3>
                     <div class="tab-description">
-                        <p class="text-zinc-400 text-sm md:text-base leading-relaxed mb-4">Construyo identidades
+                        <p class="text-zinc-400 text-sm md:text-lg leading-relaxed mb-4">Construyo identidades
                             visuales sólidas y memorables que transmiten la esencia de tu negocio.</p>
                         <div class="mobile-visual-inline lg:hidden mb-6">
-                            <img src="assets/branding.jpg" alt="Branding"
-                                class="w-full h-[250px] object-cover rounded-[10px] border border-zinc-800/50 shadow-2xl">
+                            <img src="assets/branding.jpg" alt="Branding" loading="lazy"
+                                class="reveal-media service-visual-img rounded-[10px] border border-zinc-800/50 shadow-2xl">
                         </div>
                         <a href="branding.html"
-                            class="text-zinc-200 hover:text-white transition inline-flex items-center gap-2 font-medium text-sm">Ver
+                            class="text-zinc-200 hover:text-white transition inline-flex items-center gap-2 font-medium text-sm mt-4">Ver
                             más <i data-lucide="chevron-right" size="14"></i></a>
                     </div>
                 </div>
-                <div class="tab-trigger tab-item" data-tab="uxui">
-                    <h3 class="text-lg md:text-xl font-bold tracking-tight mb-2">Diseño UX/UI</h3>
+                <div class="tab-trigger tab-item" data-tab="uxui" data-index="1">
+                    <h3 class="text-2xl md:text-3xl font-bold tracking-tight mb-2">Diseño UX/UI</h3>
                     <div class="tab-description">
-                        <p class="text-zinc-400 text-sm md:text-base leading-relaxed mb-4">Creación de interfaces de
+                        <p class="text-zinc-400 text-sm md:text-lg leading-relaxed mb-4">Creación de interfaces de
                             alta fidelidad centradas en el usuario y experiencias digitales intuitivas.</p>
                         <div class="mobile-visual-inline lg:hidden mb-6">
-                            <img src="assets/branding.jpg" alt="UX/UI Design"
-                                class="w-full h-[250px] object-cover rounded-[10px] border border-zinc-800/50 shadow-2xl">
+                            <img src="assets/branding.jpg" alt="UX/UI Design" loading="lazy"
+                                class="reveal-media service-visual-img rounded-[10px] border border-zinc-800/50 shadow-2xl">
                         </div>
                         <a href="ux-ui.html"
-                            class="text-zinc-200 hover:text-white transition inline-flex items-center gap-2 font-medium text-sm">Ver
+                            class="text-zinc-200 hover:text-white transition inline-flex items-center gap-2 font-medium text-sm mt-4">Ver
                             más <i data-lucide="chevron-right" size="14"></i></a>
                     </div>
                 </div>
-                <div class="tab-trigger tab-item" data-tab="strategy">
-                    <h3 class="text-lg md:text-xl font-bold tracking-tight mb-2">Estrategia</h3>
+                <div class="tab-trigger tab-item" data-tab="strategy" data-index="2">
+                    <h3 class="text-2xl md:text-3xl font-bold tracking-tight mb-2">Estrategia</h3>
                     <div class="tab-description">
-                        <p class="text-zinc-400 text-sm md:text-base leading-relaxed mb-4">Diseño de hojas de ruta que
+                        <p class="text-zinc-400 text-sm md:text-lg leading-relaxed mb-4">Diseño de hojas de ruta que
                             transforman objetivos de negocio en productos digitales medibles y escalables.</p>
                         <div class="mobile-visual-inline lg:hidden mb-6">
-                            <img src="assets/branding.jpg" alt="Estrategia"
-                                class="w-full h-[250px] object-cover rounded-[10px] border border-zinc-800/50 shadow-2xl">
+                            <img src="assets/branding.jpg" alt="Estrategia" loading="lazy"
+                                class="reveal-media service-visual-img rounded-[10px] border border-zinc-800/50 shadow-2xl">
                         </div>
                         <a href="estrategia.html"
-                            class="text-zinc-200 hover:text-white transition inline-flex items-center gap-2 font-medium text-sm">Ver
+                            class="text-zinc-200 hover:text-white transition inline-flex items-center gap-2 font-medium text-sm mt-4">Ver
                             más <i data-lucide="chevron-right" size="14"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="lg:col-span-8 sticky-visual hidden lg:flex">
-                <div id="branding" class="visual-content active">
-                    <img src="assets/branding.jpg" alt="Branding" class="w-full h-full object-cover">
+
+            <!-- Right Column: Scrolling Visuals (Framer Style — toma el espacio restante) -->
+            <div class="framer-visual-container hidden lg:flex  w-full">
+                <div id="branding" class="visual-content">
+                    <img src="assets/branding.jpg" alt="Branding" class="reveal-media w-full object-cover">
                 </div>
                 <div id="uxui" class="visual-content">
-                    <img src="assets/branding.jpg" alt="UX/UI Design" class="w-full h-full object-cover">
+                    <img src="assets/branding.jpg" alt="UX/UI Design" class="reveal-media w-full object-cover">
                 </div>
                 <div id="strategy" class="visual-content">
-                    <img src="assets/branding.jpg" alt="Estrategia" class="w-full h-full object-cover">
+                    <img src="assets/branding.jpg" alt="Estrategia" class="reveal-media w-full object-cover">
                 </div>
             </div>
         </div>
@@ -445,7 +178,7 @@
             <div
                 class="bento-card md:col-span-8 p-12 h-[500px] flex flex-col justify-end group cursor-pointer relative overflow-hidden">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
-                <img src="assets/branding.jpg" alt="HM Burguers"
+                <img src="assets/branding.jpg" alt="HM Burguers" loading="lazy"
                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                 <div class="relative z-20">
                     <span class="text-blue-500 font-bold text-xs uppercase tracking-widest">Branding</span>
@@ -480,13 +213,16 @@
                         </div>
                         <div class="flex justify-between items-end">
                             <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs">HM</div>
+                                <div
+                                    class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs">
+                                    HM</div>
                                 <div>
                                     <p class="text-[13px] font-semibold">Andrés Rosendo</p>
                                     <p class="text-[12px] text-zinc-500">Case Study</p>
                                 </div>
                             </div>
-                            <span class="text-[13px] text-zinc-400 flex items-center gap-1 cursor-pointer">Ver proyecto <i data-lucide="arrow-up-right" size="14"></i></span>
+                            <span class="text-[13px] text-zinc-400 flex items-center gap-1 cursor-pointer">Ver proyecto
+                                <i data-lucide="arrow-up-right" size="14"></i></span>
                         </div>
                     </div>
                     <div class="visual-area"><i data-lucide="flame" size="100" class="text-orange-500/10"></i></div>
@@ -497,20 +233,25 @@
                             <div class="w-10 h-10 bg-purple-600 rounded-[10px] mb-10 flex items-center justify-center">
                                 <i data-lucide="layout" class="text-white"></i>
                             </div>
-                            <p class="text-[20px] md:text-[28px] font-medium tracking-tight">“Klyn App: Una interfaz minimalista diseñada para optimizar servicios domésticos.”</p>
+                            <p class="text-[20px] md:text-[28px] font-medium tracking-tight">“Klyn App: Una interfaz
+                                minimalista diseñada para optimizar servicios domésticos.”</p>
                         </div>
                         <div class="flex justify-between items-end">
                             <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs">KL</div>
+                                <div
+                                    class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs">
+                                    KL</div>
                                 <div>
                                     <p class="text-[13px] font-semibold">Andrés Rosendo</p>
                                     <p class="text-[12px] text-zinc-500">UX/UI Design</p>
                                 </div>
                             </div>
-                            <span class="text-[13px] text-zinc-400 flex items-center gap-1 cursor-pointer">Ver proyecto <i data-lucide="arrow-up-right" size="14"></i></span>
+                            <span class="text-[13px] text-zinc-400 flex items-center gap-1 cursor-pointer">Ver proyecto
+                                <i data-lucide="arrow-up-right" size="14"></i></span>
                         </div>
                     </div>
-                    <div class="visual-area"><i data-lucide="smartphone" size="100" class="text-purple-500/10"></i></div>
+                    <div class="visual-area"><i data-lucide="smartphone" size="100" class="text-purple-500/10"></i>
+                    </div>
                 </div>
                 <div class="project-card" id="card-2">
                     <div class="p-8 md:p-14 flex flex-col justify-between">
@@ -518,17 +259,21 @@
                             <div class="w-10 h-10 bg-emerald-600 rounded-[10px] mb-10 flex items-center justify-center">
                                 <i data-lucide="target" class="text-white"></i>
                             </div>
-                            <p class="text-[20px] md:text-[28px] font-medium tracking-tight">“Impacto digital escalable y estratégico para marcas en crecimiento.”</p>
+                            <p class="text-[20px] md:text-[28px] font-medium tracking-tight">“Impacto digital escalable
+                                y estratégico para marcas en crecimiento.”</p>
                         </div>
                         <div class="flex justify-between items-end">
                             <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs">JD</div>
+                                <div
+                                    class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs">
+                                    JD</div>
                                 <div>
                                     <p class="text-[13px] font-semibold">Juan Delgado</p>
                                     <p class="text-[12px] text-zinc-500">Digital Corp</p>
                                 </div>
                             </div>
-                            <span class="text-[13px] text-zinc-400 flex items-center gap-1 cursor-pointer">Ver proyecto <i data-lucide="arrow-up-right" size="14"></i></span>
+                            <span class="text-[13px] text-zinc-400 flex items-center gap-1 cursor-pointer">Ver proyecto
+                                <i data-lucide="arrow-up-right" size="14"></i></span>
                         </div>
                     </div>
                     <div class="visual-area">
@@ -544,7 +289,8 @@
 
         <div class="w-full max-w-[940px] flex items-center justify-between mt-12 px-6">
             <div class="flex gap-4 md:gap-8 overflow-x-auto no-scrollbar">
-                <span class="nav-label active text-[10px] md:text-xs font-bold uppercase tracking-widest cursor-pointer text-white"
+                <span
+                    class="nav-label active text-[10px] md:text-xs font-bold uppercase tracking-widest cursor-pointer text-white"
                     onclick="goToSlide(0)">HM Burguers</span>
                 <span
                     class="nav-label text-zinc-600 text-[10px] md:text-xs font-bold uppercase tracking-widest cursor-pointer hover:text-white transition"
@@ -555,167 +301,43 @@
             </div>
             <div class="flex gap-2 carousel-controls">
                 <button class="p-2 md:p-3 border border-zinc-800 rounded-full hover:border-white transition"
-                    onclick="prevSlide()"><i data-lucide="chevron-left" class="w-4 h-4 md:w-[18px] md:h-[18px]"></i></button>
+                    onclick="prevSlide()"><i data-lucide="chevron-left"
+                        class="w-4 h-4 md:w-[18px] md:h-[18px]"></i></button>
                 <button class="p-2 md:p-3 border border-zinc-800 rounded-full hover:border-white transition"
-                    onclick="nextSlide()"><i data-lucide="chevron-right" class="w-4 h-4 md:w-[18px] md:h-[18px]"></i></button>
+                    onclick="nextSlide()"><i data-lucide="chevron-right"
+                        class="w-4 h-4 md:w-[18px] md:h-[18px]"></i></button>
             </div>
         </div>
     </section>
-<section class="relative w-full min-h-[800px] bg-black flex flex-col items-center justify-center overflow-hidden">
-    
-    <canvas id="networkCanvas" class="absolute top-0 left-0 w-full h-full z-0"></canvas>
-    
-    <div class="absolute -top-24 -left-24 w-96 h-96 bg-white/5 rounded-full blur-[120px] pointer-events-none"></div>
-    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-white/5 rounded-full blur-[120px] pointer-events-none"></div>
+    <section class="relative w-full min-h-[800px] bg-black flex flex-col items-center justify-center overflow-hidden">
 
-    <div class="relative z-10 text-center px-6 w-full pointer-events-none">
-        <h2 class="text-4xl md:text-8xl font-extrabold tracking-tighter text-gradient leading-[1.05] mb-8 text-center mx-auto">
-            Desbloquea el potencial <br> de tu marca.
-        </h2>
-        
-        <p class="text-zinc-400 text-sm md:text-xl mb-10 max-w-xl mx-auto leading-relaxed px-4">
-            Transforma ideas en experiencias digitales que cautivan y conectan con tu audiencia ideal.
-        </p>
-        
-        <div class="pointer-events-auto">
-            <a href="https://wa.me/584245692491" target="_blank" 
-               class="inline-flex items-center justify-center bg-white/5 backdrop-blur-md text-white border border-white/20 px-8 md:px-10 py-3 md:py-4 rounded-full font-semibold text-xs md:text-sm hover:bg-white hover:text-black transition-all hover:scale-105 duration-500 shadow-[0_0_40px_rgba(255,255,255,0.1)]">
-                Hablemos de tu proyecto
-            </a>
+        <canvas id="networkCanvas" class="absolute top-0 left-0 w-full h-full z-0"></canvas>
+
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-white/5 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-white/5 rounded-full blur-[120px] pointer-events-none">
         </div>
-    </div>
 
-    <script>
-        (function() {
-            const canvas = document.getElementById('networkCanvas');
-            const ctx = canvas.getContext('2d');
-            let particles = [];
-            let mouse = { x: null, y: null, radius: 150 };
+        <div class="relative z-10 text-center px-6 w-full pointer-events-none">
+            <h2
+                class="text-4xl md:text-8xl font-extrabold tracking-tighter text-gradient leading-[1.05] mb-8 text-center mx-auto">
+                Desbloquea el potencial <br> de tu marca.
+            </h2>
 
-            // CONFIGURACIÓN ADAPTATIVA
-            let isMobile = window.innerWidth < 768;
-            let PARTICLE_COUNT = isMobile ? 50 : 130; 
-            let CONNECTION_DISTANCE = isMobile ? 120 : 200; 
+            <p class="text-zinc-400 text-sm md:text-xl mb-10 max-w-xl mx-auto leading-relaxed px-4">
+                Transforma ideas en experiencias digitales que cautivan y conectan con tu audiencia ideal.
+            </p>
 
-            window.addEventListener('mousemove', (e) => {
-                const rect = canvas.getBoundingClientRect();
-                mouse.x = e.clientX - rect.left;
-                mouse.y = e.clientY - rect.top;
-            });
+            <div class="pointer-events-auto">
+                <a href="https://wa.me/584245692491" target="_blank"
+                    class="inline-flex items-center justify-center bg-white/5 backdrop-blur-md text-white border border-white/20 px-8 md:px-10 py-3 md:py-4 rounded-full font-semibold text-xs md:text-sm hover:bg-white hover:text-black transition-all hover:scale-105 duration-500 shadow-[0_0_40px_rgba(255,255,255,0.1)]">
+                    Hablemos de tu proyecto
+                </a>
+            </div>
+        </div>
 
-            function init() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-                
-                // Recalcular limites en resize
-                isMobile = window.innerWidth < 768;
-                PARTICLE_COUNT = isMobile ? 50 : 130;
-                CONNECTION_DISTANCE = isMobile ? 120 : 200;
-                
-                particles = [];
-                for (let i = 0; i < PARTICLE_COUNT; i++) {
-                    particles.push(new Particle(i));
-                }
-            }
+    </section>
 
-            class Particle {
-                constructor(index) {
-                    this.index = index;
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() * canvas.height;
-                    this.vx = (Math.random() - 0.5) * (isMobile ? 0.3 : 0.5);
-                    this.vy = (Math.random() - 0.5) * (isMobile ? 0.3 : 0.5);
-                    this.maxRadius = Math.random() * (isMobile ? 1.5 : 2.5) + 1;
-                    this.maxAlpha = Math.random() * 0.4 + 0.2;
-                    
-                    this.growth = 0; 
-                    this.delay = index * (isMobile ? 2 : 4); 
-                    this.spawnSpeed = 0.015;
-                }
-
-                update() {
-                    if (this.delay > 0) {
-                        this.delay--;
-                        return;
-                    }
-                    if (this.growth < 1) this.growth += this.spawnSpeed;
-
-                    this.x += this.vx;
-                    this.y += this.vy;
-
-                    if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                    if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-
-                    if (mouse.x != null) {
-                        let dx = mouse.x - this.x;
-                        let dy = mouse.y - this.y;
-                        let distance = Math.sqrt(dx * dx + dy * dy);
-                        if (distance < mouse.radius) {
-                            const force = (mouse.radius - distance) / mouse.radius;
-                            this.x -= dx * force * 0.02;
-                            this.y -= dy * force * 0.02;
-                        }
-                    }
-                }
-
-                draw() {
-                    if (this.delay > 0 || this.growth <= 0) return;
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.maxRadius * this.growth, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(255, 255, 255, ${this.maxAlpha * this.growth})`;
-                    ctx.shadowBlur = (isMobile ? 5 : 10) * this.growth;
-                    ctx.shadowColor = "white";
-                    ctx.fill();
-                    ctx.shadowBlur = 0;
-                }
-            }
-
-            function drawLines() {
-                for (let i = 0; i < particles.length; i++) {
-                    if (particles[i].delay > 0) continue;
-                    for (let j = i + 1; j < particles.length; j++) {
-                        if (particles[j].delay > 0) continue;
-
-                        const dx = particles[i].x - particles[j].x;
-                        const dy = particles[i].y - particles[j].y;
-                        const distance = Math.sqrt(dx * dx + dy * dy);
-
-                        if (distance < CONNECTION_DISTANCE) {
-                            ctx.beginPath();
-                            const maturity = (particles[i].growth + particles[j].growth) / 2;
-                            // Opacidad más baja para no tapar el texto
-                            const opacity = (1 - distance / CONNECTION_DISTANCE) * (isMobile ? 0.15 : 0.25) * maturity;
-                            
-                            ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
-                            ctx.lineWidth = isMobile ? 0.8 : 1.2;
-                            ctx.moveTo(particles[i].x, particles[i].y);
-                            ctx.lineTo(particles[j].x, particles[j].y);
-                            ctx.stroke();
-                        }
-                    }
-                }
-            }
-
-            function animate() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.globalCompositeOperation = 'lighter';
-                for (let p of particles) {
-                    p.update();
-                    p.draw();
-                }
-                drawLines();
-                ctx.globalCompositeOperation = 'source-over';
-                requestAnimationFrame(animate);
-            }
-
-            window.addEventListener('resize', init);
-            init();
-            animate();
-        })();
-    </script>
-</section>
-    
-<footer class="pt-24 pb-12 border-t border-zinc-900 bg-black">
+    <footer class="pt-24 pb-12 border-t border-zinc-900 bg-black">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12 mb-20">
                 <div class="col-span-2 lg:col-span-2">
@@ -775,139 +397,7 @@
         </div>
     </footer>
 
-    <script>
-        lucide.createIcons();
-
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const icon = document.getElementById('menu-icon');
-            if (!menu || !icon) return;
-            menu.classList.toggle('active');
-            menu.classList.toggle('hidden');
-            menu.classList.toggle('flex');
-            const isOpen = menu.classList.contains('active');
-            icon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
-            lucide.createIcons();
-        }
-
-        let currentSlide = 0;
-        const totalSlides = 3;
-
-        function updateCarousel() {
-            const viewport = document.getElementById('viewport');
-            const cards = document.querySelectorAll('.project-card');
-            const labels = document.querySelectorAll('.nav-label');
-
-            if (!viewport || !cards.length) return;
-
-            const gap = 32;
-            const cardWidth = cards[0].offsetWidth;
-            const containerWidth = document.body.clientWidth;
-
-            const offset = -(currentSlide * (cardWidth + gap)) + (containerWidth / 2) - (cardWidth / 2);
-
-            viewport.style.transform = `translateX(${offset}px)`;
-
-            cards.forEach((card, i) => card.classList.toggle('active', i === currentSlide));
-            labels.forEach((label, i) => {
-                label.classList.toggle('active', i === currentSlide);
-                label.classList.toggle('text-white', i === currentSlide);
-                label.classList.toggle('text-zinc-600', i !== currentSlide);
-            });
-        }
-
-        function nextSlide() { currentSlide = (currentSlide + 1) % totalSlides; updateCarousel(); }
-        function prevSlide() { currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; updateCarousel(); }
-        function goToSlide(index) { currentSlide = index; updateCarousel(); }
-
-        function updateLogoReveal() {
-            const section = document.getElementById('logo-reveal-section');
-            const container = document.getElementById('logo-container');
-            const glow = document.getElementById('logo-glow');
-            const aboutText = document.getElementById('about-text');
-
-            if (!section || !container) return;
-
-            const rect = section.getBoundingClientRect();
-            const sectionHeight = section.offsetHeight;
-            const viewHeight = window.innerHeight;
-
-            let progress = -rect.top / (sectionHeight - viewHeight);
-            progress = Math.max(0, Math.min(1, progress));
-
-            container.style.transform = `scale(${0.4 + (progress * 0.75)})`;
-            container.style.opacity = progress * 1.8;
-            container.style.filter = `blur(${20 - (progress * 20)}px)`;
-            if (glow) {
-                glow.style.opacity = progress;
-                glow.style.transform = `scale(${0.5 + progress})`;
-            }
-
-            if (aboutText) {
-                let textProgress = Math.max(0, (progress - 0.25) / 0.75);
-                aboutText.style.opacity = textProgress;
-                aboutText.style.transform = `translateY(${30 - (textProgress * 30)}px)`;
-            }
-        }
-
-        const observerOptions = { root: null, threshold: 0.6 };
-        const observerCallback = (entries) => {
-            if (window.innerWidth > 1024) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const tabId = entry.target.getAttribute('data-tab');
-                        document.querySelectorAll('.tab-trigger').forEach(t => t.classList.remove('active'));
-                        entry.target.classList.add('active');
-
-                        document.querySelectorAll('.visual-content').forEach(v => v.classList.remove('active'));
-                        const visual = document.getElementById(tabId);
-                        if (visual) visual.classList.add('active');
-                    }
-                });
-            }
-        };
-
-        const servicesObserver = new IntersectionObserver(observerCallback, observerOptions);
-        document.querySelectorAll('.tab-trigger').forEach(trigger => servicesObserver.observe(trigger));
-
-        window.addEventListener('load', () => {
-            updateCarousel();
-            updateLogoReveal();
-
-            const loader = document.getElementById('loader');
-            if (loader) {
-                setTimeout(() => {
-                    loader.classList.add('loader-hidden');
-                }, 1200);
-            }
-        });
-
-        window.addEventListener('scroll', () => {
-            requestAnimationFrame(() => {
-                updateLogoReveal();
-            });
-        }, { passive: true });
-
-        window.addEventListener('resize', () => {
-            updateCarousel();
-        });
-    </script>
+    <script src="script.js" defer></script>
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
