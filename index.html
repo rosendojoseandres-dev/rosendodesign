@@ -172,143 +172,84 @@
         </div>
     </section>
 
-    <main id="proyectos" class="max-w-[1440px] mx-auto px-6 py-20">
-        <h2 class="text-2xl md:text-3xl font-bold mb-12 tracking-tight">Proyectos Seleccionados</h2>
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-            <div
-                class="bento-card md:col-span-8 p-12 h-[500px] flex flex-col justify-end group cursor-pointer relative overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
-                <img src="assets/branding.jpg" alt="HM Burguers" loading="lazy"
-                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                <div class="relative z-20">
-                    <span class="text-blue-500 font-bold text-xs uppercase tracking-widest">Branding</span>
-                    <h3 class="text-4xl font-bold mt-2">HM Burguers</h3>
-                </div>
-            </div>
-            <div
-                class="bento-card md:col-span-4 p-8 flex flex-col justify-end group cursor-pointer relative overflow-hidden bg-zinc-900 border border-white/5">
-                <div
-                    class="absolute inset-0 flex items-center justify-center opacity-10 group-hover:opacity-20 transition-opacity">
-                    <i data-lucide="smartphone" size="120" class="text-purple-500"></i>
-                </div>
-                <div class="relative z-20">
-                    <span class="text-purple-500 font-bold text-xs uppercase tracking-widest">UX/UI</span>
-                    <h3 class="text-2xl font-bold mt-2">Klyn App</h3>
-                </div>
+    <main id="proyectos" class="py-32">
+        <div class="max-w-[1440px] mx-auto px-6">
+            <h2 class="text-2xl md:text-3xl font-bold mb-12 tracking-tight">Proyectos Seleccionados</h2>
+            <div class="pf-grid">
+                <a href="#" class="pf-card pf-span-7" style="--pf-aspect: 21/9">
+                    <div class="pf-media"><img src="assets/branding.jpg" alt="HM Burguers" loading="lazy"></div>
+                    <div class="pf-meta">
+                        <div class="project-tags">
+                            <span class="project-tag" data-color="orange">Branding</span>
+                            <span class="project-tag" data-color="rose">Identidad</span>
+                        </div>
+                        <div class="project-title">HM Burguers</div>
+                    </div>
+                </a>
+                <a href="#" class="pf-card pf-span-5" style="--pf-aspect: 4/5">
+                    <div class="pf-media"><img src="assets/branding.jpg" alt="Klyn App" loading="lazy"></div>
+                    <div class="pf-meta">
+                        <div class="project-tags">
+                            <span class="project-tag" data-color="purple">UX/UI</span>
+                            <span class="project-tag" data-color="indigo">Mobile</span>
+                        </div>
+                        <div class="project-title">Klyn App</div>
+                    </div>
+                </a>
+                <a href="#" class="pf-card pf-span-4" style="--pf-aspect: 16/12">
+                    <div class="pf-media"><img src="assets/branding.jpg" alt="Plan de Producto" loading="lazy"></div>
+                    <div class="pf-meta">
+                        <div class="project-tags">
+                            <span class="project-tag" data-color="emerald">Estrategia</span>
+                            <span class="project-tag" data-color="cyan">Growth</span>
+                        </div>
+                        <div class="project-title">Plan de Producto</div>
+                    </div>
+                </a>
+                <a href="#" class="pf-card pf-span-4" style="--pf-aspect: 16/12">
+                    <div class="pf-media"><img src="assets/branding.jpg" alt="Landing SaaS" loading="lazy"></div>
+                    <div class="pf-meta">
+                        <div class="project-tags">
+                            <span class="project-tag" data-color="blue">Web</span>
+                            <span class="project-tag" data-color="sky">UI</span>
+                        </div>
+                        <div class="project-title">Landing SaaS</div>
+                    </div>
+                </a>
+                <a href="#" class="pf-card pf-span-4" style="--pf-aspect: 16/12">
+                    <div class="pf-media"><img src="assets/branding.jpg" alt="Datalands" loading="lazy"></div>
+                    <div class="pf-meta">
+                        <div class="project-tags">
+                            <span class="project-tag" data-color="emerald">Data</span>
+                            <span class="project-tag" data-color="cyan">Viz</span>
+                        </div>
+                        <div class="project-title">Datalands</div>
+                    </div>
+                </a>
+                <a href="#" class="pf-card pf-span-6" style="--pf-aspect: 21/9">
+                    <div class="pf-media"><img src="assets/branding.jpg" alt="Micrositio 2026" loading="lazy"></div>
+                    <div class="pf-meta">
+                        <div class="project-tags">
+                            <span class="project-tag" data-color="rose">Landing</span>
+                            <span class="project-tag" data-color="red">Campaign</span>
+                        </div>
+                        <div class="project-title">Micrositio 2026</div>
+                    </div>
+                </a>
+                <a href="#" class="pf-card pf-span-6" style="--pf-aspect: 21/9">
+                    <div class="pf-media"><img src="assets/branding.jpg" alt="Analítica Producto" loading="lazy"></div>
+                    <div class="pf-meta">
+                        <div class="project-tags pipeline">
+                            <span class="project-tag" data-color="fuchsia">UI</span>
+                            <span class="project-tag" data-color="violet">Dashboard</span>
+                        </div>
+                        <div class="project-title">Analítica Producto</div>
+                    </div>
+                </a>
+                <!-- Total 7 proyectos visibles -->
             </div>
         </div>
     </main>
-
-    <section class="py-32 flex flex-col items-center overflow-hidden">
-        <div class="w-full flex justify-start">
-            <div class="carousel-viewport" id="viewport">
-                <div class="project-card active" id="card-0">
-                    <div class="p-8 md:p-14 flex flex-col justify-between">
-                        <div>
-                            <div class="w-10 h-10 bg-orange-500 rounded-[10px] mb-10 flex items-center justify-center">
-                                <i data-lucide="flame" class="text-white"></i>
-                            </div>
-                            <p class="text-[20px] md:text-[28px] font-medium tracking-tight">“Rediseñamos la identidad
-                                de HM Burguers para transmitir una esencia urbana y audaz.”</p>
-                        </div>
-                        <div class="flex justify-between items-end">
-                            <div class="flex items-center gap-3">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs">
-                                    HM</div>
-                                <div>
-                                    <p class="text-[13px] font-semibold">Andrés Rosendo</p>
-                                    <p class="text-[12px] text-zinc-500">Case Study</p>
-                                </div>
-                            </div>
-                            <span class="text-[13px] text-zinc-400 flex items-center gap-1 cursor-pointer">Ver proyecto
-                                <i data-lucide="arrow-up-right" size="14"></i></span>
-                        </div>
-                    </div>
-                    <div class="visual-area"><i data-lucide="flame" size="100" class="text-orange-500/10"></i></div>
-                </div>
-                <div class="project-card" id="card-1">
-                    <div class="p-8 md:p-14 flex flex-col justify-between">
-                        <div>
-                            <div class="w-10 h-10 bg-purple-600 rounded-[10px] mb-10 flex items-center justify-center">
-                                <i data-lucide="layout" class="text-white"></i>
-                            </div>
-                            <p class="text-[20px] md:text-[28px] font-medium tracking-tight">“Klyn App: Una interfaz
-                                minimalista diseñada para optimizar servicios domésticos.”</p>
-                        </div>
-                        <div class="flex justify-between items-end">
-                            <div class="flex items-center gap-3">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs">
-                                    KL</div>
-                                <div>
-                                    <p class="text-[13px] font-semibold">Andrés Rosendo</p>
-                                    <p class="text-[12px] text-zinc-500">UX/UI Design</p>
-                                </div>
-                            </div>
-                            <span class="text-[13px] text-zinc-400 flex items-center gap-1 cursor-pointer">Ver proyecto
-                                <i data-lucide="arrow-up-right" size="14"></i></span>
-                        </div>
-                    </div>
-                    <div class="visual-area"><i data-lucide="smartphone" size="100" class="text-purple-500/10"></i>
-                    </div>
-                </div>
-                <div class="project-card" id="card-2">
-                    <div class="p-8 md:p-14 flex flex-col justify-between">
-                        <div>
-                            <div class="w-10 h-10 bg-emerald-600 rounded-[10px] mb-10 flex items-center justify-center">
-                                <i data-lucide="target" class="text-white"></i>
-                            </div>
-                            <p class="text-[20px] md:text-[28px] font-medium tracking-tight">“Impacto digital escalable
-                                y estratégico para marcas en crecimiento.”</p>
-                        </div>
-                        <div class="flex justify-between items-end">
-                            <div class="flex items-center gap-3">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs">
-                                    JD</div>
-                                <div>
-                                    <p class="text-[13px] font-semibold">Juan Delgado</p>
-                                    <p class="text-[12px] text-zinc-500">Digital Corp</p>
-                                </div>
-                            </div>
-                            <span class="text-[13px] text-zinc-400 flex items-center gap-1 cursor-pointer">Ver proyecto
-                                <i data-lucide="arrow-up-right" size="14"></i></span>
-                        </div>
-                    </div>
-                    <div class="visual-area">
-                        <div class="flex items-end gap-2 h-32">
-                            <div class="w-8 bg-emerald-500/20 rounded-t-[10px] h-[60%]"></div>
-                            <div class="w-8 bg-emerald-500/40 rounded-t-[10px] h-[80%]"></div>
-                            <div class="w-8 bg-emerald-500/60 rounded-t-[10px] h-[100%]"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="w-full max-w-[940px] flex items-center justify-between mt-12 px-6">
-            <div class="flex gap-4 md:gap-8 overflow-x-auto no-scrollbar">
-                <span
-                    class="nav-label active text-[10px] md:text-xs font-bold uppercase tracking-widest cursor-pointer text-white"
-                    onclick="goToSlide(0)">HM Burguers</span>
-                <span
-                    class="nav-label text-zinc-600 text-[10px] md:text-xs font-bold uppercase tracking-widest cursor-pointer hover:text-white transition"
-                    onclick="goToSlide(1)">Klyn App</span>
-                <span
-                    class="nav-label text-zinc-600 text-[10px] md:text-xs font-bold uppercase tracking-widest cursor-pointer hover:text-white transition"
-                    onclick="goToSlide(2)">Estrategia</span>
-            </div>
-            <div class="flex gap-2 carousel-controls">
-                <button class="p-2 md:p-3 border border-zinc-800 rounded-full hover:border-white transition"
-                    onclick="prevSlide()"><i data-lucide="chevron-left"
-                        class="w-4 h-4 md:w-[18px] md:h-[18px]"></i></button>
-                <button class="p-2 md:p-3 border border-zinc-800 rounded-full hover:border-white transition"
-                    onclick="nextSlide()"><i data-lucide="chevron-right"
-                        class="w-4 h-4 md:w-[18px] md:h-[18px]"></i></button>
-            </div>
-        </div>
-    </section>
     <section class="relative w-full min-h-[800px] bg-black flex flex-col items-center justify-center overflow-hidden">
 
         <canvas id="networkCanvas" class="absolute top-0 left-0 w-full h-full z-0"></canvas>

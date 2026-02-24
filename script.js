@@ -336,3 +336,27 @@ window.addEventListener('resize', () => {
         updateServicesParallax();
     }, 150);
 });
+
+// Tilt sutil en tarjetas de proyectos
+(function initProjectTilt(){
+    const cards = document.querySelectorAll('.pf-card');
+    if (!cards.length) return;
+    if (window.matchMedia('(pointer: fine)').matches === false) return;
+    cards.forEach(card => {
+        const media = card.querySelector('.pf-media');
+        if (!media) return;
+        card.addEventListener('mousemove', (e) => {
+            const r = card.getBoundingClientRect();
+            const x = (e.clientX - r.left) / r.width;
+            const y = (e.clientY - r.top) / r.height;
+            const rx = (0.5 - y) * 6;
+            const ry = (x - 0.5) * 8;
+            media.style.setProperty('--rx', rx + 'deg');
+            media.style.setProperty('--ry', ry + 'deg');
+        });
+        card.addEventListener('mouseleave', () => {
+            media.style.setProperty('--rx', '0deg');
+            media.style.setProperty('--ry', '0deg');
+        });
+    });
+})();
