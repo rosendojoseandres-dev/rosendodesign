@@ -158,62 +158,6 @@ export default function FloatingCards() {
   const r3 = useTransform(scrollYProgress, [0, 1], [reduce ? 0 : 2, reduce ? 0 : -2]);
 
   return (
-    <div ref={ref} className="relative mx-auto h-[540px] w-full max-w-[480px]">
-      {/* Glow ambiental */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/4 top-1/4 h-64 w-64 rounded-full bg-[#4f8ef7]/12 blur-[80px]" />
-        <div className="absolute right-1/4 bottom-1/4 h-56 w-56 rounded-full bg-[#9b6bff]/10 blur-[70px]" />
-      </div>
-
-      {/* Card 1 — Discovery (arriba izquierda) */}
-      <motion.div
-        style={{ y: y1, rotate: r1 }}
-        className="absolute left-0 top-4 w-[240px]"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}
-      >
-        <DiscoveryCard />
-      </motion.div>
-
-      {/* Card 2 — UI Design (centro derecha) */}
-      <motion.div
-        style={{ y: y2, rotate: r2 }}
-        className="absolute right-0 top-[150px] w-[230px]"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.1, ease: [0.2, 0.8, 0.2, 1] }}
-      >
-        <DesignCard />
-      </motion.div>
-
-      {/* Card 3 — Design System (abajo izquierda) */}
-      <motion.div
-        style={{ y: y3, rotate: r3 }}
-        className="absolute bottom-4 left-[20px] w-[240px]"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2, ease: [0.2, 0.8, 0.2, 1] }}
-      >
-        <SystemCard />
-      </motion.div>
-
-      {/* Línea de conexión decorativa */}
-      <svg
-        className="pointer-events-none absolute inset-0 h-full w-full"
-        style={{ zIndex: -1 }}
-        aria-hidden="true"
-      >
-        <path
-          d="M 120 90 C 200 120, 280 200, 350 230"
-          stroke="rgba(255,255,255,0.05)"
-          strokeWidth="1"
-          fill="none"
-          strokeDasharray="4 6"
-        />
-        <path
-          d="M 350 270 C 280 320, 200 380, 140 420"
-          stroke="rgba(255,255,255,0.05)"
           strokeWidth="1"
           fill="none"
           strokeDasharray="4 6"
