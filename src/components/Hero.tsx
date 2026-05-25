@@ -44,7 +44,9 @@ export default function Hero() {
               Explorar Proyectos
             </a>
             <a
-              href="mailto:tuemail@correo.com"
+              href="https://api.whatsapp.com/send/?phone=584245692491&text&type=phone_number&app_absent=0"
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2.5 text-xs text-[#F2F2F2]/80 transition hover:bg-white/[0.08] sm:px-5 sm:text-sm"
             >
               Hablemos

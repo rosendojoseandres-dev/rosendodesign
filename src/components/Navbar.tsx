@@ -131,7 +131,9 @@ export default function Navbar() {
               </a>
               <a
                 className="rounded-full bg-white px-3.5 py-2 text-[11px] font-medium text-black transition hover:bg-white/90 sm:px-4 sm:text-xs md:text-sm"
-                href="mailto:tuemail@correo.com"
+                href="https://api.whatsapp.com/send/?phone=584245692491&text&type=phone_number&app_absent=0"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Hablemos
               </a>
