@@ -97,12 +97,11 @@ export default function ProjectsSection({ projects }: { projects: Project[] }) {
           <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
             <div>
               <h2 className="text-[1.72rem] font-semibold leading-[1.02] tracking-[-0.045em] sm:text-3xl md:text-4xl">
-                <span className="block whitespace-nowrap">Proyectos con intención,</span>
-                <span className="block whitespace-nowrap">no solo pantallas</span>
+                <span className="block whitespace-nowrap">De la lógica de negocio</span>
+                <span className="block whitespace-nowrap">a la interfaz.</span>
               </h2>
               <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/62 sm:text-[15px] md:text-base">
-                Casos enfocados en impacto: claridad, conversión y consistencia.
-                Cada proyecto incluye decisiones, trade-offs y el “por qué”.
+                Explora cómo aplico metodologías de investigación, wireframing y diseño de alta fidelidad para resolver problemas reales en el sector financiero y el comercio electrónico.
               </p>
             </div>
 

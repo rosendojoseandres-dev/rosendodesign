@@ -32,12 +32,11 @@ export default function Footer() {
           <div className="grid gap-8 md:grid-cols-2 md:items-center md:gap-10">
             <div>
               <h3 className="text-[1.72rem] font-semibold leading-[1.02] tracking-[-0.045em] sm:max-w-[14ch] sm:text-3xl md:max-w-none md:text-4xl">
-                <span className="block">Si quieres un diseño que se</span>
-                <span className="block whitespace-nowrap">sienta rápido y sólido, hablemos.</span>
+                <span className="block">Construyamos el próximo</span>
+                <span className="block whitespace-nowrap">producto líder de tu sector.</span>
               </h3>
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/62 sm:text-[15px] md:text-base">
-                Pásame contexto (producto, objetivo, deadline) y te respondo con
-                un approach claro.
+                ¿Tienes un proyecto complejo que requiere una interfaz intuitiva, moderna y escalable? Cuéntame los objetivos de tu producto y definamos el mejor enfoque visual y técnico.
               </p>
             </div>
 

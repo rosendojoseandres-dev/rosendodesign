@@ -43,6 +43,13 @@ export default function Navbar() {
     return unsub;
   }, [scrollY]);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.history.scrollRestoration = "manual";
+      window.scrollTo(0, 0);
+    }
+  }, []);
+
   /* 0 → 1 spring-smoothed progress */
   const raw = useTransform(scrollY, [0, 120], [0, 1]);
   const p   = useSpring(raw, { stiffness: 180, damping: 30, mass: 0.5 });
@@ -90,10 +97,11 @@ export default function Navbar() {
             <a
               href="#top"
               className="group inline-flex items-center gap-2 text-[11px] font-medium tracking-wide sm:text-xs md:text-sm"
+              onClick={() => window.scrollTo(0, 0)}
             >
-              <span className="h-2 w-2 rounded-full bg-white/60 shadow-[0_0_0_6px_rgba(255,255,255,.06)] transition group-hover:bg-white" />
+              <span className="h-2 w-2 animate-pulse rounded-full bg-green-500 shadow-[0_0_0_4px_rgba(34,197,94,.15)] transition group-hover:bg-green-400" />
               <span className="text-white/90 transition group-hover:text-white">
-                Hola soy Andres Rosendo
+                Andres Rosendo
               </span>
             </a>
 

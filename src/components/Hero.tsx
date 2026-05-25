@@ -17,9 +17,9 @@ export default function Hero() {
             transition={{ duration: 0.85, ease: [0.2, 0.8, 0.2, 1] }}
             className="mt-0 max-w-[720px] text-4xl font-semibold leading-[0.96] tracking-[-0.045em] text-[#F2F2F2] md:text-[3.45rem] lg:text-[3.8rem]"
           >
-            <span className="block md:whitespace-nowrap">Diseño experiencias</span>
-            <span className="block md:whitespace-nowrap">que se sienten rápidas,</span>
-            <span className="block md:whitespace-nowrap">claras y premium.</span>
+            <span className="block md:whitespace-nowrap">Arquitectura visual y lógica</span>
+            <span className="block md:whitespace-nowrap">para productos digitales</span>
+            <span className="block md:whitespace-nowrap">de alto rendimiento.</span>
           </motion.h1>
 
           <motion.p
@@ -28,9 +28,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.1, ease: [0.2, 0.8, 0.2, 1] }}
             className="mt-5 max-w-[38rem] text-pretty text-sm leading-relaxed text-[#F2F2F2]/70 sm:mt-6 sm:text-[15px] md:text-base lg:max-w-[32rem]"
           >
-            Portafolio orientado a producto: research, UI, motion y sistemas de
-            diseño. Me enfoco en convertir complejidad en interfaces simples y
-            coherentes.
+            Soy Andrés Rosendo, Diseñador UX/UI. Me especializo en ecosistemas Fintech, paneles transaccionales y plataformas E-commerce. Elevo la retención de usuarios uniendo sistemas de diseño, estética premium y objetivos de negocio.
           </motion.p>
 
           <motion.div
@@ -43,13 +41,13 @@ export default function Hero() {
               href="#proyectos"
               className="rounded-full bg-[#F2F2F2] px-4 py-2.5 text-xs font-medium text-black transition hover:bg-[#F2F2F2]/90 sm:px-5 sm:text-sm"
             >
-              Ver proyectos
+              Explorar Proyectos
             </a>
             <a
               href="mailto:tuemail@correo.com"
               className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2.5 text-xs text-[#F2F2F2]/80 transition hover:bg-white/[0.08] sm:px-5 sm:text-sm"
             >
-              Contacto
+              Hablemos
             </a>
           </motion.div>
 
