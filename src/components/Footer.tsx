@@ -10,8 +10,9 @@ export default function Footer() {
         <Reveal>
           <div className="grid gap-8 md:grid-cols-2 md:items-end md:gap-10">
             <div>
-              <h3 className="max-w-[13ch] text-2xl font-semibold tracking-[-0.03em] sm:max-w-[14ch] sm:text-3xl md:max-w-none md:text-4xl">
-                Si quieres un diseño que se sienta rápido y sólido, hablemos.
+              <h3 className="text-[1.72rem] font-semibold leading-[1.02] tracking-[-0.045em] sm:max-w-[14ch] sm:text-3xl md:max-w-none md:text-4xl">
+                <span className="block">Si quieres un diseño que se</span>
+                <span className="block whitespace-nowrap">sienta rápido y sólido, hablemos.</span>
               </h3>
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/62 sm:text-[15px] md:text-base">
                 Pásame contexto (producto, objetivo, deadline) y te respondo con
@@ -26,7 +27,7 @@ export default function Footer() {
               >
                 tuemail@correo.com
               </a>
-              <div className="flex flex-wrap gap-2 text-xs text-white/60 sm:text-sm">
+              <div className="flex flex-wrap gap-2 text-xs text-white/60 sm:text-sm md:justify-end">
                 <a className="hover:text-white" href="#" target="_blank" rel="noreferrer">
                   LinkedIn
                 </a>

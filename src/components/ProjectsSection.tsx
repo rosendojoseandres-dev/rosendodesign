@@ -96,8 +96,9 @@ export default function ProjectsSection({ projects }: { projects: Project[] }) {
         <Reveal>
           <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
             <div>
-              <h2 className="max-w-[14ch] text-2xl font-semibold tracking-[-0.03em] sm:max-w-none sm:text-3xl md:text-4xl">
-                Proyectos con intención, no solo pantallas
+              <h2 className="text-[1.72rem] font-semibold leading-[1.02] tracking-[-0.045em] sm:text-3xl md:text-4xl">
+                <span className="block whitespace-nowrap">Proyectos con intención,</span>
+                <span className="block whitespace-nowrap">no solo pantallas</span>
               </h2>
               <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/62 sm:text-[15px] md:text-base">
                 Casos enfocados en impacto: claridad, conversión y consistencia.
