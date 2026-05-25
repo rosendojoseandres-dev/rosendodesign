@@ -18,7 +18,7 @@ function ProjectCard({
       type="button"
       onClick={() => onOpen(project)}
       aria-label={`Abrir ${project.title}`}
-      className="group relative w-full overflow-hidden rounded-[26px] border border-white/10 bg-[#080808]/90 p-4 text-left shadow-[0_24px_70px_rgba(0,0,0,0.35)] backdrop-blur-md sm:rounded-[30px] sm:p-5"
+      className="group relative w-full h-full flex flex-col overflow-hidden rounded-[26px] border border-white/10 bg-[#080808]/90 p-4 text-left shadow-[0_24px_70px_rgba(0,0,0,0.35)] backdrop-blur-md sm:rounded-[30px] sm:p-5"
       whileHover={{ y: -6 }}
       transition={{ duration: 0.25, ease: [0.2, 0.8, 0.2, 1] }}
     >
@@ -32,9 +32,8 @@ function ProjectCard({
       <div className="absolute inset-x-0 top-0 h-px bg-white/10" />
       <div className="absolute right-4 top-4 h-20 w-20 rounded-full bg-white/5 blur-[42px] sm:right-5 sm:top-5 sm:h-24 sm:w-24 sm:blur-[50px]" />
 
-      <div className="relative">
-        <div className="flex items-center justify-between gap-3">
-          <p className="text-xs uppercase tracking-[0.2em] text-white/42">{project.year}</p>
+      <div className="relative flex flex-col flex-1 w-full">
+        <div className="flex items-center justify-end gap-3">
           <span
             className="h-2.5 w-2.5 rounded-full"
             style={{ backgroundColor: project.theme.accent, boxShadow: `0 0 28px ${project.theme.accent}` }}
@@ -70,7 +69,7 @@ function ProjectCard({
           ))}
         </div>
 
-        <div className="mt-7 flex items-center justify-between sm:mt-8">
+        <div className="mt-auto pt-7 flex items-center justify-between sm:pt-8">
           <span className="text-xs uppercase tracking-[0.18em] text-white/38">Ver detalle</span>
           <span
             className="h-[2px] w-14 rounded-full"
@@ -84,10 +83,7 @@ function ProjectCard({
 
 export default function ProjectsSection({ projects }: { projects: Project[] }) {
   const [active, setActive] = useState<Project | null>(null);
-  const sorted = useMemo(
-    () => [...projects].sort((a, b) => Number(b.year) - Number(a.year)),
-    [projects]
-  );
+  const sorted = projects;
 
   return (
     <section id="proyectos" className="relative py-[4.5rem] sm:py-20 md:py-24 lg:py-28">
@@ -118,7 +114,7 @@ export default function ProjectsSection({ projects }: { projects: Project[] }) {
 
         <div className="mt-10 grid gap-4 md:mt-12 md:grid-cols-2 lg:mt-14">
           {sorted.map((p, idx) => (
-            <Reveal key={p.slug} delay={idx * 0.05}>
+            <Reveal key={p.slug} delay={idx * 0.05} className="h-full">
               <ProjectCard project={p} onOpen={setActive} />
             </Reveal>
           ))}

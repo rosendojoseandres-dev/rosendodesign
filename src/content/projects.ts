@@ -2,7 +2,6 @@ export type Project = {
   slug: string;
   title: string;
   subtitle: string;
-  year: string;
   tags: string[];
   summary: string;
   role: string[];
@@ -20,7 +19,6 @@ export const projects: Project[] = [
     slug: "klyn",
     title: "Klyn",
     subtitle: "Fintech / Billetera Digital",
-    year: "2026",
     tags: ["End-to-End Design", "UI/UX Design", "System Prototyping"],
     summary:
       "Diseño de producto integral para una plataforma financiera estructurada exclusivamente para la gestión de USD. Conceptualización desde la identidad de marca hasta la arquitectura de interfaces de alta densidad de datos, logrando un ecosistema que equilibra una estética premium con una navegación libre de fricciones.",
@@ -44,15 +42,14 @@ export const projects: Project[] = [
     slug: "vurelo",
     title: "Vurelo",
     subtitle: "Fintech / Rediseño Mobile Banking",
-    year: "2025",
     tags: ["UX Strategy", "UI Redesign", "Interaction Design", "Prototyping"],
     summary:
-      "Rediseño integral de interfaz y experiencia de usuario (UI/UX) para una plataforma de banca móvil. El proyecto se centró en la reestructuración completa de la arquitectura de la información y la simplificación de transacciones financieras críticas. El resultado es una interfaz intuitiva, ágil y libre de fricciones, diseñada estratégicamente para aumentar la retención y mejorar la navegabilidad general del usuario.",
+      "Rediseño integral de interfaz y experiencia de usuario para una plataforma de banca móvil. El proyecto se centró en la reestructuración completa de la arquitectura de la información y la simplificación de transacciones financieras críticas. El resultado es una interfaz intuitiva, ágil y libre de fricciones, diseñada estratégicamente para aumentar la retención y mejorar la navegabilidad general del usuario.",
     role: ["Product Designer", "Mobile UI", "UX Research"],
     tools: ["Adobe XD", "Figma"],
     highlights: [
       "Simplificación exhaustiva de la arquitectura de la información y optimización de los flujos transaccionales clave (envíos de dinero, pagos y consulta de saldo).",
-      "Modernización total de la interfaz de usuario (UI), elevando drásticamente los estándares de usabilidad, accesibilidad y confianza visual.",
+      "Modernización total de la interfaz de usuario, elevando drásticamente los estándares de usabilidad, accesibilidad y confianza visual.",
       "Implementación de un sistema de navegación intuitivo diseñado para disminuir la tasa de abandono y potenciar la retención de usuarios."
     ],
     links: [{ label: "Case study", href: "#" }],
@@ -63,20 +60,20 @@ export const projects: Project[] = [
     }
   },
   {
-    slug: "design-system",
-    title: "Design System",
-    subtitle: "Component library + guidelines",
-    year: "2024",
-    tags: ["Design Ops", "Tokens", "Accessibility"],
+    slug: "groc",
+    title: "Groc",
+    subtitle: "E-Commerce / Plataforma Web",
+    tags: ["UI Design", "Web Design", "Conversion", "Design System"],
     summary:
-      "Documentación y librería de componentes para alinear producto y marketing. Tokens + reglas de motion.",
-    role: ["Design Ops", "Tokens", "Docs"],
-    tools: ["Figma", "Storybook", "Zeroheight"],
+      "Conceptualización visual y diseño de interfaz creado 100% desde cero para una plataforma de comercio electrónico. El proyecto se fundamenta en una dirección de arte minimalista y sumamente elegante, eliminando cualquier ruido visual para potenciar la conversión y otorgar el protagonismo absoluto al catálogo de productos.",
+    role: ["UI/UX Designer", "Visual Designer", "Art Direction"],
+    tools: ["Figma", "Auto-layout", "Componentes Atómicos"],
     highlights: [
-      "Tokens (color, spacing, type) con escalas consistentes.",
-      "Guidelines de motion: timing, easing y principios.",
-      "Reducción de inconsistencias visuales entre squads."
+      "Construcción del ecosistema visual completo en Figma, estableciendo una jerarquía tipográfica premium y un uso estratégico del espacio negativo.",
+      "Optimización del User Journey mediante microinteracciones fluidas, como la \"Vista rápida\" de productos y un carrito desplegable (drawer) diseñado para reducir la fricción en el checkout.",
+      "Estructuración de layouts modulares y adaptativos (Mobile First), garantizando una experiencia de navegación de alta gama y responsiva para los usuarios."
     ],
+    links: [{ label: "Case study", href: "#" }],
     theme: {
       accent: "#B478FF",
       gradient:

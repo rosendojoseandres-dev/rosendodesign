@@ -71,7 +71,6 @@ export default function ProjectModal({
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(0,0,0,0.3))]" />
               <div className="flex flex-col gap-4 pr-14 sm:flex-row sm:items-start sm:justify-between sm:pr-16">
                 <div className="relative">
-                  <p className="text-[11px] uppercase tracking-[0.24em] text-white/50">{project.year}</p>
                   <h3 className="mt-2 text-xl font-semibold tracking-[-0.03em] md:text-2xl">
                     {project.title}
                   </h3>
