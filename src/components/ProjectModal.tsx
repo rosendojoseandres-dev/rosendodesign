@@ -55,12 +55,21 @@ export default function ProjectModal({
             exit={{ y: 12, scale: 0.98, opacity: 0 }}
             transition={{ duration: 0.35, ease: [0.2, 0.8, 0.2, 1] }}
           >
+            <button
+              aria-label="Cerrar modal"
+              onClick={onClose}
+              className="absolute right-4 top-4 z-20 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/45 text-white/78 transition hover:bg-white/[0.08] hover:text-white sm:right-5 sm:top-5"
+            >
+              <span aria-hidden="true" className="text-lg leading-none">
+                ×
+              </span>
+            </button>
             <div
               className="relative border-b border-white/10 p-4 sm:p-6"
               style={{ background: project.theme.gradient }}
             >
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(0,0,0,0.3))]" />
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+              <div className="flex flex-col gap-4 pr-14 sm:flex-row sm:items-start sm:justify-between sm:pr-16">
                 <div className="relative">
                   <p className="text-[11px] uppercase tracking-[0.24em] text-white/50">{project.year}</p>
                   <h3 className="mt-2 text-xl font-semibold tracking-[-0.03em] md:text-2xl">
@@ -68,13 +77,6 @@ export default function ProjectModal({
                   </h3>
                   <p className="mt-1 text-xs text-white/68 md:text-sm">{project.subtitle}</p>
                 </div>
-
-                <button
-                  onClick={onClose}
-                  className="relative self-start rounded-full border border-white/10 bg-white/[0.05] px-4 py-2 text-xs text-white/80 transition hover:bg-white/[0.1] md:text-sm"
-                >
-                  Cerrar
-                </button>
               </div>
 
               <div className="relative mt-5 flex flex-wrap gap-2">
