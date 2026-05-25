@@ -58,17 +58,17 @@ export default function Navbar() {
   const shadowAlpha   = useTransform(p, [0, 1], [0, 0.55]);
   const satAlpha      = useTransform(p, [0, 1], [100, 180]);
 
-  const backgroundColor   = useMotionTemplate`rgba(10,12,22,${bgAlpha})`;
+  const backgroundColor   = useMotionTemplate`rgba(6,6,8,${bgAlpha})`;
   const backdropFilter    = useMotionTemplate`blur(${blurPx}px) saturate(${satAlpha}%)`;
   const border            = useMotionTemplate`1px solid rgba(255,255,255,${borderAlpha})`;
-  const boxShadow         = useMotionTemplate`0 8px 40px rgba(0,0,0,${shadowAlpha}), 0 1px 0 rgba(255,255,255,0.07) inset, 0 -1px 0 rgba(0,0,0,0.3) inset`;
+  const boxShadow         = useMotionTemplate`0 12px 50px rgba(0,0,0,${shadowAlpha}), 0 1px 0 rgba(255,255,255,0.06) inset, 0 -1px 0 rgba(0,0,0,0.45) inset`;
 
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: shimmerCSS }} />
 
       {/* sticky wrapper — purely for positioning, matches container-max */}
-      <div className="sticky top-0 z-50 flex justify-center pointer-events-none px-5">
+      <div className="pointer-events-none sticky top-0 z-50 flex justify-center px-4 sm:px-5 lg:px-6">
         <motion.header
           className={`pointer-events-auto relative overflow-hidden w-full max-w-6xl ${
             scrolled ? "liq-shimmer" : ""
@@ -85,41 +85,44 @@ export default function Navbar() {
             boxShadow,
           }}
         >
-
-
-
-          <div className="relative z-10 flex h-14 items-center justify-between px-5">
+          <div className="relative z-10 flex h-12 items-center justify-between gap-3 px-4 sm:h-14 sm:px-5">
             {/* Logo */}
             <a
               href="#top"
-              className="group inline-flex items-center gap-2 text-sm font-medium tracking-wide"
+              className="group inline-flex items-center gap-2 text-[11px] font-medium tracking-wide sm:text-xs md:text-sm"
             >
               <span className="h-2 w-2 rounded-full bg-white/60 shadow-[0_0_0_6px_rgba(255,255,255,.06)] transition group-hover:bg-white" />
               <span className="text-white/90 transition group-hover:text-white">
-                Andres<span className="text-white/50">.design</span>
+                Hola soy Andres Rosendo
               </span>
             </a>
 
             {/* Nav links */}
-            <nav className="hidden items-center gap-6 text-sm text-white/70 md:flex">
-              <a className="transition hover:text-white" href="#proyectos">
+            <nav className="hidden items-center gap-5 text-xs text-white/60 md:flex md:text-sm">
+              <a className="transition hover:text-white/90" href="#proyectos">
                 Proyectos
               </a>
-              <a className="transition hover:text-white" href="#contacto">
+              <a className="transition hover:text-white/90" href="#contacto">
                 Contacto
               </a>
             </nav>
 
             {/* CTAs */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
               <a
-                className="hidden rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 transition hover:bg-white/10 md:inline-flex"
+                className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-[11px] text-white/78 transition hover:bg-white/[0.08] sm:inline-flex md:hidden"
+                href="#proyectos"
+              >
+                Proyectos
+              </a>
+              <a
+                className="hidden rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-2 text-xs text-white/78 transition hover:bg-white/[0.08] md:inline-flex md:text-sm"
                 href="#proyectos"
               >
                 Ver trabajo
               </a>
               <a
-                className="rounded-full bg-white px-4 py-2 text-sm font-medium text-black transition hover:bg-white/90"
+                className="rounded-full bg-white px-3.5 py-2 text-[11px] font-medium text-black transition hover:bg-white/90 sm:px-4 sm:text-xs md:text-sm"
                 href="mailto:tuemail@correo.com"
               >
                 Hablemos

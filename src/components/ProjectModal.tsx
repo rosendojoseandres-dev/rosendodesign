@@ -22,11 +22,20 @@ export default function ProjectModal({
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open, onClose]);
 
+  useEffect(() => {
+    if (!open) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [open]);
+
   return (
     <AnimatePresence>
       {open && project && (
         <motion.div
-          className="fixed inset-0 z-[60] flex items-center justify-center p-5"
+          className="fixed inset-0 z-[60] flex items-end justify-center p-3 sm:items-center sm:p-5"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -40,38 +49,39 @@ export default function ProjectModal({
           <motion.div
             role="dialog"
             aria-modal="true"
-            className="relative w-full max-w-3xl overflow-hidden rounded-3xl border border-white/10 bg-[#06070b]/80 shadow-glow"
+            className="relative max-h-[calc(100dvh-1.5rem)] w-full max-w-3xl overflow-y-auto rounded-[24px] border border-white/10 bg-black/95 shadow-[0_30px_90px_rgba(0,0,0,0.5)] sm:max-h-[calc(100dvh-2.5rem)] sm:rounded-[32px]"
             initial={{ y: 12, scale: 0.98, opacity: 0 }}
             animate={{ y: 0, scale: 1, opacity: 1 }}
             exit={{ y: 12, scale: 0.98, opacity: 0 }}
             transition={{ duration: 0.35, ease: [0.2, 0.8, 0.2, 1] }}
           >
             <div
-              className="relative border-b border-white/10 p-6"
+              className="relative border-b border-white/10 p-4 sm:p-6"
               style={{ background: project.theme.gradient }}
             >
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <p className="text-xs text-white/60">{project.year}</p>
-                  <h3 className="mt-2 text-2xl font-semibold tracking-[-0.02em]">
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(0,0,0,0.3))]" />
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                <div className="relative">
+                  <p className="text-[11px] uppercase tracking-[0.24em] text-white/50">{project.year}</p>
+                  <h3 className="mt-2 text-xl font-semibold tracking-[-0.03em] md:text-2xl">
                     {project.title}
                   </h3>
-                  <p className="mt-1 text-sm text-white/70">{project.subtitle}</p>
+                  <p className="mt-1 text-xs text-white/68 md:text-sm">{project.subtitle}</p>
                 </div>
 
                 <button
                   onClick={onClose}
-                  className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 hover:bg-white/10"
+                  className="relative self-start rounded-full border border-white/10 bg-white/[0.05] px-4 py-2 text-xs text-white/80 transition hover:bg-white/[0.1] md:text-sm"
                 >
                   Cerrar
                 </button>
               </div>
 
-              <div className="mt-5 flex flex-wrap gap-2">
+              <div className="relative mt-5 flex flex-wrap gap-2">
                 {project.tags.map((t) => (
                   <span
                     key={t}
-                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70"
+                    className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-xs text-white/70"
                   >
                     {t}
                   </span>
@@ -79,15 +89,15 @@ export default function ProjectModal({
               </div>
             </div>
 
-            <div className="grid gap-6 p-6 md:grid-cols-2">
+            <div className="grid gap-6 p-4 sm:p-6 lg:grid-cols-2">
               <div>
-                <p className="text-sm leading-relaxed text-white/70">
+                <p className="text-xs leading-relaxed text-white/68 sm:text-sm">
                   {project.summary}
                 </p>
 
                 <div className="mt-5">
-                  <p className="text-xs font-medium text-white/60">Highlights</p>
-                  <ul className="mt-3 space-y-2 text-sm text-white/70">
+                  <p className="text-xs font-medium uppercase tracking-[0.18em] text-white/42">Highlights</p>
+                  <ul className="mt-3 space-y-2 text-xs text-white/68 sm:text-sm">
                     {project.highlights.map((h) => (
                       <li key={h} className="flex gap-2">
                         <span
@@ -102,13 +112,13 @@ export default function ProjectModal({
               </div>
 
               <div className="space-y-5">
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <p className="text-xs font-medium text-white/60">Rol</p>
+                <div className="rounded-[24px] border border-white/10 bg-white/[0.03] p-4 backdrop-blur-sm">
+                  <p className="text-xs font-medium uppercase tracking-[0.18em] text-white/42">Rol</p>
                   <div className="mt-2 flex flex-wrap gap-2">
                     {project.role.map((r) => (
                       <span
                         key={r}
-                        className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-xs text-white/70"
+                        className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-xs text-white/68"
                       >
                         {r}
                       </span>
@@ -116,13 +126,13 @@ export default function ProjectModal({
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <p className="text-xs font-medium text-white/60">Herramientas</p>
+                <div className="rounded-[24px] border border-white/10 bg-white/[0.03] p-4 backdrop-blur-sm">
+                  <p className="text-xs font-medium uppercase tracking-[0.18em] text-white/42">Herramientas</p>
                   <div className="mt-2 flex flex-wrap gap-2">
                     {project.tools.map((t) => (
                       <span
                         key={t}
-                        className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-xs text-white/70"
+                        className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-xs text-white/68"
                       >
                         {t}
                       </span>
@@ -131,8 +141,8 @@ export default function ProjectModal({
                 </div>
 
                 {project.links?.length ? (
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                    <p className="text-xs font-medium text-white/60">Links</p>
+                  <div className="rounded-[24px] border border-white/10 bg-white/[0.03] p-4 backdrop-blur-sm">
+                    <p className="text-xs font-medium uppercase tracking-[0.18em] text-white/42">Links</p>
                     <div className="mt-3 flex flex-wrap gap-2">
                       {project.links.map((l) => (
                         <a
@@ -156,4 +166,3 @@ export default function ProjectModal({
     </AnimatePresence>
   );
 }
-

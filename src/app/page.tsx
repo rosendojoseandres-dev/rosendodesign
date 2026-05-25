@@ -6,7 +6,7 @@ import { projects } from "@/content/projects";
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen">
+    <main className="relative min-h-screen overflow-hidden">
       <Navbar />
       <Hero />
       <ProjectsSection projects={projects} />
@@ -14,4 +14,3 @@ export default function HomePage() {
     </main>
   );
 }
-

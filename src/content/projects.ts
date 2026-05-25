@@ -38,7 +38,7 @@ export const projects: Project[] = [
     theme: {
       accent: "#FF7040",
       gradient:
-        "radial-gradient(900px 600px at 20% 10%, rgba(255,112,64,.40), transparent 60%), radial-gradient(900px 600px at 80% 20%, rgba(60,130,255,.22), transparent 60%), linear-gradient(180deg, rgba(10,13,20,.9), rgba(6,7,11,.96))"
+        "radial-gradient(900px 600px at 18% 8%, rgba(255,112,64,.34), transparent 58%), linear-gradient(180deg, rgba(8,8,8,.88), rgba(0,0,0,.98))"
     }
   },
   {
@@ -60,7 +60,7 @@ export const projects: Project[] = [
     theme: {
       accent: "#78AAFF",
       gradient:
-        "radial-gradient(900px 600px at 30% 10%, rgba(120,170,255,.35), transparent 55%), radial-gradient(900px 600px at 70% 40%, rgba(255,112,64,.18), transparent 60%), linear-gradient(180deg, rgba(10,13,20,.92), rgba(6,7,11,.96))"
+        "radial-gradient(900px 600px at 24% 10%, rgba(120,170,255,.3), transparent 58%), linear-gradient(180deg, rgba(8,8,8,.88), rgba(0,0,0,.98))"
     }
   },
   {
@@ -81,8 +81,7 @@ export const projects: Project[] = [
     theme: {
       accent: "#B478FF",
       gradient:
-        "radial-gradient(900px 600px at 25% 20%, rgba(180,120,255,.35), transparent 55%), radial-gradient(900px 600px at 75% 35%, rgba(120,170,255,.18), transparent 60%), linear-gradient(180deg, rgba(10,13,20,.92), rgba(6,7,11,.96))"
+        "radial-gradient(900px 600px at 22% 14%, rgba(180,120,255,.3), transparent 58%), linear-gradient(180deg, rgba(8,8,8,.88), rgba(0,0,0,.98))"
     }
   }
 ];
-

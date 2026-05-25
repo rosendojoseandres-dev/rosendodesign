@@ -1,166 +1,166 @@
 "use client";
 
+import type { PropsWithChildren } from "react";
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 
-/* ── Step indicator ─────────────────────────────── */
-function Step({ n, label, color }: { n: string; label: string; color: string }) {
+function CardShell({
+  children,
+  className = "",
+}: PropsWithChildren<{ className?: string }>) {
   return (
-    <div className="flex items-center gap-2">
-      <span
-        className="flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-semibold text-white"
-        style={{ background: color }}
-      >
-        {n}
-      </span>
-      <span className="text-xs text-white/70">{label}</span>
+    <div
+      className={`relative h-full overflow-hidden rounded-[18px] border border-white/[0.06] bg-[#04060b] p-3 shadow-[0_20px_48px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:rounded-[20px] sm:p-3.5 ${className}`}
+    >
+      <div className="pointer-events-none absolute inset-0 rounded-[28px] ring-1 ring-inset ring-white/[0.035]" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.022),rgba(255,255,255,0.006)_20%,rgba(0,0,0,0.22)_100%)]" />
+      <div className="relative flex h-full flex-col">{children}</div>
     </div>
   );
 }
 
-/* ── Card 1: Discovery / Research ───────────────── */
-function DiscoveryCard({ className }: { className?: string }) {
-  const bars = [72, 55, 88, 41, 65];
+function StepPill({
+  step,
+  title,
+  tone,
+  meta,
+}: {
+  step: string;
+  title: string;
+  tone: string;
+  meta: string;
+}) {
   return (
-    <div
-      className={`rounded-2xl border border-white/10 bg-[#0d1017]/90 p-4 shadow-[0_12px_40px_rgba(0,0,0,.5)] backdrop-blur-md ${className}`}
-    >
-      <div className="flex items-center justify-between">
-        <Step n="01" label="Discovery" color="#4f8ef7" />
-        <span className="rounded-full bg-[#4f8ef7]/15 px-2 py-0.5 text-[10px] text-[#7eb3ff]">
-          18 entrevistas
+    <div className="flex items-center justify-between gap-2">
+      <div className="flex items-center gap-2">
+        <span
+          className="inline-flex h-6 w-6 items-center justify-center rounded-full text-[9px] font-semibold text-[#F2F2F2]"
+          style={{ backgroundColor: tone }}
+        >
+          {step}
         </span>
+        <span className="text-[11px] font-medium text-[#F2F2F2]/88 sm:text-xs">{title}</span>
       </div>
+      <span
+        className="rounded-full px-2 py-0.5 text-[10px] font-medium"
+        style={{ backgroundColor: `${tone}26`, color: tone }}
+      >
+        {meta}
+      </span>
+    </div>
+  );
+}
 
-      <p className="mt-3 text-[11px] font-medium text-white/90">
+function DiscoveryCard({ className = "" }: { className?: string }) {
+  const bars = [74, 58, 90, 44, 72];
+
+  return (
+    <CardShell className={className}>
+      <StepPill step="01" title="Discovery" tone="#4f8ef7" meta="18 entrevistas" />
+
+      <p className="mt-3 text-[12px] font-medium leading-tight tracking-[-0.03em] text-[#F2F2F2] sm:text-[13px]">
         Pain points identificados
       </p>
 
-      <div className="mt-2 flex items-end gap-1" style={{ height: 44 }}>
+      <div className="mt-3 flex items-end gap-1.5" style={{ height: 36 }}>
         {bars.map((h, i) => (
-          <div key={i} className="flex flex-1 flex-col items-center justify-end gap-1">
-            <div
-              className="w-full rounded-sm"
-              style={{
-                height: `${(h / 100) * 36}px`,
-                background: `rgba(79,142,247,${0.3 + (h / 100) * 0.55})`
-              }}
-            />
-          </div>
+          <div
+            key={i}
+            className="flex-1 rounded-[3px] bg-[#4f8ef7]"
+            style={{ height: `${(h / 100) * 30}px`, opacity: 0.72 + i * 0.04 }}
+          />
         ))}
       </div>
 
       <div className="mt-3 flex flex-wrap gap-1.5">
-        {["Navegación", "Onboarding", "Velocidad"].map((t) => (
+        {["Navegación", "Onboarding", "Velocidad"].map((item) => (
           <span
-            key={t}
-            className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] text-white/60"
+            key={item}
+            className="rounded-full border border-white/10 bg-white/[0.04] px-2 py-1 text-[10px] text-[#F2F2F2]/56"
           >
-            {t}
+            {item}
           </span>
         ))}
       </div>
-    </div>
+    </CardShell>
   );
 }
 
-/* ── Card 2: UI Design ──────────────────────────── */
-function DesignCard({ className }: { className?: string }) {
+function DesignCard({ className = "" }: { className?: string }) {
   return (
-    <div
-      className={`rounded-2xl border border-white/10 bg-[#0d1017]/90 p-4 shadow-[0_12px_40px_rgba(0,0,0,.5)] backdrop-blur-md ${className}`}
-    >
-      <div className="flex items-center justify-between">
-        <Step n="02" label="UI Design" color="#e0624a" />
-        <span className="rounded-full bg-[#e0624a]/15 px-2 py-0.5 text-[10px] text-[#ff9b84]">
-          Figma
-        </span>
-      </div>
+    <CardShell className={className}>
+      <StepPill step="02" title="UI Design" tone="#e0624a" meta="Figma" />
 
-      {/* Mini wireframe preview */}
-      <div className="mt-3 overflow-hidden rounded-xl border border-white/8 bg-white/4 p-2">
-        <div className="flex gap-1.5">
-          <div className="h-12 w-8 rounded-lg bg-[#e0624a]/30" />
-          <div className="flex flex-1 flex-col gap-1">
-            <div className="h-2 w-3/4 rounded bg-white/20" />
-            <div className="h-1.5 w-1/2 rounded bg-white/12" />
-            <div className="mt-1 h-5 w-full rounded-md bg-[#e0624a]/25" />
+      <div className="mt-3 rounded-[14px] border border-white/10 bg-black/20 p-2">
+        <div className="flex gap-2">
+          <div className="h-10 w-8 rounded-[8px] bg-[#6e342c]" />
+          <div className="flex-1">
+            <div className="h-2 w-4/5 rounded-full bg-[#F2F2F2]/24" />
+            <div className="mt-3 h-5 w-full rounded-[7px] bg-[#6e342c]" />
           </div>
         </div>
-        <div className="mt-2 flex gap-1">
-          {[60, 40, 80].map((w, i) => (
-            <div key={i} className="h-1.5 rounded bg-white/10" style={{ width: `${w}%` }} />
-          ))}
+        <div className="mt-2.5 flex gap-1.5">
+          <div className="h-1.5 w-[26%] rounded-full bg-[#F2F2F2]/18" />
+          <div className="h-1.5 w-[22%] rounded-full bg-[#F2F2F2]/18" />
+          <div className="h-1.5 flex-1 rounded-full bg-[#F2F2F2]/18" />
         </div>
       </div>
 
-      <div className="mt-2.5 flex items-center gap-1.5">
-        <div className="h-2 w-2 rounded-full bg-[#e0624a]" />
-        <p className="text-[11px] text-white/60">32 componentes · 4 variantes</p>
+      <div className="mt-auto flex items-center gap-2 pt-3 text-[10px] text-[#F2F2F2]/58">
+        <span className="h-2 w-2 rounded-full bg-[#e0624a]" />
+        <span>32 componentes · 4 variantes</span>
       </div>
-    </div>
+    </CardShell>
   );
 }
 
-/* ── Card 3: Design System ──────────────────────── */
-function SystemCard({ className }: { className?: string }) {
+function SystemCard({ className = "" }: { className?: string }) {
   const tokens = [
-    { name: "Primary", hex: "#4f8ef7" },
-    { name: "Accent", hex: "#e0624a" },
-    { name: "Surface", hex: "#1a2035" },
+    { name: "Primary", hex: "#4f8ef7", bg: "#4f8ef7" },
+    { name: "Accent", hex: "#e0624a", bg: "#e0624a" },
+    { name: "Surface", hex: "#1a2035", bg: "#1a2035" },
   ];
+
   return (
-    <div
-      className={`rounded-2xl border border-white/10 bg-[#0d1017]/90 p-4 shadow-[0_12px_40px_rgba(0,0,0,.5)] backdrop-blur-md ${className}`}
-    >
-      <div className="flex items-center justify-between">
-        <Step n="03" label="Design System" color="#9b6bff" />
-        <span className="rounded-full bg-[#9b6bff]/15 px-2 py-0.5 text-[10px] text-[#c4a3ff]">
-          Tokens
-        </span>
-      </div>
+    <CardShell className={className}>
+      <StepPill step="03" title="Design System" tone="#9b6bff" meta="Tokens" />
 
-      <div className="mt-3 space-y-1.5">
-        {tokens.map((t) => (
-          <div key={t.name} className="flex items-center gap-2">
-            <div className="h-5 w-5 rounded-md border border-white/10" style={{ background: t.hex }} />
-            <span className="flex-1 text-[11px] text-white/70">{t.name}</span>
-            <span className="text-[10px] font-mono text-white/35">{t.hex}</span>
+      <div className="mt-3 space-y-2.5">
+        {tokens.map((token) => (
+          <div key={token.name} className="flex items-center gap-2">
+            <div className="h-6 w-6 rounded-lg border border-white/10" style={{ backgroundColor: token.bg }} />
+            <span className="flex-1 text-xs text-[#F2F2F2]/84">{token.name}</span>
+            <span className="text-[10px] text-[#F2F2F2]/34">{token.hex}</span>
           </div>
         ))}
       </div>
 
-      <div className="mt-3 flex gap-1">
-        {["Sm", "Md", "Lg", "XL"].map((s) => (
+      <div className="mt-auto grid grid-cols-4 gap-1.5 pt-3">
+        {["Sm", "Md", "Lg", "XL"].map((size) => (
           <div
-            key={s}
-            className="flex flex-1 items-center justify-center rounded-lg border border-white/10 bg-white/5 py-1 text-[10px] text-white/50"
+            key={size}
+            className="rounded-xl border border-white/10 bg-white/[0.03] px-2 py-1.5 text-center text-[10px] text-[#F2F2F2]/48"
           >
-            {s}
+            {size}
           </div>
         ))}
       </div>
-    </div>
+    </CardShell>
   );
 }
 
-/* ── Main export ─────────────────────────────────── */
 export default function FloatingCards() {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], [reduce ? 0 : 30, reduce ? 0 : -50]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [reduce ? 0 : 10, reduce ? 0 : -80]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [reduce ? 0 : 50, reduce ? 0 : -30]);
-  const r1 = useTransform(scrollYProgress, [0, 1], [reduce ? 0 : -4, reduce ? 0 : 3]);
-  const r2 = useTransform(scrollYProgress, [0, 1], [reduce ? 0 : 4, reduce ? 0 : -4]);
-  const r3 = useTransform(scrollYProgress, [0, 1], [reduce ? 0 : 2, reduce ? 0 : -2]);
+  const y1 = useTransform(scrollYProgress, [0, 1], [reduce ? 0 : 10, reduce ? 0 : -10]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [reduce ? 0 : 14, reduce ? 0 : -14]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [reduce ? 0 : 18, reduce ? 0 : -18]);
 
   return (
     <div ref={ref} className="w-full">
-      {/* ── Móvil: columna alineada ── */}
-      <div className="flex flex-col gap-4 px-4 md:hidden">
+      <div className="grid grid-cols-1 gap-4 px-1 sm:grid-cols-2 lg:hidden">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -176,6 +176,7 @@ export default function FloatingCards() {
           <DesignCard />
         </motion.div>
         <motion.div
+          className="sm:col-span-2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.2, 0.8, 0.2, 1] }}
@@ -184,68 +185,41 @@ export default function FloatingCards() {
         </motion.div>
       </div>
 
-      {/* ── Desktop: layout flotante original ── */}
-      <div className="relative mx-auto hidden h-[540px] w-full max-w-[480px] md:block">
-        {/* Glow ambiental */}
+      <div className="relative hidden w-full grid-cols-3 items-start gap-6 pt-6 lg:grid xl:gap-8 xl:pt-8">
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-1/4 top-1/4 h-64 w-64 rounded-full bg-[#4f8ef7]/12 blur-[80px]" />
-          <div className="absolute right-1/4 bottom-1/4 h-56 w-56 rounded-full bg-[#9b6bff]/10 blur-[70px]" />
+          <div className="absolute left-0 top-6 h-[280px] w-[360px] rounded-r-[60px] bg-[linear-gradient(90deg,rgba(0,0,0,0.97),rgba(0,0,0,0.68),rgba(0,0,0,0.28),transparent)] xl:h-[300px] xl:w-[420px]" />
+          <div className="absolute inset-y-0 left-0 w-[48%] bg-[linear-gradient(90deg,rgba(0,0,0,0.78),rgba(0,0,0,0.22),transparent)]" />
         </div>
 
-        {/* Card 1 — Discovery (arriba izquierda) */}
         <motion.div
-          style={{ y: y1, rotate: r1 }}
-          className="absolute left-0 top-4 w-[240px]"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}
+          style={{ y: y1 }}
+          className="relative z-10 h-[214px] min-w-0 xl:h-[240px]"
+          initial={{ opacity: 0, x: 48 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <DiscoveryCard />
         </motion.div>
 
-        {/* Card 2 — UI Design (centro derecha) */}
         <motion.div
-          style={{ y: y2, rotate: r2 }}
-          className="absolute right-0 top-[150px] w-[230px]"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1, ease: [0.2, 0.8, 0.2, 1] }}
+          style={{ y: y2 }}
+          className="relative z-20 h-[214px] min-w-0 xl:h-[240px]"
+          initial={{ opacity: 0, x: 64 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.75, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
         >
           <DesignCard />
         </motion.div>
 
-        {/* Card 3 — Design System (abajo izquierda) */}
         <motion.div
-          style={{ y: y3, rotate: r3 }}
-          className="absolute bottom-4 left-[20px] w-[240px]"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.2, 0.8, 0.2, 1] }}
+          style={{ y: y3 }}
+          className="relative z-10 h-[214px] min-w-0 xl:h-[240px]"
+          initial={{ opacity: 0, x: 80 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
         >
           <SystemCard />
         </motion.div>
-
-        {/* Línea de conexión decorativa */}
-        <svg
-          className="pointer-events-none absolute inset-0 h-full w-full"
-          style={{ zIndex: -1 }}
-          aria-hidden="true"
-        >
-          <path
-            d="M 120 90 C 200 120, 280 200, 350 230"
-            stroke="rgba(255,255,255,0.05)"
-            strokeWidth="1"
-            fill="none"
-            strokeDasharray="4 6"
-          />
-          <path
-            d="M 350 270 C 280 320, 200 380, 140 420"
-            stroke="rgba(255,255,255,0.05)"
-            strokeWidth="1"
-            fill="none"
-            strokeDasharray="4 6"
-          />
-        </svg>
       </div>
     </div>
   );

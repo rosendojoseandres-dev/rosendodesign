@@ -5,30 +5,28 @@ import FloatingCards from "@/components/FloatingCards";
 
 export default function Hero() {
   return (
-    <section id="top" className="sep-bottom relative">
-      {/* Spotlight */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-white/10 blur-[120px]" />
-        <div className="absolute -top-32 left-10 h-[360px] w-[360px] rounded-full bg-[#FF7040]/15 blur-[110px]" />
-        <div className="absolute top-12 right-10 h-[360px] w-[360px] rounded-full bg-[#78AAFF]/12 blur-[110px]" />
-      </div>
+    <section id="top" className="sep-bottom relative overflow-hidden bg-black">
+      <div className="pointer-events-none absolute inset-0 bg-black" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-[5] hidden w-[78%] bg-[linear-gradient(90deg,#000_0%,#000_36%,rgba(0,0,0,0.98)_50%,rgba(0,0,0,0.92)_62%,rgba(0,0,0,0.72)_76%,rgba(0,0,0,0.32)_90%,transparent_100%)] lg:block" />
 
-      <div className="container-max relative grid min-h-screen grid-cols-1 items-center gap-12 py-24 md:grid-cols-2 md:py-32">
-        <div>
+      <div className="container-max relative grid grid-cols-1 items-start gap-10 py-20 sm:gap-12 sm:py-24 md:gap-14 md:py-28 lg:min-h-screen lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.08fr)] lg:items-center lg:gap-10 lg:py-32">
+        <div className="relative z-10 max-w-[760px] pt-6 sm:pt-10 lg:pt-0">
           <motion.h1
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.85, ease: [0.2, 0.8, 0.2, 1] }}
-            className="mt-0 text-balance text-4xl font-semibold leading-[1.05] tracking-[-0.02em] md:text-6xl"
+            className="mt-0 max-w-[720px] text-4xl font-semibold leading-[0.96] tracking-[-0.045em] text-[#F2F2F2] md:text-[3.45rem] lg:text-[3.8rem]"
           >
-            Diseño experiencias que se sienten rápidas, claras y premium.
+            <span className="block md:whitespace-nowrap">Diseño experiencias</span>
+            <span className="block md:whitespace-nowrap">que se sienten rápidas,</span>
+            <span className="block md:whitespace-nowrap">claras y premium.</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.2, 0.8, 0.2, 1] }}
-            className="mt-6 max-w-xl text-pretty text-base leading-relaxed text-white/70 md:text-lg"
+            className="mt-5 max-w-[38rem] text-pretty text-sm leading-relaxed text-[#F2F2F2]/70 sm:mt-6 sm:text-[15px] md:text-base lg:max-w-[32rem]"
           >
             Portafolio orientado a producto: research, UI, motion y sistemas de
             diseño. Me enfoco en convertir complejidad en interfaces simples y
@@ -39,49 +37,29 @@ export default function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.2, 0.8, 0.2, 1] }}
-            className="mt-8 flex flex-wrap items-center gap-3"
+            className="mt-7 flex flex-wrap items-center gap-3"
           >
             <a
               href="#proyectos"
-              className="rounded-full bg-white px-5 py-3 text-sm font-medium text-black hover:bg-white/90"
+              className="rounded-full bg-[#F2F2F2] px-4 py-2.5 text-xs font-medium text-black transition hover:bg-[#F2F2F2]/90 sm:px-5 sm:text-sm"
             >
               Ver proyectos
             </a>
             <a
               href="mailto:tuemail@correo.com"
-              className="rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm text-white/80 hover:bg-white/10"
+              className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2.5 text-xs text-[#F2F2F2]/80 transition hover:bg-white/[0.08] sm:px-5 sm:text-sm"
             >
               Contacto
             </a>
           </motion.div>
 
-          <div className="mt-10 grid max-w-xl grid-cols-3 gap-3 text-sm text-white/60">
-            <div className="rounded-2xl border border-white/10 bg-white/5 px-3 py-3">
-              <p className="text-white/90 text-sm font-medium">Sistemas</p>
-              <p className="mt-1 text-xs leading-relaxed">
-                Componentes, tokens y guidelines
-              </p>
-            </div>
-            <div className="rounded-2xl border border-white/10 bg-white/5 px-3 py-3">
-              <p className="text-white/90 text-sm font-medium">UX</p>
-              <p className="mt-1 text-xs leading-relaxed">
-                Research, flujos, info architecture
-              </p>
-            </div>
-            <div className="rounded-2xl border border-white/10 bg-white/5 px-3 py-3">
-              <p className="text-white/90 text-sm font-medium">Motion</p>
-              <p className="mt-1 text-xs leading-relaxed">
-                Microinteracciones y scroll
-              </p>
-            </div>
-          </div>
+
         </div>
 
-        <div className="relative">
+        <div className="relative z-0 w-full lg:pl-4 xl:pl-8">
           <FloatingCards />
         </div>
       </div>
-
     </section>
   );
 }
