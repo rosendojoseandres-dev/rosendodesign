@@ -1,30 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
 import FloatingCards from "@/components/FloatingCards";
 
-const fullText = "Arquitectura visual y lógica\npara productos digitales\nde alto rendimiento.";
-
 export default function Hero() {
-  const [displayedText, setDisplayedText] = useState("");
-
-  useEffect(() => {
-    let timeout: NodeJS.Timeout;
-    let i = 0;
-    const tick = () => {
-      i++;
-      setDisplayedText(fullText.slice(0, i));
-      if (i < fullText.length) {
-        timeout = setTimeout(tick, 60);
-      }
-    };
-    timeout = setTimeout(tick, 800);
-    return () => clearTimeout(timeout);
-  }, []);
-
-  const lines = displayedText.split("\n");
-
   return (
     <section id="top" className="sep-bottom relative overflow-hidden bg-black">
       <div className="pointer-events-none absolute inset-0 bg-black" />
@@ -38,18 +17,9 @@ export default function Hero() {
             transition={{ duration: 0.85, ease: [0.2, 0.8, 0.2, 1] }}
             className="mt-0 max-w-[720px] text-3xl font-semibold leading-[0.96] tracking-[-0.045em] text-white md:text-5xl lg:text-[3.25rem]"
           >
-            <span className="block md:whitespace-nowrap">
-              {lines[0] || "\u00A0"}
-              {lines.length === 1 && <span className="animate-pulse text-white/50 font-light">|</span>}
-            </span>
-            <span className="block md:whitespace-nowrap">
-              {lines[1] || "\u00A0"}
-              {lines.length === 2 && <span className="animate-pulse text-white/50 font-light">|</span>}
-            </span>
-            <span className="block md:whitespace-nowrap">
-              {lines[2] || "\u00A0"}
-              {lines.length === 3 && <span className="animate-pulse text-white/50 font-light">|</span>}
-            </span>
+            <span className="block md:whitespace-nowrap">Arquitectura visual y lógica</span>
+            <span className="block md:whitespace-nowrap">para productos digitales</span>
+            <span className="block md:whitespace-nowrap">de alto rendimiento.</span>
           </motion.h1>
 
           <motion.p
