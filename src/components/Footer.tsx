@@ -7,19 +7,19 @@ const socials = [
     label: "Instagram",
     href: "#",
     className:
-      "bg-[linear-gradient(135deg,rgba(225,48,108,0.42)_0%,rgba(131,58,180,0.28)_34%,rgba(0,0,0,0.9)_78%)] md:bg-[linear-gradient(135deg,rgba(225,48,108,0.38)_0%,rgba(131,58,180,0.24)_42%,rgba(0,0,0,0.96)_100%)]",
+      "bg-[linear-gradient(135deg,rgba(225,48,108,0.58)_0%,rgba(131,58,180,0.4)_36%,rgba(0,0,0,0.84)_82%)] md:bg-[linear-gradient(135deg,rgba(225,48,108,0.38)_0%,rgba(131,58,180,0.24)_42%,rgba(0,0,0,0.96)_100%)]",
   },
   {
     label: "Whatsapp",
     href: "#",
     className:
-      "bg-[linear-gradient(135deg,rgba(37,211,102,0.38)_0%,rgba(16,120,54,0.22)_34%,rgba(0,0,0,0.9)_78%)] md:bg-[linear-gradient(135deg,rgba(37,211,102,0.3)_0%,rgba(16,120,54,0.16)_42%,rgba(0,0,0,0.96)_100%)]",
+      "bg-[linear-gradient(135deg,rgba(37,211,102,0.54)_0%,rgba(16,120,54,0.34)_36%,rgba(0,0,0,0.84)_82%)] md:bg-[linear-gradient(135deg,rgba(37,211,102,0.3)_0%,rgba(16,120,54,0.16)_42%,rgba(0,0,0,0.96)_100%)]",
   },
   {
     label: "LinkedIn",
     href: "#",
     className:
-      "bg-[linear-gradient(135deg,rgba(10,102,194,0.4)_0%,rgba(7,56,108,0.24)_34%,rgba(0,0,0,0.9)_78%)] md:bg-[linear-gradient(135deg,rgba(10,102,194,0.34)_0%,rgba(7,56,108,0.2)_42%,rgba(0,0,0,0.96)_100%)]",
+      "bg-[linear-gradient(135deg,rgba(10,102,194,0.56)_0%,rgba(7,56,108,0.36)_36%,rgba(0,0,0,0.84)_82%)] md:bg-[linear-gradient(135deg,rgba(10,102,194,0.34)_0%,rgba(7,56,108,0.2)_42%,rgba(0,0,0,0.96)_100%)]",
   },
 ] as const;
 
