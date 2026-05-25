@@ -15,7 +15,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.85, ease: [0.2, 0.8, 0.2, 1] }}
-            className="mt-0 max-w-[720px] text-4xl font-semibold leading-[0.96] tracking-[-0.045em] text-white md:text-[3.45rem] lg:text-[3.8rem]"
+            className="mt-0 max-w-[720px] text-3xl font-semibold leading-[0.96] tracking-[-0.045em] text-white md:text-5xl lg:text-[3.25rem]"
           >
             <span className="block md:whitespace-nowrap">Arquitectura visual y lógica</span>
             <span className="block md:whitespace-nowrap">para productos digitales</span>
