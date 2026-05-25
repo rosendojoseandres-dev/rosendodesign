@@ -15,7 +15,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.85, ease: [0.2, 0.8, 0.2, 1] }}
-            className="mt-0 max-w-[720px] text-4xl font-semibold leading-[0.96] tracking-[-0.045em] text-[#F2F2F2] md:text-[3.45rem] lg:text-[3.8rem]"
+            className="mt-0 max-w-[720px] text-4xl font-semibold leading-[0.96] tracking-[-0.045em] text-white md:text-[3.45rem] lg:text-[3.8rem]"
           >
             <span className="block md:whitespace-nowrap">Arquitectura visual y lógica</span>
             <span className="block md:whitespace-nowrap">para productos digitales</span>
@@ -26,7 +26,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.2, 0.8, 0.2, 1] }}
-            className="mt-5 max-w-[38rem] text-pretty text-sm leading-relaxed text-[#F2F2F2]/70 sm:mt-6 sm:text-[15px] md:text-base lg:max-w-[32rem]"
+            className="mt-5 max-w-[38rem] text-pretty text-sm leading-relaxed text-zinc-400 sm:mt-6 sm:text-[15px] md:text-base lg:max-w-[32rem]"
           >
             Soy Andrés Rosendo, Diseñador UX/UI. Me especializo en ecosistemas Fintech, paneles transaccionales y plataformas E-commerce. Elevo la retención de usuarios uniendo sistemas de diseño, estética premium y objetivos de negocio.
           </motion.p>
@@ -39,7 +39,7 @@ export default function Hero() {
           >
             <a
               href="#proyectos"
-              className="rounded-full bg-[#F2F2F2] px-4 py-2.5 text-xs font-medium text-black transition hover:bg-[#F2F2F2]/90 sm:px-5 sm:text-sm"
+              className="rounded-full bg-white px-4 py-2.5 text-xs font-medium text-black transition hover:bg-white/90 sm:px-5 sm:text-sm"
             >
               Explorar Proyectos
             </a>
@@ -47,7 +47,7 @@ export default function Hero() {
               href="https://api.whatsapp.com/send/?phone=584245692491&text&type=phone_number&app_absent=0"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2.5 text-xs text-[#F2F2F2]/80 transition hover:bg-white/[0.08] sm:px-5 sm:text-sm"
+              className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2.5 text-xs text-white/80 transition hover:bg-white/[0.08] sm:px-5 sm:text-sm"
             >
               Hablemos
             </a>

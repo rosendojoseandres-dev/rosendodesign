@@ -35,7 +35,7 @@ export default function Footer() {
                 <span className="block">Construyamos el próximo</span>
                 <span className="block whitespace-nowrap">producto líder de tu sector.</span>
               </h3>
-              <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/62 sm:text-[15px] md:text-base">
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-zinc-400 sm:text-[15px] md:text-base">
                 ¿Tienes un proyecto complejo que requiere una interfaz intuitiva, moderna y escalable? Cuéntame los objetivos de tu producto y definamos el mejor enfoque visual y técnico.
               </p>
             </div>
@@ -51,7 +51,7 @@ export default function Footer() {
                 {socials.map((social) => (
                   <a
                     key={social.label}
-                    className={`inline-flex w-full items-center justify-center rounded-full border border-white/[0.05] px-3 py-2.5 text-[11px] font-medium text-[#F2F2F2] transition duration-200 hover:-translate-y-0.5 hover:border-white/[0.08] hover:text-white sm:px-5 sm:text-xs md:text-sm ${social.className}`}
+                    className={`inline-flex w-full items-center justify-center rounded-full border border-white/[0.05] px-3 py-2.5 text-[11px] font-medium text-white transition duration-200 hover:-translate-y-0.5 hover:border-white/[0.08] hover:text-white sm:px-5 sm:text-xs md:text-sm ${social.className}`}
                     href={social.href}
                     target="_blank"
                     rel="noreferrer"

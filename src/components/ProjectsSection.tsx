@@ -96,7 +96,7 @@ export default function ProjectsSection({ projects }: { projects: Project[] }) {
                 <span className="block whitespace-nowrap">De la lógica de negocio</span>
                 <span className="block whitespace-nowrap">a la interfaz.</span>
               </h2>
-              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/62 sm:text-[15px] md:text-base">
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-400 sm:text-[15px] md:text-base">
                 Explora cómo aplico metodologías de investigación, wireframing y diseño de alta fidelidad para resolver problemas reales en el sector financiero y el comercio electrónico.
               </p>
             </div>

@@ -13,7 +13,8 @@ export default {
           900: "#0A0D14",
           800: "#0F1623",
           700: "#162034"
-        }
+        },
+        white: "#EBEBEB"
       },
       boxShadow: {
         glass: "0 10px 40px rgba(0,0,0,.35)",
