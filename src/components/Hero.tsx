@@ -16,10 +16,10 @@ export default function Hero() {
       i++;
       setDisplayedText(fullText.slice(0, i));
       if (i < fullText.length) {
-        timeout = setTimeout(tick, 35);
+        timeout = setTimeout(tick, 60);
       }
     };
-    timeout = setTimeout(tick, 300);
+    timeout = setTimeout(tick, 800);
     return () => clearTimeout(timeout);
   }, []);
 
