@@ -41,21 +41,21 @@ export const projects: Project[] = [
     }
   },
   {
-    slug: "joyjam",
-    title: "JoyJam",
-    subtitle: "Events + music discovery",
+    slug: "vurelo",
+    title: "Vurelo",
+    subtitle: "Fintech / Rediseño Mobile Banking",
     year: "2025",
-    tags: ["UX Strategy", "UI", "Interaction Design"],
+    tags: ["UX Strategy", "UI Redesign", "Interaction Design", "Prototyping"],
     summary:
-      "Landing + flujo de descubrimiento para eventos. Se priorizó jerarquía tipográfica y navegación con scroll anclado.",
-    role: ["UX/UI", "Motion", "Microinteracciones"],
-    tools: ["Figma", "After Effects", "Principle"],
+      "Rediseño integral de interfaz y experiencia de usuario (UI/UX) para una plataforma de banca móvil. El proyecto se centró en la reestructuración completa de la arquitectura de la información y la simplificación de transacciones financieras críticas. El resultado es una interfaz intuitiva, ágil y libre de fricciones, diseñada estratégicamente para aumentar la retención y mejorar la navegabilidad general del usuario.",
+    role: ["Product Designer", "Mobile UI", "UX Research"],
+    tools: ["Adobe XD", "Figma"],
     highlights: [
-      "Hero con cards flotantes para reforzar features clave.",
-      "Secciones con parallax y cambios de densidad visual en scroll.",
-      "Optimización responsive: mobile-first con grid adaptable."
+      "Simplificación exhaustiva de la arquitectura de la información y optimización de los flujos transaccionales clave (envíos de dinero, pagos y consulta de saldo).",
+      "Modernización total de la interfaz de usuario (UI), elevando drásticamente los estándares de usabilidad, accesibilidad y confianza visual.",
+      "Implementación de un sistema de navegación intuitivo diseñado para disminuir la tasa de abandono y potenciar la retención de usuarios."
     ],
-    links: [{ label: "Behance", href: "#" }],
+    links: [{ label: "Case study", href: "#" }],
     theme: {
       accent: "#78AAFF",
       gradient:
