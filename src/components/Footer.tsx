@@ -2,13 +2,34 @@
 
 import Reveal from "@/components/Reveal";
 
+const socials = [
+  {
+    label: "Instagram",
+    href: "#",
+    className:
+      "bg-[linear-gradient(135deg,rgba(225,48,108,0.3)_0%,rgba(131,58,180,0.18)_30%,rgba(0,0,0,0.94)_72%)] md:bg-[linear-gradient(135deg,rgba(225,48,108,0.38)_0%,rgba(131,58,180,0.24)_42%,rgba(0,0,0,0.96)_100%)]",
+  },
+  {
+    label: "Whatsapp",
+    href: "#",
+    className:
+      "bg-[linear-gradient(135deg,rgba(37,211,102,0.26)_0%,rgba(16,120,54,0.14)_30%,rgba(0,0,0,0.94)_72%)] md:bg-[linear-gradient(135deg,rgba(37,211,102,0.3)_0%,rgba(16,120,54,0.16)_42%,rgba(0,0,0,0.96)_100%)]",
+  },
+  {
+    label: "LinkedIn",
+    href: "#",
+    className:
+      "bg-[linear-gradient(135deg,rgba(10,102,194,0.28)_0%,rgba(7,56,108,0.16)_30%,rgba(0,0,0,0.94)_72%)] md:bg-[linear-gradient(135deg,rgba(10,102,194,0.34)_0%,rgba(7,56,108,0.2)_42%,rgba(0,0,0,0.96)_100%)]",
+  },
+] as const;
+
 export default function Footer() {
   return (
     <footer id="contacto" className="sep-top relative py-16 sm:py-20 md:py-24">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/8" />
       <div className="container-max">
         <Reveal>
-          <div className="grid gap-8 md:grid-cols-2 md:items-end md:gap-10">
+          <div className="grid gap-8 md:grid-cols-2 md:items-center md:gap-10">
             <div>
               <h3 className="text-[1.72rem] font-semibold leading-[1.02] tracking-[-0.045em] sm:max-w-[14ch] sm:text-3xl md:max-w-none md:text-4xl">
                 <span className="block">Si quieres un diseño que se</span>
@@ -20,25 +41,19 @@ export default function Footer() {
               </p>
             </div>
 
-            <div className="flex flex-col items-start gap-3 md:items-end">
-              <a
-                href="mailto:tuemail@correo.com"
-                className="inline-flex w-full items-center justify-center rounded-full bg-white px-5 py-2.5 text-xs font-medium text-black transition hover:bg-white/90 sm:w-auto md:text-sm"
-              >
-                tuemail@correo.com
-              </a>
-              <div className="flex flex-wrap gap-2 text-xs text-white/60 sm:text-sm md:justify-end">
-                <a className="hover:text-white" href="#" target="_blank" rel="noreferrer">
-                  LinkedIn
-                </a>
-                <span className="text-white/25">/</span>
-                <a className="hover:text-white" href="#" target="_blank" rel="noreferrer">
-                  Behance
-                </a>
-                <span className="text-white/25">/</span>
-                <a className="hover:text-white" href="#" target="_blank" rel="noreferrer">
-                  Dribbble
-                </a>
+            <div className="flex flex-col items-start md:self-center md:items-end">
+              <div className="grid w-full grid-cols-3 gap-2 md:max-w-[34rem]">
+                {socials.map((social) => (
+                  <a
+                    key={social.label}
+                    className={`inline-flex w-full items-center justify-center rounded-full border border-white/[0.05] px-3 py-2.5 text-[11px] font-medium text-[#F2F2F2] transition duration-200 hover:-translate-y-0.5 hover:border-white/[0.08] hover:text-white sm:px-5 sm:text-xs md:text-sm ${social.className}`}
+                    href={social.href}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {social.label}
+                  </a>
+                ))}
               </div>
             </div>
           </div>
