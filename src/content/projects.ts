@@ -17,23 +17,22 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "mule-app",
-    title: "Mule App",
-    subtitle: "Streaming / creator platform",
+    slug: "klyn",
+    title: "Klyn",
+    subtitle: "Fintech / Billetera Digital",
     year: "2026",
-    tags: ["UX Research", "UI Design", "Design System", "Prototyping"],
+    tags: ["End-to-End Design", "UI/UX Design", "System Prototyping"],
     summary:
-      "Rediseño de experiencia para aumentar conversión en onboarding y mejorar la claridad del valor para creadores.",
-    role: ["Lead UX/UI", "Sistema de diseño", "Prototipos hi-fi"],
-    tools: ["Figma", "FigJam", "Notion", "Maze"],
+      "Diseño de producto integral para una plataforma financiera estructurada exclusivamente para la gestión de USD. Conceptualización desde la identidad de marca hasta la arquitectura de interfaces de alta densidad de datos, logrando un ecosistema que equilibra una estética premium con una navegación libre de fricciones.",
+    role: ["Lead Product Designer", "Visual Identity", "UX Research"],
+    tools: ["Adobe XD", "Illustrator", "Prototipado hi-fi"],
     highlights: [
-      "Onboarding en 4 pasos con progreso y microcopys orientados a valor.",
-      "Sistema de componentes para escalar páginas marketing + producto.",
-      "Mejoras en accesibilidad (contraste y focus) + motion guidelines."
+      "Creación de la identidad visual completa, tipografía y sistema de diseño escalable, alineados estratégicamente bajo el eslogan rector: \"El próximo movimiento es tuyo\".",
+      "Diseño de un dashboard transaccional complejo que incluye gestión de tarjetas, módulos de metas de ahorro y analíticas de rendimiento calculadas sobre una base métrica de 157 puntos.",
+      "Arquitectura de flujos críticos de alta seguridad, integrando onboarding con validación biométrica y un ecosistema de interfaz dual (Light / Dark Mode) para optimizar la accesibilidad."
     ],
     links: [
-      { label: "Figma", href: "https://figma.com/" },
-      { label: "Case study", href: "#" }
+      { label: "Prototipo interactivo", href: "#" }
     ],
     theme: {
       accent: "#FF7040",
