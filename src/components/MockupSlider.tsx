@@ -185,7 +185,7 @@ export default function MockupSlider({
   );
 
   const PORTRAIT_RATIO = 19.5 / 9;
-  const LANDSCAPE_RATIO = 9 / 16;
+  const LANDSCAPE_RATIO = 3 / 4; // 1920x1440 es 4:3
   const ratio = orientation === "landscape" ? LANDSCAPE_RATIO : PORTRAIT_RATIO;
   
   const trackH = containerW > 0
@@ -203,7 +203,7 @@ export default function MockupSlider({
         {/* Track */}
         <div
           ref={containerRef}
-          className={`relative w-full overflow-hidden cursor-grab active:cursor-grabbing ${orientation === "landscape" ? "rounded-xl border border-white/10" : ""}`}
+          className="relative w-full overflow-hidden cursor-grab active:cursor-grabbing"
           style={{ height: trackH || 580 }}
         >
           {ready && containerW > 0 && (
@@ -239,7 +239,7 @@ export default function MockupSlider({
                       src={src}
                       alt={`Pantalla ${mod(idx, total) + 1}`}
                       fill
-                      className="object-cover object-center"
+                      className={`${orientation === "landscape" ? "object-contain" : "object-cover"} object-center`}
                       sizes={`${Math.round(containerW)}px`}
                       draggable={false}
                       priority={idx === total} // first image in middle copy
