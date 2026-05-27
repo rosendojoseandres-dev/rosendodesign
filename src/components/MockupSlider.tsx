@@ -173,8 +173,9 @@ export default function MockupSlider({
       const pos = x.get();
       const lo = -2 * total * containerW;
       const hi = -total * containerW;
-      if (pos > hi) x.set(pos - total * containerW);
-      else if (pos < lo) x.set(pos + total * containerW);
+      // Usamos un pequeño margen (0.5) para evitar fallos por precisión de decimales
+      if (pos > hi + 0.5) x.set(pos - total * containerW);
+      else if (pos < lo + 0.5) x.set(pos + total * containerW);
 
       isAnimating.current = false;
     },
