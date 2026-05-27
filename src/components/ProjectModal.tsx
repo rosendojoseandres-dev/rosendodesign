@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { Project } from "@/content/projects";
+import MockupSlider from "@/components/MockupSlider";
 
 export default function ProjectModal({
   project,
@@ -161,6 +162,17 @@ export default function ProjectModal({
                 ) : null}
               </div>
             </div>
+
+            {/* ── Mockup Slider al final del modal ── */}
+            {project.mockups?.length ? (
+              <div className="border-t border-white/10 px-4 pb-8 pt-6 sm:px-6">
+                <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-white/40">
+                  Pantallas del proyecto
+                </p>
+                <MockupSlider images={project.mockups} accent={project.theme.accent} />
+              </div>
+            ) : null}
+
           </motion.div>
         </motion.div>
       )}

@@ -8,6 +8,7 @@ export type Project = {
   tools: string[];
   highlights: string[];
   links?: { label: string; href: string }[];
+  mockups?: string[];          // Rutas relativas a /public
   theme: {
     accent: string; // Tailwind color (e.g. "#FF7040")
     gradient: string; // CSS gradient
@@ -31,6 +32,14 @@ export const projects: Project[] = [
     ],
     links: [
       { label: "Prototipo interactivo", href: "#" }
+    ],
+    mockups: [
+      "/images/klyn/mockup-1.png",
+      "/images/klyn/mockup-2.png",
+      "/images/klyn/mockup-3.png",
+      "/images/klyn/mockup-4.png",
+      "/images/klyn/mockup-5.png",
+      "/images/klyn/mockup-6.png"
     ],
     theme: {
       accent: "#FF7040",
