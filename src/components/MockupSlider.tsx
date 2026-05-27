@@ -185,15 +185,30 @@ export default function MockupSlider({
   const handlePointerDown = (e: React.PointerEvent) => {
     pointerStartX.current = e.clientX;
   };
+  
+  /*
+    Track height — key to "tamaño real":
+    Phone mockups are portrait with aspect ≈ 9 : 19.5 (width : height).
+    If we want the phone to fill the container WIDTH, we need:
+      trackH = containerW × (19.5 / 9)
+    so that object-contain renders the image at exactly containerW × trackH.
+
+    On desktop we cap at 620 px to prevent an enormous modal section.
+    On mobile (~330–440 px wide) we let it grow naturally: a 330 px
+    container becomes ~715 px tall — fills the width, readable content.
+  */
+  const PHONE_H_RATIO = 19.5 / 9; // height per unit of width
+  const trackH = containerW > 0
+    ? containerW <= 500
+      ? Math.round(containerW * PHONE_H_RATIO)       // mobile: full-width phone
+      : Math.min(Math.round(containerW * PHONE_H_RATIO), 620) // desktop: capped
+    : 580; // SSR fallback
 
   const handlePointerUp = (e: React.PointerEvent) => {
     const diff = pointerStartX.current - e.clientX;
     if (diff > SWIPE_THRESHOLD) go(1);
     else if (diff < -SWIPE_THRESHOLD) go(-1);
   };
-
-  /* ── Track height ── */
-  const trackH = containerW > 0 && containerW <= 440 ? 600 : 580;
 
   return (
     <div className="w-full select-none">
