@@ -62,6 +62,15 @@ export const projects: Project[] = [
       "Implementación de un sistema de navegación intuitivo diseñado para disminuir la tasa de abandono y potenciar la retención de usuarios."
     ],
     links: [{ label: "Case study", href: "#" }],
+    mockups: [
+      "/images/vurelo/mockup1.png",
+      "/images/vurelo/mockup2.png",
+      "/images/vurelo/mockup3.png",
+      "/images/vurelo/mockup4.png",
+      "/images/vurelo/mockup5.png",
+      "/images/vurelo/mockup6.png",
+      "/images/vurelo/mockup7.png"
+    ],
     theme: {
       accent: "#78AAFF",
       gradient:
