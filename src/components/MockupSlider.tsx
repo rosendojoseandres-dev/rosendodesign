@@ -207,7 +207,7 @@ export default function MockupSlider({
   };
 
   return (
-    <div className="w-full select-none">
+    <div className="w-full select-none -mt-4 sm:-mt-8 md:-mt-16">
 
       {/* ─── Slider track ─── */}
       <div className="relative">
