@@ -141,21 +141,23 @@ export default function MockupSlider({
   /* ── Core navigation function ── */
   const go = useCallback(
     async (delta: number) => {
-      if (isAnimating.current || containerW === 0) return;
+      if (containerW === 0) return;
       isAnimating.current = true;
 
-      /* Update real index (for dots) */
+      // Real index calculation
       const newReal = mod(currentRealRef.current + delta, total);
+      
+      // Calculate target based on the exact anchor point, not the current dragging x
+      const anchorX = -(total + currentRealRef.current) * containerW;
+      const targetX = anchorX - delta * containerW;
+
       currentRealRef.current = newReal;
       setCurrentReal(newReal);
 
-      /* Animate x to target */
-      const target = x.get() - delta * containerW;
-
       if (reduce) {
-        x.set(target);
+        x.set(targetX);
       } else {
-        await animate(x, target, {
+        await animate(x, targetX, {
           type: "spring",
           stiffness: 320,
           damping: 40,
@@ -163,27 +165,25 @@ export default function MockupSlider({
         });
       }
 
-      /*
-        Silent snap — keep x within the middle copy's range:
-        Middle copy spans x ∈ [−2·total·w, −total·w]
-        If we've moved into the first or third copy, snap silently.
-      */
-      const pos = x.get();
-      const lo = -2 * total * containerW;
-      const hi = -total * containerW;
-      if (pos > hi) x.set(pos - total * containerW);
-      else if (pos < lo) x.set(pos + total * containerW);
+      /* Silent snap to middle copy */
+      const snappedX = -(total + newReal) * containerW;
+      if (targetX !== snappedX) {
+        x.set(snappedX);
+      }
 
       isAnimating.current = false;
     },
     [containerW, total, x, reduce]
   );
 
-  /* ── Pointer events for mobile swipe ── */
-  const pointerStartX = useRef(0);
-
-  const handlePointerDown = (e: React.PointerEvent) => {
-    pointerStartX.current = e.clientX;
+  /* ── Drag handling ── */
+  const handleDragEnd = (_: unknown, info: { offset: { x: number }; velocity: { x: number } }) => {
+    const { offset, velocity } = info;
+    let delta = 0;
+    if (offset.x < -SWIPE_THRESHOLD || velocity.x < -300) delta = 1;
+    else if (offset.x > SWIPE_THRESHOLD || velocity.x > 300) delta = -1;
+    
+    go(delta);
   };
   
   /*
@@ -200,14 +200,8 @@ export default function MockupSlider({
       : Math.min(Math.round(containerW * PHONE_H_RATIO), 800) // desktop: capped higher for readability
     : 700; // SSR fallback
 
-  const handlePointerUp = (e: React.PointerEvent) => {
-    const diff = pointerStartX.current - e.clientX;
-    if (diff > SWIPE_THRESHOLD) go(1);
-    else if (diff < -SWIPE_THRESHOLD) go(-1);
-  };
-
   return (
-    <div className="w-full select-none -mt-10 sm:-mt-12 md:-mt-16">
+    <div className="w-full select-none -mt-14 sm:-mt-24 md:-mt-32 lg:-mt-40">
 
       {/* ─── Slider track ─── */}
       <div className="relative">
@@ -217,8 +211,6 @@ export default function MockupSlider({
           ref={containerRef}
           className="relative w-full overflow-hidden cursor-grab active:cursor-grabbing"
           style={{ height: trackH || 580 }}
-          onPointerDown={handlePointerDown}
-          onPointerUp={handlePointerUp}
         >
           {ready && containerW > 0 && (
             /* Row: extends to fit all 3 copies */
@@ -228,6 +220,9 @@ export default function MockupSlider({
                 x,
                 width: containerW * extended.length,
               }}
+              drag="x"
+              onDragEnd={handleDragEnd}
+              dragElastic={0.2}
             >
               {extended.map((src, idx) => (
                 <div
@@ -254,7 +249,7 @@ export default function MockupSlider({
       </div>
 
       {/* ─── Controls: counter + arrows + dots ─── */}
-      <div className="-mt-6 sm:-mt-12 md:-mt-20 relative z-10 flex flex-col items-center gap-3">
+      <div className="-mt-12 sm:-mt-20 md:-mt-28 relative z-10 flex flex-col items-center gap-3">
 
         <span className="text-[10px] tabular-nums text-white/28 tracking-widest uppercase">
           {currentReal + 1} / {total}
