@@ -254,7 +254,7 @@ export default function MockupSlider({
       </div>
 
       {/* ─── Controls: counter + arrows + dots ─── */}
-      <div className="mt-5 flex flex-col items-center gap-3">
+      <div className="mt-5 sm:-mt-12 md:-mt-20 relative z-10 flex flex-col items-center gap-3">
 
         <span className="text-[10px] tabular-nums text-white/28 tracking-widest uppercase">
           {currentReal + 1} / {total}
