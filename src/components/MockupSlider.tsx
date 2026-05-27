@@ -20,6 +20,7 @@ import Image from "next/image";
 interface MockupSliderProps {
   images: string[];
   accent?: string;
+  orientation?: "portrait" | "landscape";
 }
 
 /* ─────────────────────────────────────────────
@@ -87,6 +88,7 @@ function ArrowBtn({
 export default function MockupSlider({
   images,
   accent = "#FF7040",
+  orientation = "portrait",
 }: MockupSliderProps) {
   const total = images.length;
   const reduce = useReducedMotion();
@@ -182,12 +184,15 @@ export default function MockupSlider({
     [containerW, total, x, reduce]
   );
 
-  const PHONE_H_RATIO = 19.5 / 9;
+  const PORTRAIT_RATIO = 19.5 / 9;
+  const LANDSCAPE_RATIO = 9 / 16;
+  const ratio = orientation === "landscape" ? LANDSCAPE_RATIO : PORTRAIT_RATIO;
+  
   const trackH = containerW > 0
     ? containerW <= 500
-      ? Math.round(containerW * PHONE_H_RATIO)
-      : Math.min(Math.round(containerW * PHONE_H_RATIO), 800)
-    : 700;
+      ? Math.round(containerW * ratio)
+      : Math.min(Math.round(containerW * ratio), orientation === "landscape" ? 600 : 800)
+    : (orientation === "landscape" ? 450 : 700);
 
   return (
     <div className="w-full select-none -mt-16 sm:-mt-12 md:-mt-16">

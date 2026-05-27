@@ -169,7 +169,11 @@ export default function ProjectModal({
                 <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-white/40">
                   Pantallas del proyecto
                 </p>
-                <MockupSlider images={project.mockups} accent={project.theme.accent} />
+                <MockupSlider 
+                  images={project.mockups} 
+                  accent={project.theme.accent} 
+                  orientation={project.mockupOrientation}
+                />
               </div>
             ) : null}
 

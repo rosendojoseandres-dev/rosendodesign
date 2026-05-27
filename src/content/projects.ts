@@ -9,6 +9,7 @@ export type Project = {
   highlights: string[];
   links?: { label: string; href: string }[];
   mockups?: string[];          // Rutas relativas a /public
+  mockupOrientation?: "portrait" | "landscape";
   theme: {
     accent: string; // Tailwind color (e.g. "#FF7040")
     gradient: string; // CSS gradient
@@ -92,6 +93,11 @@ export const projects: Project[] = [
       "Estructuración de layouts modulares y adaptativos (Mobile First), garantizando una experiencia de navegación de alta gama y responsiva para los usuarios."
     ],
     links: [{ label: "Case study", href: "#" }],
+    mockups: [
+      "/images/groc/mockup-1.png",
+      "/images/groc/mockup-2.png"
+    ],
+    mockupOrientation: "landscape",
     theme: {
       accent: "#B478FF",
       gradient:
