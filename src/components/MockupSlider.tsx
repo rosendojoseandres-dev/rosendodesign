@@ -209,15 +209,15 @@ export default function MockupSlider({
                 width: containerW * extended.length,
               }}
               drag={reduce ? false : "x"}
-              dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.1}
+              dragMomentum={false}
               onDragEnd={(_, info) => {
                 const offset = info.offset.x;
                 const velocity = info.velocity.x;
                 
                 let delta = 0;
-                if (offset < -SWIPE_THRESHOLD || velocity < -400) delta = 1;
-                else if (offset > SWIPE_THRESHOLD || velocity > 400) delta = -1;
+                // Sensibilidad ajustada para móvil
+                if (offset < -SWIPE_THRESHOLD || velocity < -300) delta = 1;
+                else if (offset > SWIPE_THRESHOLD || velocity > 300) delta = -1;
                 
                 go(delta);
               }}
