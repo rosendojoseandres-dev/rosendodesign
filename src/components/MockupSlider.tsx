@@ -188,21 +188,17 @@ export default function MockupSlider({
   
   /*
     Track height — key to "tamaño real":
-    Phone mockups are portrait with aspect ≈ 9 : 19.5 (width : height).
-    If we want the phone to fill the container WIDTH, we need:
-      trackH = containerW × (19.5 / 9)
-    so that object-contain renders the image at exactly containerW × trackH.
-
-    On desktop we cap at 620 px to prevent an enormous modal section.
-    On mobile (~330–440 px wide) we let it grow naturally: a 330 px
-    container becomes ~715 px tall — fills the width, readable content.
+    Since the images are 1920x1440 (landscape) but contain a portrait phone,
+    object-contain shrinks them based on width. We switch to object-cover
+    to crop the empty side space. We also allow a taller height so the phone
+    is huge and readable.
   */
   const PHONE_H_RATIO = 19.5 / 9; // height per unit of width
   const trackH = containerW > 0
     ? containerW <= 500
       ? Math.round(containerW * PHONE_H_RATIO)       // mobile: full-width phone
-      : Math.min(Math.round(containerW * PHONE_H_RATIO), 620) // desktop: capped
-    : 580; // SSR fallback
+      : Math.min(Math.round(containerW * PHONE_H_RATIO), 800) // desktop: capped higher for readability
+    : 700; // SSR fallback
 
   const handlePointerUp = (e: React.PointerEvent) => {
     const diff = pointerStartX.current - e.clientX;
@@ -244,7 +240,7 @@ export default function MockupSlider({
                       src={src}
                       alt={`Pantalla ${mod(idx, total) + 1}`}
                       fill
-                      className="object-contain"
+                      className="object-cover object-center"
                       sizes={`${Math.round(containerW)}px`}
                       draggable={false}
                       priority={idx === total} // first image in middle copy
