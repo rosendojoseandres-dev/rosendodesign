@@ -195,7 +195,7 @@ export default function MockupSlider({
     : (orientation === "landscape" ? 450 : 700);
 
   return (
-    <div className="w-full select-none -mt-16 sm:-mt-12 md:-mt-16">
+    <div className={`w-full select-none ${orientation === "landscape" ? "mt-4" : "-mt-16 sm:-mt-12 md:-mt-16"}`}>
 
       {/* ─── Slider track ─── */}
       <div className="relative">
@@ -203,7 +203,7 @@ export default function MockupSlider({
         {/* Track */}
         <div
           ref={containerRef}
-          className="relative w-full overflow-hidden cursor-grab active:cursor-grabbing"
+          className={`relative w-full overflow-hidden cursor-grab active:cursor-grabbing ${orientation === "landscape" ? "rounded-xl border border-white/10" : ""}`}
           style={{ height: trackH || 580 }}
         >
           {ready && containerW > 0 && (
@@ -253,7 +253,7 @@ export default function MockupSlider({
       </div>
 
       {/* ─── Controls: counter + arrows + dots ─── */}
-      <div className="-mt-14 sm:-mt-12 md:-mt-20 relative z-10 flex flex-col items-center gap-3">
+      <div className={`relative z-10 flex flex-col items-center gap-3 ${orientation === "landscape" ? "mt-6" : "-mt-14 sm:-mt-12 md:-mt-20"}`}>
 
         <span className="text-[10px] tabular-nums text-white/28 tracking-widest uppercase">
           {currentReal + 1} / {total}
