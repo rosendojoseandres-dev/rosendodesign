@@ -141,23 +141,23 @@ export default function MockupSlider({
   /* ── Core navigation function ── */
   const go = useCallback(
     async (delta: number) => {
-      if (containerW === 0) return;
+      if (isAnimating.current || containerW === 0) return;
       isAnimating.current = true;
 
-      // Real index calculation
+      /* Update real index (for dots) */
       const newReal = mod(currentRealRef.current + delta, total);
-      
-      // Calculate target based on the exact anchor point, not the current dragging x
-      const anchorX = -(total + currentRealRef.current) * containerW;
-      const targetX = anchorX - delta * containerW;
-
+      const oldReal = currentRealRef.current;
       currentRealRef.current = newReal;
       setCurrentReal(newReal);
 
+      /* Animate x to target based on logical position (not x.get() which changes during drag) */
+      const baseLogicalX = -(total + oldReal) * containerW;
+      const target = baseLogicalX - delta * containerW;
+
       if (reduce) {
-        x.set(targetX);
+        x.set(target);
       } else {
-        await animate(x, targetX, {
+        await animate(x, target, {
           type: "spring",
           stiffness: 320,
           damping: 40,
@@ -165,43 +165,31 @@ export default function MockupSlider({
         });
       }
 
-      /* Silent snap to middle copy */
-      const snappedX = -(total + newReal) * containerW;
-      if (targetX !== snappedX) {
-        x.set(snappedX);
-      }
+      /*
+        Silent snap — keep x within the middle copy's range:
+        Middle copy spans x ∈ [−2·total·w, −total·w]
+        If we've moved into the first or third copy, snap silently.
+      */
+      const pos = x.get();
+      const lo = -2 * total * containerW;
+      const hi = -total * containerW;
+      if (pos > hi) x.set(pos - total * containerW);
+      else if (pos < lo) x.set(pos + total * containerW);
 
       isAnimating.current = false;
     },
     [containerW, total, x, reduce]
   );
 
-  /* ── Drag handling ── */
-  const handleDragEnd = (_: unknown, info: { offset: { x: number }; velocity: { x: number } }) => {
-    const { offset, velocity } = info;
-    let delta = 0;
-    if (offset.x < -SWIPE_THRESHOLD || velocity.x < -300) delta = 1;
-    else if (offset.x > SWIPE_THRESHOLD || velocity.x > 300) delta = -1;
-    
-    go(delta);
-  };
-  
-  /*
-    Track height — key to "tamaño real":
-    Since the images are 1920x1440 (landscape) but contain a portrait phone,
-    object-contain shrinks them based on width. We switch to object-cover
-    to crop the empty side space. We also allow a taller height so the phone
-    is huge and readable.
-  */
-  const PHONE_H_RATIO = 19.5 / 9; // height per unit of width
+  const PHONE_H_RATIO = 19.5 / 9;
   const trackH = containerW > 0
     ? containerW <= 500
-      ? Math.round(containerW * PHONE_H_RATIO)       // mobile: full-width phone
-      : Math.min(Math.round(containerW * PHONE_H_RATIO), 800) // desktop: capped higher for readability
-    : 700; // SSR fallback
+      ? Math.round(containerW * PHONE_H_RATIO)
+      : Math.min(Math.round(containerW * PHONE_H_RATIO), 800)
+    : 700;
 
   return (
-    <div className="w-full select-none -mt-14 sm:-mt-24 md:-mt-32 lg:-mt-40">
+    <div className="w-full select-none -mt-16 sm:-mt-12 md:-mt-16">
 
       {/* ─── Slider track ─── */}
       <div className="relative">
@@ -220,9 +208,19 @@ export default function MockupSlider({
                 x,
                 width: containerW * extended.length,
               }}
-              drag="x"
-              onDragEnd={handleDragEnd}
-              dragElastic={0.2}
+              drag={reduce ? false : "x"}
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.1}
+              onDragEnd={(_, info) => {
+                const offset = info.offset.x;
+                const velocity = info.velocity.x;
+                
+                let delta = 0;
+                if (offset < -SWIPE_THRESHOLD || velocity < -400) delta = 1;
+                else if (offset > SWIPE_THRESHOLD || velocity > 400) delta = -1;
+                
+                go(delta);
+              }}
             >
               {extended.map((src, idx) => (
                 <div
@@ -249,7 +247,7 @@ export default function MockupSlider({
       </div>
 
       {/* ─── Controls: counter + arrows + dots ─── */}
-      <div className="-mt-12 sm:-mt-20 md:-mt-28 relative z-10 flex flex-col items-center gap-3">
+      <div className="-mt-14 sm:-mt-12 md:-mt-20 relative z-10 flex flex-col items-center gap-3">
 
         <span className="text-[10px] tabular-nums text-white/28 tracking-widest uppercase">
           {currentReal + 1} / {total}
