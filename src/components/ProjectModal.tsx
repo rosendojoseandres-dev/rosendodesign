@@ -65,11 +65,7 @@ export default function ProjectModal({
                 ×
               </span>
             </button>
-            <div
-              className="relative border-b border-white/10 p-4 sm:p-6"
-              style={{ background: project.theme.gradient }}
-            >
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(0,0,0,0.3))]" />
+            <div className="relative border-b border-white/10 p-4 bg-[#0d0d0d] sm:p-6">
               <div className="flex flex-col gap-4 pr-14 sm:flex-row sm:items-start sm:justify-between sm:pr-16">
                 <div className="relative">
                   <h3 className="mt-2 text-xl font-semibold tracking-[-0.03em] md:text-2xl">
@@ -103,8 +99,7 @@ export default function ProjectModal({
                     {project.highlights.map((h) => (
                       <li key={h} className="flex gap-2">
                         <span
-                          className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full"
-                          style={{ backgroundColor: project.theme.accent }}
+                          className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"
                         />
                         <span className="leading-relaxed">{h}</span>
                       </li>
@@ -172,7 +167,7 @@ export default function ProjectModal({
                 <div className={project.mockupOrientation === "landscape" ? "-mx-4 sm:mx-0" : ""}>
                   <MockupSlider 
                     images={project.mockups} 
-                    accent={project.theme.accent} 
+                    accent="#ffffff"
                     orientation={project.mockupOrientation}
                   />
                 </div>
