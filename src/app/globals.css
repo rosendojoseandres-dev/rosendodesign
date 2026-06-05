@@ -24,15 +24,9 @@ html {
 
 body {
   @apply antialiased;
-  background: #0a0a0a;
+  background: #000000;
   color: var(--soft-white);
   overflow-x: hidden;
-}
-
-/* Separadores invisibles — solo mantienen el posicionamiento relativo */
-.sep-bottom,
-.sep-top {
-  position: relative;
 }
 
 .container-max {

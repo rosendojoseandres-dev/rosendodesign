@@ -65,7 +65,7 @@ export default function ProjectModal({
                 ×
               </span>
             </button>
-            <div className="relative border-b border-white/10 p-4 bg-[#0d0d0d] sm:p-6">
+            <div className="relative border-b border-white/10 p-4 bg-[#050505] sm:p-6">
               <div className="flex flex-col gap-4 pr-14 sm:flex-row sm:items-start sm:justify-between sm:pr-16">
                 <div className="relative">
                   <h3 className="mt-2 text-xl font-semibold tracking-[-0.03em] md:text-2xl">

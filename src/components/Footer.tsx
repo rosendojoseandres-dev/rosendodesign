@@ -19,7 +19,7 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer id="contacto" className="sep-top relative border-t border-white/5 bg-[#0a0a0a] py-16 sm:py-20 md:py-24">
+    <footer id="contacto" className="relative py-16 sm:py-20 md:py-24">
       <div className="container-max">
         <Reveal>
           <div className="grid gap-10 md:grid-cols-2 md:items-center md:gap-12">

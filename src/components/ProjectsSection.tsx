@@ -18,7 +18,7 @@ function ProjectCard({
       type="button"
       onClick={() => onOpen(project)}
       aria-label={`Abrir ${project.title}`}
-      className="group relative flex h-full w-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-[#0d0d0d] p-6 text-left transition-colors duration-300 hover:border-white/20 hover:bg-[#121212] sm:p-8"
+      className="group relative flex h-full w-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-[#050505] p-6 text-left transition-colors duration-300 hover:border-white/20 hover:bg-[#080808] sm:p-8"
       whileHover={{ y: -4 }}
       transition={{ duration: 0.25, ease: [0.2, 0.8, 0.2, 1] }}
     >
