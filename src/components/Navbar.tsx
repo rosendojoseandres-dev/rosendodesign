@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect } from "react";
-
 export default function Navbar() {
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.history.scrollRestoration = "auto";
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault();
+    const target = document.getElementById("contacto");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
     }
-  }, []);
+  };
 
   return (
     <header className="absolute left-0 top-0 z-50 w-full bg-transparent">
@@ -18,6 +18,7 @@ export default function Navbar() {
         
         <a
           href="#contacto"
+          onClick={handleScroll}
           className="rounded-full bg-white px-7 py-2.5 text-[14px] font-medium text-black transition hover:bg-white/90 sm:px-8 sm:text-[15px]"
         >
           Contacto
