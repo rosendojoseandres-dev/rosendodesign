@@ -77,7 +77,7 @@ function ProjectBlock({ project }: { project: Project }) {
                 </div>
               )}
               
-              <div className="relative w-full overflow-hidden rounded-2xl bg-white/[0.02]">
+              <div className="relative w-full overflow-hidden rounded-2xl bg-transparent">
                 <img
                   src={mockup.image}
                   alt={mockup.title || `${project.title} Mockup ${i + 1}`}
