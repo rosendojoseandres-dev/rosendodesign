@@ -14,7 +14,7 @@ export default function Navbar() {
       <div className="container-max flex h-20 sm:h-24 items-center justify-between">
         <div className="flex items-center gap-3">
           <img 
-            src="/images/LOGO.svg" 
+            src="/images/logo-blanco.svg" 
             alt="Logo Andres Rosendo" 
             className="h-6 w-auto sm:h-7" 
           />
