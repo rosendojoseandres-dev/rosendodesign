@@ -35,12 +35,36 @@ export const projects: Project[] = [
       { label: "Prototipo interactivo", href: "#" }
     ],
     mockups: [
-      { image: "/images/klyn/mockup-1.png", title: "Dashboard Principal", description: "La arquitectura de información prioriza el balance total y el acceso rápido a transferencias frecuentes, minimizando la carga cognitiva." },
-      { image: "/images/klyn/mockup-2.png", title: "Pantalla de Ahorro", description: "Uso estratégico de barras de progreso y tipografía grande para motivar al usuario y darle visibilidad clara sobre sus metas financieras." },
-      { image: "/images/klyn/mockup-3.png", title: "Flujo de Transacciones", description: "Diseño por pasos (stepper) que previene errores humanos al momento de mover USD entre cuentas." },
-      { image: "/images/klyn/mockup-4.png", title: "Gestión de Tarjetas", description: "Interfaz esquelética y oscura que resalta la tarjeta virtual, generando una sensación de seguridad y estética premium." },
-      { image: "/images/klyn/mockup-5.png", title: "Analíticas de Rendimiento", description: "Visualización de datos mediante gráficos minimalistas, ayudando al usuario a comprender sus gastos de un vistazo rápido." },
-      { image: "/images/klyn/mockup-6.png", title: "Seguridad y Ajustes", description: "Integración perfecta del flujo de validación biométrica y configuraciones avanzadas de la cuenta." }
+      {
+        image: "/images/klyn/mockup-1.png",
+        title: "Pantalla de Bienvenida",
+        description: "La primera impresión lo es todo. El splash screen comunica el valor de la plataforma de forma directa con el eslogan \"El futuro de tus finanzas. Ahora\", estableciendo confianza antes de que el usuario ingrese."
+      },
+      {
+        image: "/images/klyn/mockup-2.png",
+        title: "Verificación de Identidad",
+        description: "Flujo de onboarding con validación biométrica facial. El uso de una ilustración 3D y una paleta oscura con acento violeta transmite seguridad sin sacrificar la experiencia visual del usuario."
+      },
+      {
+        image: "/images/klyn/mockup-3.png",
+        title: "Dashboard Principal",
+        description: "El home centraliza la información financiera más crítica: balance en USD y VES con gráficas de tendencia, pagos recientes por avatar y el historial de transacciones, todo sin saturar al usuario."
+      },
+      {
+        image: "/images/klyn/mockup-4.png",
+        title: "Comprobante de Pago",
+        description: "Pantalla de confirmación en modo claro diseñada para generar confianza. Cada dato clave —beneficiario, monto, fecha y asunto— se despliega con jerarquía clara para validar la transacción al instante."
+      },
+      {
+        image: "/images/klyn/mockup-5.png",
+        title: "Panel de Metas de Ahorro",
+        description: "Módulo de ahorro por objetivos que usa barras de progreso circulares con porcentajes en tiempo real. El usuario visualiza simultáneamente múltiples metas —iPhone, vacaciones, remodelación— y el monto restante para completarlas."
+      },
+      {
+        image: "/images/klyn/mockup-6.png",
+        title: "Chat de Soporte",
+        description: "Canal de atención al cliente integrado dentro de la app. El asistente responde de forma conversacional y natural, manteniendo la coherencia visual de la plataforma para no romper el flujo de experiencia del usuario."
+      }
     ],
     theme: {
       accent: "#FF7040",
@@ -64,13 +88,41 @@ export const projects: Project[] = [
     ],
     links: [{ label: "Case study", href: "#" }],
     mockups: [
-      { image: "/images/vurelo/mockup1.png", title: "Inicio de Sesión", description: "Autenticación optimizada con reconocimiento facial y acceso rápido a funciones no autenticadas esenciales." },
-      { image: "/images/vurelo/mockup2.png", title: "Home Bancario", description: "Reestructuración de la jerarquía visual para destacar productos de crédito y saldos de cuentas corrientes sin ruido visual." },
-      { image: "/images/vurelo/mockup3.png", title: "Movimientos Recientes", description: "Rediseño del historial de transacciones con categorización por iconos semánticos para facilitar el escaneo rápido." },
-      { image: "/images/vurelo/mockup4.png", title: "Pagos de Servicios", description: "Flujo simplificado que reduce a la mitad los pasos necesarios para abonar facturas recurrentes." },
-      { image: "/images/vurelo/mockup5.png", title: "Transferencias Rápidas", description: "Diseño de selección de destinatarios tipo 'favoritos' para agilizar envíos de dinero a contactos frecuentes." },
-      { image: "/images/vurelo/mockup6.png", title: "Comprobantes Exitosos", description: "Pantalla de éxito diseñada para generar confianza, ofreciendo opciones rápidas para compartir el recibo de la transacción." },
-      { image: "/images/vurelo/mockup7.png", title: "Perfil y Límites", description: "Centralización de ajustes de seguridad, límites transaccionales y soporte técnico en un dashboard limpio." }
+      {
+        image: "/images/vurelo/mockup1.png",
+        title: "Home Principal",
+        description: "El dashboard centraliza el saldo en USDT con su equivalente en COP, accesos rápidos a las acciones principales —Agregar, Enviar, Retirar, Convertir— y la tarjeta VISA activa con el historial de movimientos recientes en una sola vista."
+      },
+      {
+        image: "/images/vurelo/mockup2.png",
+        title: "Historial de Movimientos",
+        description: "Vista completa del historial transaccional con filtros por categoría: Ver todo, Tarjetas y Activos digitales. Cada movimiento muestra tipo, fecha y monto de forma escaneada para una revisión rápida."
+      },
+      {
+        image: "/images/vurelo/mockup3.png",
+        title: "Gestión de Tarjetas — Tema Azul",
+        description: "Sección 'Mis tarjetas' con carrusel de tarjetas virtuales y accesos directos a Recargar, PIN, Detalles y Congelar. El sistema de temas por color permite al usuario identificar y personalizar visualmente cada tarjeta."
+      },
+      {
+        image: "/images/vurelo/mockup4.png",
+        title: "Gestión de Tarjetas — Tema Celeste",
+        description: "La misma pantalla de tarjetas en su variante de color celeste, demostrando la flexibilidad del sistema de diseño para representar distintas tarjetas o perfiles dentro de una misma arquitectura de componentes."
+      },
+      {
+        image: "/images/vurelo/mockup5.png",
+        title: "Gestión de Tarjetas — Tema Verde",
+        description: "Variante verde del gestor de tarjetas, mostrando cómo el sistema de temas dinámicos acompaña la identidad de cada instrumento financiero sin alterar la estructura ni la usabilidad de la interfaz."
+      },
+      {
+        image: "/images/vurelo/mockup6.png",
+        title: "Gestión de Tarjetas — Tema Oscuro",
+        description: "Versión dark del módulo de tarjetas: fondo negro profundo con tarjeta en escala de grises. El contraste extremo genera una sensación de exclusividad y seguridad, ideal para tarjetas de alta gama o corporativas."
+      },
+      {
+        image: "/images/vurelo/mockup7.png",
+        title: "Perfil y Configuración",
+        description: "Panel de perfil que consolida toda la gestión personal: información de usuario, seguridad, opciones del ecosistema Vurelo (Temporada, Soporte) y accesos legales. Estructura limpia por categorías que facilita la navegación sin fricción."
+      }
     ],
     theme: {
       accent: "#78AAFF",
@@ -94,8 +146,16 @@ export const projects: Project[] = [
     ],
     links: [{ label: "Case study", href: "#" }],
     mockups: [
-      { image: "/images/groc/mockup-1.png", title: "Catálogo de Productos", description: "Uso intencional del espacio en blanco (negative space) para elevar la percepción de calidad del producto y facilitar la decisión de compra." },
-      { image: "/images/groc/mockup-2.png", title: "Vista de Detalle y Carrito", description: "Drawer desplegable lateral que permite al usuario revisar su compra sin abandonar el contexto de la tienda, reduciendo drásticamente la fricción." }
+      {
+        image: "/images/groc/mockup-1.png",
+        title: "Home y Categorías",
+        description: "El hero con carrusel de colecciones editoriales establece el tono premium de la marca. Justo debajo, las categorías —Ropa, Calzado, Accesorios, Perfumes— se presentan como tarjetas escuetas que guían al usuario sin ruido visual hacia su punto de interés."
+      },
+      {
+        image: "/images/groc/mockup-2.png",
+        title: "Catálogo de Productos",
+        description: "Grid de productos con filtros de género y estado (Nuevo, Top, Oferta). Cada tarjeta activa el botón 'Vista rápida' en hover y muestra precio y marca de forma limpia, priorizando el producto sobre cualquier elemento de UI secundario."
+      }
     ],
     mockupOrientation: "landscape",
     theme: {
