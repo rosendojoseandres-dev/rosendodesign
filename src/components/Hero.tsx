@@ -40,14 +40,14 @@ export default function Hero() {
               className="text-[2rem] leading-[1.1] tracking-tight sm:text-[2.5rem] md:text-5xl"
             >
               <span className="block font-light text-zinc-300">Arquitectura visual y lógica</span>
-              <span className="block font-bold text-white mt-1">para productos digitales.</span>
+              <span className="block font-bold text-[#F4F4F4] mt-1">para productos digitales.</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.2, 0.8, 0.2, 1] }}
-              className="mt-6 text-[15px] leading-relaxed text-zinc-400 sm:text-base lg:text-lg"
+              className="mt-6 text-[15px] leading-relaxed text-[#A4A4A4] sm:text-base lg:text-lg"
             >
               Soy Andrés Rosendo, Diseñador UX/UI. Me especializo en ecosistemas Fintech, paneles transaccionales y plataformas E-commerce. Elevo la retención de usuarios uniendo sistemas de diseño, estética premium y objetivos de negocio.
             </motion.p>
@@ -84,10 +84,10 @@ export default function Hero() {
                   {metric.icon}
                 </div>
                 <div>
-                  <h3 className="text-[15px] font-bold tracking-wide text-white sm:text-base">
+                  <h3 className="text-[15px] font-bold tracking-wide text-[#F4F4F4] sm:text-base">
                     {metric.title}
                   </h3>
-                  <p className="mt-0.5 text-[13px] font-medium text-zinc-500 sm:text-[14px]">
+                  <p className="mt-0.5 text-[13px] font-medium text-[#A4A4A4] sm:text-[14px]">
                     {metric.subtitle}
                   </p>
                 </div>

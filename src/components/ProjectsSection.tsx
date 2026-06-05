@@ -9,13 +9,13 @@ function ProjectBlock({ project }: { project: Project }) {
       {/* Encabezado del proyecto */}
       <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
         <div className="max-w-2xl">
-          <h3 className="text-3xl font-medium tracking-tight text-white md:text-4xl lg:text-5xl">
+          <h3 className="text-3xl font-medium tracking-tight text-[#F4F4F4] md:text-4xl lg:text-5xl">
             {project.title}
           </h3>
-          <p className="mt-3 text-lg text-zinc-400 md:text-xl">
+          <p className="mt-3 text-lg text-[#A4A4A4] md:text-xl">
             {project.subtitle}
           </p>
-          <p className="mt-6 text-[15px] leading-relaxed text-zinc-400 md:text-base">
+          <p className="mt-6 text-[15px] leading-relaxed text-[#A4A4A4] md:text-base">
             {project.summary}
           </p>
 
@@ -66,11 +66,11 @@ function ProjectBlock({ project }: { project: Project }) {
             <div key={i} className="flex flex-col gap-6 sm:gap-8">
               {mockup.title && (
                 <div className="max-w-2xl">
-                  <h4 className="text-xl font-medium tracking-tight text-white md:text-2xl">
+                  <h4 className="text-xl font-medium tracking-tight text-[#F4F4F4] md:text-2xl">
                     {mockup.title}
                   </h4>
                   {mockup.description && (
-                    <p className="mt-3 text-[15px] leading-relaxed text-zinc-400 sm:text-base">
+                    <p className="mt-3 text-[15px] leading-relaxed text-[#A4A4A4] sm:text-base">
                       {mockup.description}
                     </p>
                   )}
