@@ -1,8 +1,18 @@
+"use client";
+
+import { useEffect } from "react";
+
 export default function Navbar() {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.history.scrollRestoration = "auto";
+    }
+  }, []);
+
   return (
     <header className="absolute left-0 top-0 z-50 w-full bg-transparent">
       <div className="container-max flex h-20 sm:h-24 items-center justify-between">
-        <span className="text-[16px] font-semibold tracking-wide text-white">
+        <span className="text-[16px] font-normal tracking-wide text-white">
           Andres Rosendo
         </span>
         

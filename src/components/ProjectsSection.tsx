@@ -7,7 +7,7 @@ function ProjectBlock({ project }: { project: Project }) {
   return (
     <div className="relative flex flex-col gap-10 border-b border-white/[0.08] pb-24 pt-10 sm:gap-16 sm:pb-32">
       {/* Encabezado del proyecto */}
-      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
+      <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
         <div className="max-w-2xl">
           <h3 className="text-3xl font-medium tracking-tight text-white md:text-4xl lg:text-5xl">
             {project.title}
@@ -21,7 +21,7 @@ function ProjectBlock({ project }: { project: Project }) {
 
           {project.highlights && project.highlights.length > 0 && (
             <div className="mt-8">
-              <h4 className="mb-4 text-sm font-medium tracking-wide text-white uppercase">Highlights</h4>
+              <h4 className="mb-4 text-[13px] font-medium tracking-wide text-white uppercase">Highlights</h4>
               <ul className="flex flex-col gap-3">
                 {project.highlights.map((h, i) => (
                   <li key={i} className="flex items-start gap-3 text-[14.5px] leading-relaxed text-zinc-400">
@@ -35,12 +35,12 @@ function ProjectBlock({ project }: { project: Project }) {
         </div>
 
         {/* Roles y Herramientas */}
-        <div className="flex min-w-[200px] flex-col gap-8 md:text-right">
+        <div className="flex min-w-[200px] flex-col justify-end gap-8 md:text-right">
           {project.role && project.role.length > 0 && (
             <div>
               <h4 className="mb-3 text-[13px] font-medium tracking-widest text-zinc-500 uppercase">Rol</h4>
-              <ul className="flex flex-col gap-1.5 md:items-end">
-                {project.role.map((r, i) => (
+              <ul className="flex flex-col-reverse gap-1.5 md:items-end">
+                {[...project.role].reverse().map((r, i) => (
                   <li key={i} className="text-[14px] text-zinc-300">{r}</li>
                 ))}
               </ul>
@@ -49,8 +49,8 @@ function ProjectBlock({ project }: { project: Project }) {
           {project.tools && project.tools.length > 0 && (
             <div>
               <h4 className="mb-3 text-[13px] font-medium tracking-widest text-zinc-500 uppercase">Herramientas</h4>
-              <ul className="flex flex-col gap-1.5 md:items-end">
-                {project.tools.map((t, i) => (
+              <ul className="flex flex-col-reverse gap-1.5 md:items-end">
+                {[...project.tools].reverse().map((t, i) => (
                   <li key={i} className="text-[14px] text-zinc-300">{t}</li>
                 ))}
               </ul>
