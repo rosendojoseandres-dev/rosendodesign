@@ -77,11 +77,14 @@ function ProjectBlock({ project }: { project: Project }) {
                 </div>
               )}
               
-              <div className="relative w-full min-h-[400px] sm:min-h-[600px] rounded-2xl bg-white/[0.02] overflow-hidden">
+              <div className="relative w-full overflow-hidden rounded-2xl bg-white/[0.02]">
                 <img
                   src={mockup.image}
                   alt={mockup.title || `${project.title} Mockup ${i + 1}`}
-                  className="w-full h-full object-cover"
+                  width={1200}
+                  height={800}
+                  className="w-full h-auto block"
+                  style={{ display: "block" }}
                 />
               </div>
             </div>

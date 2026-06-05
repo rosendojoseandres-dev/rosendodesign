@@ -2,40 +2,46 @@
 
 import { useEffect } from "react";
 
+const SCROLL_KEY = "portfolio_scroll_y";
+
 export default function ScrollRestoration() {
   useEffect(() => {
-    // Prevent browser's native (and sometimes buggy) scroll restoration
+    // 1. Tomar el control total del scroll — evitar que el browser lo gestione solo
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
 
-    const savedScrollY = sessionStorage.getItem("portfolio_scroll_y");
-    
+    const savedScrollY = sessionStorage.getItem(SCROLL_KEY);
+
     if (savedScrollY) {
-      const scrollPos = parseInt(savedScrollY, 10);
-      
-      // Intentar restaurar inmediatamente
-      window.scrollTo(0, scrollPos);
-      
-      // Y un respaldo unos milisegundos después por si el DOM tardó en pintar
-      setTimeout(() => {
-        window.scrollTo(0, scrollPos);
-      }, 100);
-      
-      setTimeout(() => {
-        window.scrollTo(0, scrollPos);
-      }, 500);
+      const target = parseInt(savedScrollY, 10);
+
+      // Función que intenta desplazarse y valida que llegó al lugar correcto
+      const tryRestore = (retries = 0) => {
+        window.scrollTo({ top: target, behavior: "instant" });
+
+        // Si la página no tiene suficiente altura todavía, reintentar
+        const maxScrollable = document.documentElement.scrollHeight - window.innerHeight;
+        if (Math.abs(window.scrollY - target) > 50 && retries < 10 && maxScrollable < target) {
+          setTimeout(() => tryRestore(retries + 1), 150);
+        }
+      };
+
+      // Esperar a que el DOM + imágenes tengan suficiente espacio pintado
+      if (document.readyState === "complete") {
+        tryRestore();
+      } else {
+        window.addEventListener("load", () => tryRestore(), { once: true });
+      }
     }
 
-    const handleBeforeUnload = () => {
-      sessionStorage.setItem("portfolio_scroll_y", window.scrollY.toString());
+    // 2. Guardar posición justo antes de que el usuario recargue/cierre
+    const savePosition = () => {
+      sessionStorage.setItem(SCROLL_KEY, String(window.scrollY));
     };
 
-    window.addEventListener("beforeunload", handleBeforeUnload);
-
-    return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
+    window.addEventListener("beforeunload", savePosition);
+    return () => window.removeEventListener("beforeunload", savePosition);
   }, []);
 
   return null;
