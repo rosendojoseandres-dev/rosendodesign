@@ -53,12 +53,12 @@ export const projects: Project[] = [
       {
         image: "/images/klyn/mockup-4.png",
         title: "Comprobante de Pago",
-        description: "Pantalla de confirmación en modo claro diseñada para generar confianza. Cada dato clave —beneficiario, monto, fecha y asunto— se despliega con jerarquía clara para validar la transacción al instante."
+        description: "Pantalla de confirmación en modo claro diseñada para generar confianza. Cada dato clave (beneficiario, monto, fecha y asunto) se despliega con jerarquía clara para validar la transacción al instante."
       },
       {
         image: "/images/klyn/mockup-5.png",
         title: "Panel de Metas de Ahorro",
-        description: "Módulo de ahorro por objetivos que usa barras de progreso circulares con porcentajes en tiempo real. El usuario visualiza simultáneamente múltiples metas —iPhone, vacaciones, remodelación— y el monto restante para completarlas."
+        description: "Módulo de ahorro por objetivos que usa barras de progreso circulares con porcentajes en tiempo real. El usuario visualiza múltiples metas (iPhone, vacaciones, remodelación) y el monto restante para completarlas."
       },
       {
         image: "/images/klyn/mockup-6.png",
@@ -91,7 +91,7 @@ export const projects: Project[] = [
       {
         image: "/images/vurelo/mockup1.png",
         title: "Home Principal",
-        description: "El dashboard centraliza el saldo en USDT con su equivalente en COP, accesos rápidos a las acciones principales —Agregar, Enviar, Retirar, Convertir— y la tarjeta VISA activa con el historial de movimientos recientes en una sola vista."
+        description: "El dashboard centraliza el saldo en USDT con su equivalente en COP, accesos rápidos a las acciones principales (Agregar, Enviar, Retirar, Convertir) y la tarjeta VISA activa con el historial de movimientos recientes en una sola vista."
       },
       {
         image: "/images/vurelo/mockup2.png",
@@ -100,22 +100,22 @@ export const projects: Project[] = [
       },
       {
         image: "/images/vurelo/mockup3.png",
-        title: "Gestión de Tarjetas — Tema Azul",
+        title: "Gestión de Tarjetas: Tema Azul",
         description: "Sección 'Mis tarjetas' con carrusel de tarjetas virtuales y accesos directos a Recargar, PIN, Detalles y Congelar. El sistema de temas por color permite al usuario identificar y personalizar visualmente cada tarjeta."
       },
       {
         image: "/images/vurelo/mockup4.png",
-        title: "Gestión de Tarjetas — Tema Celeste",
+        title: "Gestión de Tarjetas: Tema Celeste",
         description: "La misma pantalla de tarjetas en su variante de color celeste, demostrando la flexibilidad del sistema de diseño para representar distintas tarjetas o perfiles dentro de una misma arquitectura de componentes."
       },
       {
         image: "/images/vurelo/mockup5.png",
-        title: "Gestión de Tarjetas — Tema Verde",
+        title: "Gestión de Tarjetas: Tema Verde",
         description: "Variante verde del gestor de tarjetas, mostrando cómo el sistema de temas dinámicos acompaña la identidad de cada instrumento financiero sin alterar la estructura ni la usabilidad de la interfaz."
       },
       {
         image: "/images/vurelo/mockup6.png",
-        title: "Gestión de Tarjetas — Tema Oscuro",
+        title: "Gestión de Tarjetas: Tema Oscuro",
         description: "Versión dark del módulo de tarjetas: fondo negro profundo con tarjeta en escala de grises. El contraste extremo genera una sensación de exclusividad y seguridad, ideal para tarjetas de alta gama o corporativas."
       },
       {
@@ -149,7 +149,7 @@ export const projects: Project[] = [
       {
         image: "/images/groc/mockup-1.png",
         title: "Home y Categorías",
-        description: "El hero con carrusel de colecciones editoriales establece el tono premium de la marca. Justo debajo, las categorías —Ropa, Calzado, Accesorios, Perfumes— se presentan como tarjetas escuetas que guían al usuario sin ruido visual hacia su punto de interés."
+        description: "El hero con carrusel de colecciones editoriales establece el tono premium de la marca. Justo debajo, las categorías (Ropa, Calzado, Accesorios, Perfumes) se presentan como tarjetas escuetas que guían al usuario sin ruido visual hacia su punto de interés."
       },
       {
         image: "/images/groc/mockup-2.png",
