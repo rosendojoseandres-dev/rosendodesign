@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
+import { Figtree } from "next/font/google";
 import "./globals.css";
+
+const figtree = Figtree({
+  subsets: ["latin"],
+  variable: "--font-figtree",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -27,8 +34,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body className="bg-radial grain">{children}</body>
+    <html lang="es" className={`${figtree.variable}`}>
+      <body className="bg-radial grain font-sans">{children}</body>
     </html>
   );
 }

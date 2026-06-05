@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["ui-sans-serif", "system-ui", "Inter", "Arial", "sans-serif"]
+        sans: ["var(--font-figtree)", "system-ui", "sans-serif"]
       },
       colors: {
         ink: {
@@ -14,7 +14,11 @@ export default {
           800: "#0F1623",
           700: "#162034"
         },
-        white: "#EBEBEB"
+        white: "#F4F4F4",
+        zinc: {
+          400: "#A4A4A4",
+          500: "#A4A4A4"
+        }
       },
       boxShadow: {
         glass: "0 10px 40px rgba(0,0,0,.35)",
