@@ -77,12 +77,11 @@ function ProjectBlock({ project }: { project: Project }) {
                 </div>
               )}
               
-              <div className="relative w-full">
+              <div className="relative w-full min-h-[400px] sm:min-h-[600px] rounded-2xl bg-white/[0.02] overflow-hidden">
                 <img
                   src={mockup.image}
                   alt={mockup.title || `${project.title} Mockup ${i + 1}`}
-                  className="w-full object-cover"
-                  loading="lazy"
+                  className="w-full h-full object-cover"
                 />
               </div>
             </div>
