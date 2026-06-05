@@ -8,7 +8,7 @@ export type Project = {
   tools: string[];
   highlights: string[];
   links?: { label: string; href: string }[];
-  mockups?: string[];          // Rutas relativas a /public
+  mockups?: { image: string; text?: string }[];
   mockupOrientation?: "portrait" | "landscape";
   theme: {
     accent: string; // Tailwind color (e.g. "#FF7040")
@@ -35,12 +35,12 @@ export const projects: Project[] = [
       { label: "Prototipo interactivo", href: "#" }
     ],
     mockups: [
-      "/images/klyn/mockup-1.png",
-      "/images/klyn/mockup-2.png",
-      "/images/klyn/mockup-3.png",
-      "/images/klyn/mockup-4.png",
-      "/images/klyn/mockup-5.png",
-      "/images/klyn/mockup-6.png"
+      { image: "/images/klyn/mockup-1.png", text: "Dashboard principal: La arquitectura de información prioriza el balance total y el acceso rápido a transferencias frecuentes, minimizando la carga cognitiva." },
+      { image: "/images/klyn/mockup-2.png", text: "Pantalla de ahorro: Uso estratégico de barras de progreso y tipografía grande para motivar al usuario y darle visibilidad clara sobre sus metas financieras." },
+      { image: "/images/klyn/mockup-3.png", text: "Flujo de transacciones: Diseño por pasos (stepper) que previene errores humanos al momento de mover USD entre cuentas." },
+      { image: "/images/klyn/mockup-4.png", text: "Gestión de tarjetas: Interfaz esquelética y oscura que resalta la tarjeta virtual, generando una sensación de seguridad y estética premium." },
+      { image: "/images/klyn/mockup-5.png", text: "Analíticas: Visualización de datos mediante gráficos minimalistas, ayudando al usuario a comprender sus gastos de un vistazo rápido." },
+      { image: "/images/klyn/mockup-6.png", text: "Configuración de seguridad: Integración perfecta del flujo de validación biométrica y ajustes de cuenta." }
     ],
     theme: {
       accent: "#FF7040",
@@ -64,13 +64,13 @@ export const projects: Project[] = [
     ],
     links: [{ label: "Case study", href: "#" }],
     mockups: [
-      "/images/vurelo/mockup1.png",
-      "/images/vurelo/mockup2.png",
-      "/images/vurelo/mockup3.png",
-      "/images/vurelo/mockup4.png",
-      "/images/vurelo/mockup5.png",
-      "/images/vurelo/mockup6.png",
-      "/images/vurelo/mockup7.png"
+      { image: "/images/vurelo/mockup1.png", text: "Inicio de sesión: Autenticación optimizada y acceso rápido a funciones no autenticadas esenciales." },
+      { image: "/images/vurelo/mockup2.png", text: "Home bancario: Reestructuración de la jerarquía visual para destacar productos de crédito y saldos de cuentas corrientes." },
+      { image: "/images/vurelo/mockup3.png", text: "Movimientos: Rediseño del historial de transacciones con categorización por iconos para facilitar el escaneo visual." },
+      { image: "/images/vurelo/mockup4.png", text: "Pagos de servicios: Flujo simplificado que reduce los clics necesarios para abonar facturas recurrentes." },
+      { image: "/images/vurelo/mockup5.png", text: "Transferencias: Diseño de selección de destinatarios tipo 'favoritos' para agilizar envíos de dinero." },
+      { image: "/images/vurelo/mockup6.png", text: "Comprobantes: Pantalla de éxito diseñada para generar confianza y ofrecer opciones rápidas de compartir el recibo." },
+      { image: "/images/vurelo/mockup7.png", text: "Perfil: Centralización de ajustes, límites transaccionales y soporte técnico en un solo lugar." }
     ],
     theme: {
       accent: "#78AAFF",
@@ -94,8 +94,8 @@ export const projects: Project[] = [
     ],
     links: [{ label: "Case study", href: "#" }],
     mockups: [
-      "/images/groc/mockup-1.png",
-      "/images/groc/mockup-2.png"
+      { image: "/images/groc/mockup-1.png", text: "Catálogo de productos: Uso intencional del espacio en blanco (negative space) para elevar la percepción de calidad del producto y facilitar la decisión de compra." },
+      { image: "/images/groc/mockup-2.png", text: "Vista de detalle y Carrito: Drawer desplegable lateral que permite al usuario revisar su compra sin abandonar el contexto de la tienda, reduciendo la fricción." }
     ],
     mockupOrientation: "landscape",
     theme: {

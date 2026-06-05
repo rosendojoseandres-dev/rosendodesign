@@ -61,15 +61,22 @@ function ProjectBlock({ project }: { project: Project }) {
 
       {/* Mockups */}
       {project.mockups && project.mockups.length > 0 && (
-        <div className="mt-4 flex flex-col gap-6 sm:gap-10">
-          {project.mockups.map((src, i) => (
-            <div key={i} className="relative w-full overflow-hidden rounded-[20px] bg-[#060606] sm:rounded-[32px]">
-              <img
-                src={src}
-                alt={`${project.title} Mockup ${i + 1}`}
-                className="w-full object-cover"
-                loading="lazy"
-              />
+        <div className="mt-4 flex flex-col gap-10 sm:gap-16">
+          {project.mockups.map((mockup, i) => (
+            <div key={i} className="flex flex-col gap-4">
+              <div className="relative w-full overflow-hidden rounded-[20px] bg-[#060606] sm:rounded-[32px]">
+                <img
+                  src={mockup.image}
+                  alt={`${project.title} Mockup ${i + 1}`}
+                  className="w-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              {mockup.text && (
+                <p className="mx-auto max-w-[64ch] text-center text-[14px] leading-relaxed text-zinc-400 sm:text-[15px]">
+                  {mockup.text}
+                </p>
+              )}
             </div>
           ))}
         </div>
