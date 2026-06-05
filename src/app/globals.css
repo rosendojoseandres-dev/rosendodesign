@@ -7,10 +7,7 @@
   --soft-white: #e0e0e0;
 }
 
-html,
-body {
-  height: 100%;
-}
+
 
 html {
   scroll-behavior: smooth;

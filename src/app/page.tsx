@@ -6,7 +6,7 @@ import { projects } from "@/content/projects";
 
 export default function HomePage() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-black">
+    <main className="relative min-h-screen overflow-x-hidden bg-black">
       <Navbar />
       <Hero />
       <ProjectsSection projects={projects} />
