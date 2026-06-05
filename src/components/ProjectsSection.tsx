@@ -19,12 +19,37 @@ function ProjectBlock({ project }: { project: Project }) {
             {project.summary}
           </p>
 
+          {/* Roles y Herramientas (Mobile Only) */}
+          <div className="mt-8 flex flex-col gap-8 md:hidden">
+            {project.role && project.role.length > 0 && (
+              <div>
+                <h4 className="mb-3 text-[13px] font-medium tracking-widest text-[#F4F4F4] uppercase">Rol</h4>
+                <ul className="flex flex-col gap-1.5">
+                  {[...project.role].map((r, i) => (
+                    <li key={i} className="text-[14px] text-[#A4A4A4]">{r}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {project.tools && project.tools.length > 0 && (
+              <div>
+                <h4 className="mb-3 text-[13px] font-medium tracking-widest text-[#F4F4F4] uppercase">Herramientas</h4>
+                <ul className="flex flex-col gap-1.5">
+                  {[...project.tools].map((t, i) => (
+                    <li key={i} className="text-[14px] text-[#A4A4A4]">{t}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+
+          {/* Highlights */}
           {project.highlights && project.highlights.length > 0 && (
             <div className="mt-8">
-              <h4 className="mb-4 text-[13px] font-medium tracking-wide text-white uppercase">Highlights</h4>
+              <h4 className="mb-4 text-[13px] font-medium tracking-wide text-[#F4F4F4] uppercase">Highlights</h4>
               <ul className="flex flex-col gap-3">
                 {project.highlights.map((h, i) => (
-                  <li key={i} className="flex items-start gap-3 text-[14.5px] leading-relaxed text-zinc-400">
+                  <li key={i} className="flex items-start gap-3 text-[14.5px] leading-relaxed text-[#A4A4A4]">
                     <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/20" />
                     <span>{h}</span>
                   </li>
@@ -34,24 +59,24 @@ function ProjectBlock({ project }: { project: Project }) {
           )}
         </div>
 
-        {/* Roles y Herramientas */}
-        <div className="flex min-w-[200px] flex-col justify-end gap-8 md:text-right">
+        {/* Roles y Herramientas (Desktop Only) */}
+        <div className="hidden md:flex min-w-[200px] flex-col justify-end gap-8 md:text-right">
           {project.role && project.role.length > 0 && (
             <div>
-              <h4 className="mb-3 text-[13px] font-medium tracking-widest text-zinc-500 uppercase">Rol</h4>
+              <h4 className="mb-3 text-[13px] font-medium tracking-widest text-[#F4F4F4] uppercase">Rol</h4>
               <ul className="flex flex-col-reverse gap-1.5 md:items-end">
                 {[...project.role].reverse().map((r, i) => (
-                  <li key={i} className="text-[14px] text-zinc-300">{r}</li>
+                  <li key={i} className="text-[14px] text-[#A4A4A4]">{r}</li>
                 ))}
               </ul>
             </div>
           )}
           {project.tools && project.tools.length > 0 && (
             <div>
-              <h4 className="mb-3 text-[13px] font-medium tracking-widest text-zinc-500 uppercase">Herramientas</h4>
+              <h4 className="mb-3 text-[13px] font-medium tracking-widest text-[#F4F4F4] uppercase">Herramientas</h4>
               <ul className="flex flex-col-reverse gap-1.5 md:items-end">
                 {[...project.tools].reverse().map((t, i) => (
-                  <li key={i} className="text-[14px] text-zinc-300">{t}</li>
+                  <li key={i} className="text-[14px] text-[#A4A4A4]">{t}</li>
                 ))}
               </ul>
             </div>
