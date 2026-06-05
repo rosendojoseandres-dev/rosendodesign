@@ -37,7 +37,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, ease: [0.2, 0.8, 0.2, 1] }}
-              className="text-[2.5rem] leading-[1.1] tracking-tight sm:text-5xl md:text-6xl"
+              className="text-[2rem] leading-[1.1] tracking-tight sm:text-[2.5rem] md:text-5xl"
             >
               <span className="block font-light text-zinc-300">Arquitectura visual y lógica</span>
               <span className="block font-bold text-white mt-1">para productos digitales.</span>
