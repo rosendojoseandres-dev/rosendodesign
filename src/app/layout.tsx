@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Figtree } from "next/font/google";
 import "./globals.css";
+import ScrollRestoration from "@/components/ScrollRestoration";
 
 const figtree = Figtree({
   subsets: ["latin"],
@@ -35,7 +36,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${figtree.variable}`}>
-      <body className="bg-radial grain font-sans">{children}</body>
+      <body className="bg-radial grain font-sans">
+        <ScrollRestoration />
+        {children}
+      </body>
     </html>
   );
 }
