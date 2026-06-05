@@ -12,9 +12,16 @@ export default function Navbar() {
   return (
     <header className="absolute left-0 top-0 z-50 w-full bg-transparent">
       <div className="container-max flex h-20 sm:h-24 items-center justify-between">
-        <span className="text-[16px] font-normal tracking-wide text-white">
-          Andres Rosendo
-        </span>
+        <div className="flex items-center gap-3">
+          <img 
+            src="/images/LOGO.svg" 
+            alt="Logo Andres Rosendo" 
+            className="h-6 w-auto sm:h-7" 
+          />
+          <span className="text-[16px] font-normal tracking-wide text-white">
+            Andres Rosendo
+          </span>
+        </div>
         
         <a
           href="#contacto"
