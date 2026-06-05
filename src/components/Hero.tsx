@@ -21,7 +21,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.2, 0.8, 0.2, 1] }}
-            className="mt-6 max-w-[38rem] text-pretty text-[15px] leading-relaxed text-white/60 sm:mt-8 md:text-base lg:text-lg lg:max-w-[42rem]"
+            className="mt-6 max-w-[38rem] text-pretty text-[15px] leading-relaxed text-zinc-400 sm:mt-8 md:text-base lg:text-lg lg:max-w-[42rem]"
           >
             Soy Andrés Rosendo, Diseñador UX/UI. Me especializo en ecosistemas Fintech, paneles transaccionales y plataformas E-commerce. Elevo la retención de usuarios uniendo sistemas de diseño, estética premium y objetivos de negocio.
           </motion.p>

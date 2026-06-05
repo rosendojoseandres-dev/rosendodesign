@@ -28,7 +28,7 @@ export default function Footer() {
                 <span className="block">Construyamos el próximo</span>
                 <span className="block">producto líder de tu sector.</span>
               </h3>
-              <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/50 sm:text-[15px] md:text-base">
+              <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-zinc-400 md:text-base">
                 ¿Tienes un proyecto complejo que requiere una interfaz intuitiva, moderna y escalable? Cuéntame los objetivos de tu producto y definamos el mejor enfoque visual y técnico.
               </p>
             </div>
