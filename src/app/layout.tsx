@@ -11,16 +11,16 @@ const figtree = Figtree({
 
 export const metadata: Metadata = {
   title: {
-    default: "Andres Rosendo — UX/UI Designer",
+    default: "Andres Rosendo - Portafolio",
     template: "%s — Andres Rosendo"
   },
   description:
-    "Portafolio UX/UI con enfoque en producto, sistemas de diseño y prototipado. Animaciones fluidas y experiencia premium.",
+    "Product Designer | UI/UX & Design Systems | Fintech & Digital Platform",
   metadataBase: new URL("https://example.com"),
   openGraph: {
-    title: "Andres Rosendo — UX/UI Designer",
+    title: "Andres Rosendo - Portafolio",
     description:
-      "Casos de estudio y proyectos con enfoque en UX/UI, producto y diseño de interfaces.",
+      "Product Designer | UI/UX & Design Systems | Fintech & Digital Platform",
     type: "website"
   },
   robots: {
