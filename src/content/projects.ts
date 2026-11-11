@@ -7,6 +7,7 @@ export type Project = {
   role: string[];
   tools: string[];
   highlights: string[];
+  visitUrl?: string;
   links?: { label: string; href: string }[];
   mockups?: { image: string; title?: string; description?: string }[];
   mockupOrientation?: "portrait" | "landscape";
@@ -17,6 +18,41 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    slug: "groc",
+    title: "Groc",
+    subtitle: "E-Commerce / Plataforma Web",
+    tags: ["UI Design", "Web Design", "Conversion", "Design System"],
+    summary:
+      "Conceptualización de experiencia de usuario y diseño de interfaz desarrollados 100% desde cero para una plataforma de comercio electrónico real. El proyecto se fundamenta en una dirección de arte minimalista y limpia que elimina distracciones visuales para otorgar protagonismo absoluto al catálogo y acelerar la decisión de compra.",
+    role: ["UI/UX Designer", "Visual Designer", "Art Direction"],
+    tools: ["Figma", "Auto-layout", "Componentes Atómicos"],
+    highlights: [
+      "Creación del ecosistema visual completo en Figma mediante componentes atómicos, estableciendo una jerarquía tipográfica premium y un balance preciso del espacio negativo.",
+      "Reducción de fricción en el User Journey con microinteracciones fluidas, carrito desplegable y automatización de órdenes con variables dinámicas para el cierre de ventas.",
+      "Estructuración de layouts modulares y adaptativos (Mobile-First), asegurando una experiencia responsiva coherente entre el diseño y la tienda en producción."
+    ],
+    visitUrl: "https://www.groctienda.com",
+    links: [{ label: "Visitar", href: "https://www.groctienda.com" }],
+    mockups: [
+      {
+        image: "/images/groc/mockup-1.png",
+        title: "E-Commerce Tipo Dashboard",
+        description: "Propuesta innovadora que transforma la tienda tradicional en un panel interactivo tipo dashboard. La barra lateral fija centraliza la navegación por categorías y el estado de la bolsa en tiempo real, mientras el módulo principal organiza colecciones, filtros rápidos y tarjetas de producto en una cuadrícula modular que acelera el descubrimiento y la decisión de compra."
+      },
+      {
+        image: "/images/groc/mockup-2.png",
+        title: "Diseño Responsive y Mobile-First",
+        description: "Adaptación fluida a dispositivos móviles que traslada la arquitectura de la plataforma a una experiencia vertical intuitiva y táctil. La ficha de producto prioriza la selección de talla, el llamado a la acción principal y el canal directo de atención por WhatsApp, conservando la limpieza visual y la jerarquía informativa en pantallas compactas."
+      }
+    ],
+    mockupOrientation: "landscape",
+    theme: {
+      accent: "#B478FF",
+      gradient:
+        "radial-gradient(900px 600px at 22% 14%, rgba(180,120,255,.3), transparent 58%), linear-gradient(180deg, rgba(8,8,8,.88), rgba(0,0,0,.98))"
+    }
+  },
   {
     slug: "klyn",
     title: "Klyn",
@@ -128,40 +164,6 @@ export const projects: Project[] = [
       accent: "#78AAFF",
       gradient:
         "radial-gradient(900px 600px at 24% 10%, rgba(120,170,255,.3), transparent 58%), linear-gradient(180deg, rgba(8,8,8,.88), rgba(0,0,0,.98))"
-    }
-  },
-  {
-    slug: "groc",
-    title: "Groc",
-    subtitle: "E-Commerce / Plataforma Web",
-    tags: ["UI Design", "Web Design", "Conversion", "Design System"],
-    summary:
-      "Conceptualización visual y diseño de interfaz creado 100% desde cero para una plataforma de comercio electrónico. El proyecto se fundamenta en una dirección de arte minimalista y sumamente elegante, eliminando cualquier ruido visual para potenciar la conversión y otorgar el protagonismo absoluto al catálogo de productos.",
-    role: ["UI/UX Designer", "Visual Designer", "Art Direction"],
-    tools: ["Figma", "Auto-layout", "Componentes Atómicos"],
-    highlights: [
-      "Construcción del ecosistema visual completo en Figma, estableciendo una jerarquía tipográfica premium y uso estratégico del espacio negativo.",
-      "Optimización del User Journey mediante microinteracciones fluidas, como la 'Vista rápida' y un carrito desplegable.",
-      "Estructuración de layouts modulares y adaptativos (Mobile First), garantizando una experiencia responsiva."
-    ],
-    links: [{ label: "Case study", href: "#" }],
-    mockups: [
-      {
-        image: "/images/groc/mockup-1.png",
-        title: "Home y Categorías",
-        description: "El hero con carrusel de colecciones editoriales establece el tono premium de la marca. Justo debajo, las categorías (Ropa, Calzado, Accesorios, Perfumes) se presentan como tarjetas escuetas que guían al usuario sin ruido visual hacia su punto de interés."
-      },
-      {
-        image: "/images/groc/mockup-2.png",
-        title: "Catálogo de Productos",
-        description: "Grid de productos con filtros de género y estado (Nuevo, Top, Oferta). Cada tarjeta activa el botón 'Vista rápida' en hover y muestra precio y marca de forma limpia, priorizando el producto sobre cualquier elemento de UI secundario."
-      }
-    ],
-    mockupOrientation: "landscape",
-    theme: {
-      accent: "#B478FF",
-      gradient:
-        "radial-gradient(900px 600px at 22% 14%, rgba(180,120,255,.3), transparent 58%), linear-gradient(180deg, rgba(8,8,8,.88), rgba(0,0,0,.98))"
     }
   }
 ];
