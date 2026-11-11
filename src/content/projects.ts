@@ -36,12 +36,12 @@ export const projects: Project[] = [
     links: [{ label: "Visitar", href: "https://www.groctienda.com" }],
     mockups: [
       {
-        image: "/images/groc/mockup-1.png",
+        image: "/images/groc/groc-desktop.png",
         title: "E-Commerce Tipo Dashboard",
         description: "Propuesta innovadora que transforma la tienda tradicional en un panel interactivo tipo dashboard. La barra lateral fija centraliza la navegación por categorías y el estado de la bolsa en tiempo real, mientras el módulo principal organiza colecciones, filtros rápidos y tarjetas de producto en una cuadrícula modular que acelera el descubrimiento y la decisión de compra."
       },
       {
-        image: "/images/groc/mockup-2.png",
+        image: "/images/groc/groc-mobile.png",
         title: "Diseño Responsive y Mobile-First",
         description: "Adaptación fluida a dispositivos móviles que traslada la arquitectura de la plataforma a una experiencia vertical intuitiva y táctil. La ficha de producto prioriza la selección de talla, el llamado a la acción principal y el canal directo de atención por WhatsApp, conservando la limpieza visual y la jerarquía informativa en pantallas compactas."
       }

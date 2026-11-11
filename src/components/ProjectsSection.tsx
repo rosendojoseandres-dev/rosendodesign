@@ -9,7 +9,7 @@ function ProjectBlock({ project }: { project: Project }) {
       {/* Encabezado del proyecto */}
       <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
         <div className="max-w-2xl">
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <h3 className="text-3xl font-medium tracking-tight text-[#F4F4F4] md:text-4xl lg:text-5xl">
               {project.title}
             </h3>
@@ -18,7 +18,7 @@ function ProjectBlock({ project }: { project: Project }) {
                 href={project.visitUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full bg-white px-7 py-2.5 text-[14px] font-medium text-black transition hover:bg-white/90 sm:px-8 sm:text-[15px]"
+                className="rounded-full bg-white px-4 py-1.5 text-[12.5px] font-medium text-black transition hover:bg-white/90 sm:px-8 sm:py-2.5 sm:text-[15px]"
               >
                 Visitar
               </a>
